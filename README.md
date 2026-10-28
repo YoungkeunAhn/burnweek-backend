@@ -91,18 +91,20 @@ flowchart LR
 ```bash
 cd backend
 npm ci
-npm test            # Vitest 885개 + 실제 LLM 키가 있을 때만 도는 4개
+npm test            # Vitest 885개 통과, 4개 건너뜀
 npm run typecheck
 ```
 
-테스트는 Firestore·토스 API·LLM을 테스트 더블과 로컬 가짜 서버로 대체해, 키나 에뮬레이터 없이 돕니다.
+- Firestore·토스 API·LLM을 테스트 더블과 로컬 가짜 서버로 대체해, 키나 에뮬레이터 없이 돕니다.
+- 토스 mTLS 테스트가 인증서를 만들려고 `openssl` CLI를 호출합니다. `openssl version`이 실행되는 환경이어야 합니다(Git for Windows·macOS·Ubuntu에는 기본 포함).
+- 건너뛰는 4개는 실제 LLM을 부르는 실측 테스트로, `GOLDEN_REFRESH=1`·`REASONING_AB=1`·`EVAL_LIVE=1`·`HIVE_LIVE=1`을 켜고 키를 넣었을 때만 돕니다.
 
 실제 LLM으로 생성 파이프라인만 돌려 보려면:
 
 ```bash
 cp .env.example .env.local   # LLM_PROVIDER · LLM_API_KEY · LLM_BASE_URL · LLM_MODEL 채우기
 npm run build
-npm run verify:live
+npm run verify:live   # 지금은 생성이 실패해도 종료 코드 0 — #3
 ```
 
 ## 개발 방식
@@ -118,6 +120,8 @@ npm run verify:live
 
 - [#1](https://github.com/YoungkeunAhn/burnweek-backend/issues/1) 워커 시작 트랜잭션의 모든 실패를 "사용자 삭제"로 처리 — 일시적인 DB 오류도 정상 종료돼, 잡이 `queued`로 남고 환불이 20분 늦어집니다.
 - 플랫폼이 워커를 강제로 끝내면(메모리 초과 등) 잡이 `running`으로 남고, 20분 예약 만료 뒤에야 정리됩니다.
+- [#2](https://github.com/YoungkeunAhn/burnweek-backend/issues/2) 워커 완료 로그를 결과 저장 전에 남김 — 저장이 실패해도 로그에는 성공으로 남아, 로그로 보는 실패율이 실제보다 낮게 나옵니다.
+- [#3](https://github.com/YoungkeunAhn/burnweek-backend/issues/3) `verify:live`가 생성 실패에도 종료 코드 0
 - 저장 후 푸시 실패를 직접 주입하는 테스트가 없습니다.
 
 ## 저장소 구성
