@@ -58,7 +58,7 @@ flowchart LR
 |---|---|---|---|
 | 한도 예약 후 큐 등록 실패 | 잡이 아직 `queued`일 때만 트랜잭션으로 한도 환불 + `error` 기록. 복구마저 실패하면 예약 만료(20분) 뒤 다음 요청 때 환불 | [index.ts L509-L526](backend/src/index.ts#L509-L526) · [access.ts](backend/src/generation/access.ts) | `queue failures refund free and reward reservations without granting twice` |
 | 같은 잡의 중복 실행 | 큐 재시도 없음(`maxAttempts: 1`, 재요청은 파이프라인 안에서). 워커는 `queued → running` 전이 트랜잭션에 성공했을 때만 실행 | [index.ts L542](backend/src/index.ts#L542) · [L553-L561](backend/src/index.ts#L553-L561) | `stale jobs release the account and late workers cannot save or refund again` |
-| 생성이 마감 시간을 넘김 | 플랫폼 종료 15초 전에 스스로 멈추고 `error` 기록·한도 환불. 토스 푸시는 성공 때만 보내므로 앱은 폴링으로 실패를 확인 | [index.ts L116-L146](backend/src/index.ts#L116-L146) · [L723-L726](backend/src/index.ts#L723-L726) | `ends an over-budget job as error + failure push instead of leaving it running` |
+| 생성이 마감 시간을 넘김 | 플랫폼 종료 15초 전에 기다리기를 끝내고 `error` 기록·한도 환불을 확정. 진행 중인 LLM 호출은 취소하지 않으며 늦게 온 결과는 저장되지 않음([#5](https://github.com/YoungkeunAhn/burnweek-backend/issues/5)). 토스 푸시는 성공 때만 보내므로 앱은 폴링으로 실패를 확인 | [index.ts L116-L146](backend/src/index.ts#L116-L146) · [L723-L726](backend/src/index.ts#L723-L726) | `ends an over-budget job as error + failure push instead of leaving it running` |
 | 저장 후 푸시 실패 | 커밋한 뒤에 푸시하므로 플랜과 정산은 그대로. 실패는 로그만 남김 | [index.ts L723-L741](backend/src/index.ts#L723-L741) | 직접 주입하는 테스트 없음 |
 
 테스트는 모두 [`backend/test/generation-api-contract.test.ts`](backend/test/generation-api-contract.test.ts)에 있습니다. 마감 테스트의 "failure push"는 레거시 FCM 클라이언트 경로이며, 미니앱은 FCM 토큰이 없어 폴링만 씁니다.
@@ -122,6 +122,8 @@ npm run verify:live   # 지금은 생성이 실패해도 종료 코드 0 — #3
 - 플랫폼이 워커를 강제로 끝내면(메모리 초과 등) 잡이 `running`으로 남고, 20분 예약 만료 뒤에야 정리됩니다.
 - [#2](https://github.com/YoungkeunAhn/burnweek-backend/issues/2) 워커 완료 로그를 결과 저장 전에 남김 — 저장이 실패해도 로그에는 성공으로 남아, 로그로 보는 실패율이 실제보다 낮게 나옵니다.
 - [#3](https://github.com/YoungkeunAhn/burnweek-backend/issues/3) `verify:live`가 생성 실패에도 종료 코드 0
+- [#4](https://github.com/YoungkeunAhn/burnweek-backend/issues/4) 완료 기록이 있는 주를 재생성하면 잡 조회와 현재 플랜 조회가 다른 플랜을 반환할 수 있음 — 잡에는 병합 전 플랜이 저장됨
+- [#5](https://github.com/YoungkeunAhn/burnweek-backend/issues/5) 마감 후에도 진행 중인 생성 작업과 LLM 호출이 취소되지 않음
 - 저장 후 푸시 실패를 직접 주입하는 테스트가 없습니다.
 
 ## 저장소 구성
