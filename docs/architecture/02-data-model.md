@@ -2,7 +2,7 @@
 
 - **Status:** Draft v2 (Codex 검증 반영 — LLM draft / 최종 plan 분리)
 - **Date:** 2026-08-16
-- **근거:** [PRD](../product/01-prd.md) FR-GEN/LOG/SYNC/ADJ/FB/SAFE, [research/01](../research/01-workout-apps-and-data-model.md), [research/03](../research/03-ai-plan-generation.md), [research/02](../research/02-google-drive-as-database.md). 결정 D5·D6·D11.
+- **근거:** PRD FR-GEN/LOG/SYNC/ADJ/FB/SAFE, research/01, research/03, research/02. 결정 D5·D6·D11.
 - **schema_version:** `1.0` — Phase 1 **고정 계약**(PRD FR-GEN-1 참조).
 
 정의 대상: **(A) 개념 엔티티 + 레드플래그 택소노미**, **(B) 두 스키마 — LLM용 `DraftPlan`(수치 없음) / 최종 `WeeklyPlan v1`(코드 생성)**, **(B3) 실측 세션 스키마**, **(C) Drive 저장 포맷·조정 로그**. 로컬 저장소 기술은 **Drift(SQLite)로 결정**([ADR-0003](../decisions/0003-local-store-drift.md)); 저장 **포맷/스키마**도 여기서 고정(테이블↔JSON 컬럼 경계 세부만 잔여).
@@ -51,7 +51,7 @@ BodyMetric             체중·치수(선택)
 - `id`는 **소문자 slug 정본**(`/^[a-z0-9_]{1,64}$/`) — 업스트림 `3_4_Sit-Up` → `3_4_sit_up`. 플랜·로그·프롬프트가 같은 형식을 쓴다.
 - `name_ko`는 시드 카탈로그에서 **필수**([D13](../decisions/mvp-decision-log.md): 873종 전수). `backend/src/data/exercise-labels.json`의 개별 교정 이름을 우선하고, 나머지는 용어 사전(`backend/scripts/name-ko-glossary.cjs`)으로 조합한다. 교정 원천의 `aliases`는 종목 ID별 통용명·이전 이름 검색용이며 ExerciseTemplate이나 저장 플랜의 새 필드가 아니다. 이름 교정은 ID·장비·근육·기록을 변경하지 않는다. 미등록 ID의 저장 이름은 그대로 표시한다.
 - `is_custom` — 사용자 커스텀 운동 허용 여부는 **미결**이다. upstream 에 없는 기구를 앱이 넣은 종목만 `true` 다([D57](../decisions/mvp-decision-log.md#d57) A15 마이마운틴): 원천은 `backend/scripts/custom-exercises.json` 이고 빌드(`build-exercise-db.cjs` `mergeCustom`)가 병합한다. 이름은 사전 조합이 아니라 원천의 `name_ko` 이고, 동작 사진이 없으며, 설명 출처는 `miniapp/data/sources/notes.src.json` `custom` 의 URL 이다.
-- `requires` — 필요한 도구(`pull_up_bar | dip_bars | bench | sturdy_chair | box_or_step | partner | wall | dumbbell | exercise_ball`). 없으면 도구가 필요 없다. `equipment:"body only"`는 외부 하중이 없다는 뜻이라 철봉 운동도 들어 있다. 원천은 `backend/scripts/catalog-overrides.json`(upstream)과 `custom-exercises.json`(커스텀)이고, 빌드가 enum 밖 값이면 멈춘다. `bodyweight_only` 프로필은 보유 도구(`equipment[]`)에 없는 `requires` 종목을 생성·편집 후보에서 뺀다([D102](../decisions/mvp-decision-log.md#d102) · [백로그 운동목록 02](../../miniapp/backlogs/운동목록_및_운동플랜_개선/02-bodyweight-equipment.md)).
+- `requires` — 필요한 도구(`pull_up_bar | dip_bars | bench | sturdy_chair | box_or_step | partner | wall | dumbbell | exercise_ball`). 없으면 도구가 필요 없다. `equipment:"body only"`는 외부 하중이 없다는 뜻이라 철봉 운동도 들어 있다. 원천은 `backend/scripts/catalog-overrides.json`(upstream)과 `custom-exercises.json`(커스텀)이고, 빌드가 enum 밖 값이면 멈춘다. `bodyweight_only` 프로필은 보유 도구(`equipment[]`)에 없는 `requires` 종목을 생성·편집 후보에서 뺀다([D102](../decisions/mvp-decision-log.md#d102) · 백로그 운동목록 02).
 - `bodyweight_pool` — 맨몸 사용자를 위해 넣은 커스텀 종목(맨몸 당기기·서킷 동작). `full_gym` 생성 후보에는 넣지 않는다.
 - `retagged_from` — upstream 태그를 고친 종목(`other`→`body only`, `stretching` 오분류)의 옛 `{equipment, category}`. `full_gym` 생성 후보는 옛 값으로 계산해 N1 이전 목록과 같게 둔다(그룹당 10개 컷이라 종목 하나만 늘어도 다른 종목이 밀려난다).
 
@@ -88,15 +88,15 @@ BodyMetric             체중·치수(선택)
   "generation_reserved": "boolean — 무료/보상 예약이 있는 잡(선택, 백엔드 내부)"
 }
 ```
-`blocked_red_flag`는 잡을 만들지 않는 **접수 단계 동기 차단**이라 여기에 없다(ADR-0011). 상태 규약·엔드포인트는 [생성 API 계약](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) 참조.
+`blocked_red_flag`는 잡을 만들지 않는 **접수 단계 동기 차단**이라 여기에 없다(ADR-0011). 상태 규약·엔드포인트는 생성 API 계약 참조.
 
 ### AccountLifecycle (미니앱 연결 확인값 — 백엔드 내부)
 
-`account_lifecycle/{sha256("burnweek-account:v1:" + uid)}`에 `{version: UUID}`을 저장한다. 로그인 때 만들고 같은 연결에서는 유지한다. 원본 식별값·프로필·운동 기록은 담지 않는다. 세션과 생성 잡의 `account_version`이 이 버전과 다르면 저장을 거부한다. **사용자 삭제·토스 연결 해제 시 이 문서도 삭제**하며, 삭제 이력을 영구 보관하지 않는다. 재연결은 새 UUID를 발급한다. 사용자 정보 없는 `auth_control/login_revision`의 난수를 코드 교환 전후로 비교해, 삭제 전에 시작한 로그인 교환이 새 세션을 발급하지 못하게 한다. 로그인 응답의 `local_data_key`로 기기에 남은 이전 연결의 사본을 구분한다([계약 §0·§2.5](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)).
+`account_lifecycle/{sha256("burnweek-account:v1:" + uid)}`에 `{version: UUID}`을 저장한다. 로그인 때 만들고 같은 연결에서는 유지한다. 원본 식별값·프로필·운동 기록은 담지 않는다. 세션과 생성 잡의 `account_version`이 이 버전과 다르면 저장을 거부한다. **사용자 삭제·토스 연결 해제 시 이 문서도 삭제**하며, 삭제 이력을 영구 보관하지 않는다. 재연결은 새 UUID를 발급한다. 사용자 정보 없는 `auth_control/login_revision`의 난수를 코드 교환 전후로 비교해, 삭제 전에 시작한 로그인 교환이 새 세션을 발급하지 못하게 한다. 로그인 응답의 `local_data_key`로 기기에 남은 이전 연결의 사본을 구분한다(계약 §0·§2.5).
 
 ### GenerationAccess (미니앱 무료 생성·광고 보상 — 백엔드 내부)
 
-`generation_access/{uid}`에 `{free_week, credits, active, reward}`를 저장한다. `free_week`는 KST 기준 마지막 무료 사용 주(또는 null), `credits`는 미사용 광고 보상 수다. `active`는 `{job_id, source: free|reward, week, previous_free_week, expires_at: epochMs}` 또는 null이며 실패 시 복구에 쓴다. `reward`는 최근 시청 요청 `{id, expires_at: epochMs, claimed}` 또는 null이다. 광고 보상은 주간 초기화나 TTL로 삭제하지 않으며 계정 삭제(탈퇴·연결 해제) 시 전부 삭제한다. 앱 안 「모든 기록 초기화」(`DELETE /v1/plans`)는 계정 삭제가 아니라 이 문서를 남기고 `active`만 환불 없이 비운다([API §2.5](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)). 클라이언트 직접 접근은 금지하고 검증된 uid의 API만 사용한다([ADR-0013](../decisions/0013-rewarded-plan-generation.md), [API §1.1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)).
+`generation_access/{uid}`에 `{free_week, credits, active, reward}`를 저장한다. `free_week`는 KST 기준 마지막 무료 사용 주(또는 null), `credits`는 미사용 광고 보상 수다. `active`는 `{job_id, source: free|reward, week, previous_free_week, expires_at: epochMs}` 또는 null이며 실패 시 복구에 쓴다. `reward`는 최근 시청 요청 `{id, expires_at: epochMs, claimed}` 또는 null이다. 광고 보상은 주간 초기화나 TTL로 삭제하지 않으며 계정 삭제(탈퇴·연결 해제) 시 전부 삭제한다. 앱 안 「모든 기록 초기화」(`DELETE /v1/plans`)는 계정 삭제가 아니라 이 문서를 남기고 `active`만 환불 없이 비운다(API §2.5). 클라이언트 직접 접근은 금지하고 검증된 uid의 API만 사용한다([ADR-0013](../decisions/0013-rewarded-plan-generation.md), API §1.1).
 
 ### SavedWeeklyPlan (미니앱 플랜 정본 — 백엔드, 영속, [D19](../decisions/mvp-decision-log.md))
 **미니앱 전용이다.** 위 GenerationJob 과 달리 **TTL 이 없다** — 미니앱은 로컬 Drift 도 Drive 도 없어 서버가 정본이기 때문이다([D19](../decisions/mvp-decision-log.md): Firestore 정본과 로컬 복원 캐시를 병행). 즉 **미니앱 제품에서는 NFR-PRIV-1 의 "서버에 영구 이력 DB 없음"이 의도적으로 뒤집힌다**(Flutter 제품은 그대로 유지 — [constitution](constitution.md) 이 제품별로 가른다).
@@ -109,7 +109,7 @@ BodyMetric             체중·치수(선택)
 }
 ```
 미니앱의 진행 중 입력은 같은 문서의 `progress_drafts.{day_index}` 맵에 `{plan_id, plan_generated_at, revision, updated_at, closed, closed_reason?, progress}`로 저장한다([ADR-0017](../decisions/0017-miniapp-progress-cloud-drafts.md)). `progress`는 종목 ID별 입력 배열이며 완료 전 체크·문자열 무게/횟수·제외·통증·유산소 입력을 보존한다. 이는 실측 완료 기록 `sessions.{day_index}`와 **별개**다. 완료(`closed_reason: session_completed`)/플랜 교체·요일 합치기(`plan_replaced`) 때 `closed: true`와 revision 증가로 닫으며(요일 **교환**(`swap`)은 닫지 않고 `sessions.{day_index}`와 함께 운동을 따라 맞바꾸며 `plan_generated_at`만 새 플랜 시각으로 바꾼다 — [D79](../decisions/mvp-decision-log.md#d79)) 기존 입력은 자동 삭제하지 않는다. 일부 요일만 편집하면 영향받지 않은 열린 초안의 `plan_generated_at`만 새 플랜에 맞춰 갱신하고 revision과 입력은 유지한다. 교체된 플랜에서 새 입력이 시작되면 옛 초안을 `progress_draft_archives.{day_index}_{uuid}`에 옮기고 새 초안을 쓴다(같은 주차 문서·같은 트랜잭션). 공간 부족 등으로 보관할 수 없으면 새 쓰기를 거부한다. 클라이언트는 로컬 원본을 서버 확인 전 지우지 않는다.
-워커가 잡을 `ok` 로 마칠 때 같은 트랜잭션에서 쓴다. 저장 실패 시 잡만 `ok`가 되는 부분 성공은 없다. 조회는 `GET /v1/plans/current`(문서 id 역순 1건 = 최신 주차)·`GET /v1/plans/{YYYY-MM-DD}`(그 주) — [계약 §2.1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md).
+워커가 잡을 `ok` 로 마칠 때 같은 트랜잭션에서 쓴다. 저장 실패 시 잡만 `ok`가 되는 부분 성공은 없다. 조회는 `GET /v1/plans/current`(문서 id 역순 1건 = 최신 주차)·`GET /v1/plans/{YYYY-MM-DD}`(그 주) — 계약 §2.1.
 
 ---
 
@@ -122,7 +122,7 @@ LLM은 근력 운동 **선택·역할·순서**만 낸다. 수치(무게·세트
 
 아래 JSON은 저장된 예전 드래프트와 골든 픽스처까지 받는 **호환성 검증 스키마**다. 새 LLM 요청에는 [ADR-0016](../decisions/0016-generation-timeout-and-compact-draft.md)의 compact projection을 사용한다: `name`·`coaching_cue`·`substitution_options`·`cardio_kind`는 빼고, `focus`는 빈 문자열로 제한하며, `session_type`은 `lift`, `kind`는 `strength`만 허용한다. 모델은 근력 세션만 내고 휴식일·유산소는 코드가 만든다. 이 값들은 확장 엔진이 쓰지 않거나 코드가 다시 만들기 때문에 최종 WeeklyPlan은 달라지지 않는다. 응답은 여전히 아래 전체 스키마와 최종 값 규칙을 모두 통과해야 저장된다.
 
-**저장된 드래프트는 이 스키마의 상위집합이다**([계약 §2.2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) 「상위집합」 문단). 편집이 남기는 필드 — 항목의 `user_pick`·`sets_override`·`load_kg_override`, 요일의 `cardio_override`(`{"exercise_id": …, "target"?: {style, duration_min, distance_m?, incline_pct?, level?, segments?}}` 또는 `"none"`, 사용자가 그 날 유산소에 내린 결정 — [D57](../decisions/mvp-decision-log.md#d57). 옛 `{"modality": …}` 는 그 분류의 기본 id 로 읽는다) — 는 **아래 스키마에 일부러 없다**: 이 스키마가 프롬프트에 실리므로 넣으면 LLM 이 채울 통로가 된다(INV-1).
+**저장된 드래프트는 이 스키마의 상위집합이다**(계약 §2.2 「상위집합」 문단). 편집이 남기는 필드 — 항목의 `user_pick`·`sets_override`·`load_kg_override`, 요일의 `cardio_override`(`{"exercise_id": …, "target"?: {style, duration_min, distance_m?, incline_pct?, level?, segments?}}` 또는 `"none"`, 사용자가 그 날 유산소에 내린 결정 — [D57](../decisions/mvp-decision-log.md#d57). 옛 `{"modality": …}` 는 그 분류의 기본 id 로 읽는다) — 는 **아래 스키마에 일부러 없다**: 이 스키마가 프롬프트에 실리므로 넣으면 LLM 이 채울 통로가 된다(INV-1).
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -455,7 +455,7 @@ WeeklyPlan v1의 운동은 조정이 반영된 **현재 목표를 `sets[].target
 
 ### `week-NN.md` / `summary.md`
 `week-NN.md`: 면책 배너 + 요약(완료율·볼륨·유산소) + 요일별 목표/실측 표(고정 섹션 순서).
-`summary.md`: 주별 1행 롤업(주차·기간·완료율·총 볼륨·유산소·주요 리프트 e1RM) + 최근 4주 추세 + **체중 추세**(body-metrics.json 기반). **검증 픽스처·질의셋은 [specs/features/003-drive-sync/contracts/](../specs/features/003-drive-sync/contracts/summary-queries.md)에 커밋**(FR-SYNC-4).
+`summary.md`: 주별 1행 롤업(주차·기간·완료율·총 볼륨·유산소·주요 리프트 e1RM) + 최근 4주 추세 + **체중 추세**(body-metrics.json 기반). **검증 픽스처·질의셋은 specs/features/003-drive-sync/contracts/에 커밋**(FR-SYNC-4).
 
 ---
 

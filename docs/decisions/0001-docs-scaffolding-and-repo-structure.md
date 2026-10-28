@@ -3,7 +3,7 @@
 - **Status:** Accepted — §5(타깃 코드 구조·모노레포 툴 미도입)는 [ADR-0014](./0014-per-project-harness-and-pnpm-workspace.md)로 대체
 - **Date:** 2026-08-16
 - **Deciders:** 사용자, Claude
-- **근거 조사:** [research/05-scaffolding-research.md](../research/05-scaffolding-research.md)
+- **근거 조사:** research/05-scaffolding-research.md
 
 ## Context
 

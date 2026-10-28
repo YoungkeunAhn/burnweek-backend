@@ -133,7 +133,7 @@
 - 결제가 필요하면 **토스페이먼츠(PG)** 연동(`tosspayments_widget_sdk_flutter`).
 - 토스 미니앱은 **나중에 유입 채널로만 별도 검토**(Flutter+Drive 유지 위해 1차 제외).
 
-**왜:** 토스 미니앱은 (1)Flutter 미지원(React WebView/RN만), (2)미니앱 내 외부 구글 로그인 금지 → 이 앱의 핵심인 Google Drive(구글 OAuth 필요) 설계가 원천 불가. 사용자의 미니앱 동기는 "유통 + 결제"였고, 결제는 독립 앱에서 토스페이먼츠로 해결되므로 핵심(Drive+Flutter)을 지키는 독립 앱이 정답. → 상세: [research/04](../research/04-toss-platform-and-flutter.md)
+**왜:** 토스 미니앱은 (1)Flutter 미지원(React WebView/RN만), (2)미니앱 내 외부 구글 로그인 금지 → 이 앱의 핵심인 Google Drive(구글 OAuth 필요) 설계가 원천 불가. 사용자의 미니앱 동기는 "유통 + 결제"였고, 결제는 독립 앱에서 토스페이먼츠로 해결되므로 핵심(Drive+Flutter)을 지키는 독립 앱이 정답. → 상세: research/04
 
 <a id="d2"></a>
 ## D2. 타깃 사용자 — 레벨별 분기 (Phase 1은 초보~초중급)
@@ -141,7 +141,7 @@
 - 온보딩에서 경력 수준을 받아 `experience_level`로 분기(초보=단순 / 상급=주기화).
 - **Phase 1(MVP)은 초보~초중급 경로만** 완성, 상급 경로는 Phase 2.
 
-**왜:** 범위를 넓히면 AI 로직·검증 부담이 커짐. 단순 이중진행 경로를 먼저 완성해 리스크를 낮추고 빨리 출시. → 상세: [research/03](../research/03-ai-plan-generation.md)
+**왜:** 범위를 넓히면 AI 로직·검증 부담이 커짐. 단순 이중진행 경로를 먼저 완성해 리스크를 낮추고 빨리 출시. → 상세: research/03
 
 <a id="d3"></a>
 ## D3. 아키텍처 — 얇은 백엔드(서버리스) + 클라이언트 Drive 쓰기
@@ -149,7 +149,7 @@
 - **백엔드(Cloud Functions/소형 서버)** 는 LLM 호출 프록시 역할만(서버측 API 키 보관).
 - **Google Drive 읽기/쓰기는 Flutter 앱이 `drive.file`로 직접.**
 
-**왜:** LLM 키를 앱에 번들하면 추출당함 → 프록시 필수. 반면 Drive 쓰기는 클라이언트 직접이 구조 단순. → 상세: [research/02](../research/02-google-drive-as-database.md) §6
+**왜:** LLM 키를 앱에 번들하면 추출당함 → 프록시 필수. 반면 Drive 쓰기는 클라이언트 직접이 구조 단순. → 상세: research/02 §6
 
 <a id="d4"></a>
 ## D4. 생성·피드백 주기 — 주간 자동 재생성 + 수동 조정
@@ -158,7 +158,7 @@
 - 사용자는 주중 세션을 **수동 조정**(운동 스왑·세트 조정) 가능.
 - 루프: 일요일 생성 → 주중 실행·기록 → 주말 로그→다음 주 자동 생성, 매주 반복.
 
-**왜:** "주마다 계획" 원 컨셉과 일치하며, 기록→다음 플랜 반영의 피드백 루프를 구현. → 상세: [research/03](../research/03-ai-plan-generation.md) §6
+**왜:** "주마다 계획" 원 컨셉과 일치하며, 기록→다음 플랜 반영의 피드백 루프를 구현. → 상세: research/03 §6
 
 <a id="d5"></a>
 ## D5. 외부 AI 피드백 범위 — 이식가능 데이터만 저장, 사용자가 직접 연결
@@ -182,7 +182,7 @@
     └ summary.md        ← 전체 이력
   ```
 
-**왜:** Markdown은 클로드·GPT·Gemini·MCP 커넥터가 가장 안정적으로 읽음(범용성). JSON은 앱이 정확히 재파싱(정확성). 둘 다 써서 양쪽 확보. JSON 단독은 ChatGPT 커넥터 비지원이라 부적합. → 상세: [research/02](../research/02-google-drive-as-database.md) §3,§5
+**왜:** Markdown은 클로드·GPT·Gemini·MCP 커넥터가 가장 안정적으로 읽음(범용성). JSON은 앱이 정확히 재파싱(정확성). 둘 다 써서 양쪽 확보. JSON 단독은 ChatGPT 커넥터 비지원이라 부적합. → 상세: research/02 §3,§5
 
 <a id="d7"></a>
 ## D7. 유산소 — 스케줄링 + 간단 기록 (v1)
@@ -191,7 +191,7 @@
 - 기록은 **종목·시간·거리·강도(HIIT/LISS)** 정도로 간단히. 웨이트가 주, 유산소는 보조. *(2026-09-15 → [D57](#d57): 운동별 설정 방식(경사·레벨)과 인터벌 구간으로 넓힌다.)*
 - 종목별 상세 지표(페이스/심박/파워/스플릿)는 이후 확장.
 
-**왜:** 유산소는 웨이트와 별도 엔티티로 모델링하되, MVP에선 간단히. 리프터에겐 사이클/로잉이 간섭 적어 권장. → 상세: [research/03](../research/03-ai-plan-generation.md) §3
+**왜:** 유산소는 웨이트와 별도 엔티티로 모델링하되, MVP에선 간단히. 리프터에겐 사이클/로잉이 간섭 적어 권장. → 상세: research/03 §3
 
 <a id="d8"></a>
 ## D8. 수익 모델 — 무료 MVP + 비용 통제
@@ -203,7 +203,7 @@
 
 **왜:** 매주 사용자마다 LLM 호출은 recurring 비용. 검증 전 과금 장벽을 낮추되 비용은 통제.
 
-> **검증 (2026-08-18):** "무료 MVP"가 인프라에서도 성립하는지 실측했다([research/07](../research/07-backend-cost-and-free-tier.md)). 월 400건 기준 Firebase 청구액 **$0**(모든 항목이 무료 한도의 1/3 이하). 다만 **Blaze는 카드 등록이 필수**라는 전제가 ADR-0008에 빠져 있었고, 사용자가 이를 확인한 뒤 **Firebase 유지**를 결정했다. 통제 수단: `maxInstances`·spend cap budget·예산 알림·Artifact Registry 정리 정책. 월 4,000건(10배)부터는 대기 시간 과금이 무료 한도를 넘어 ~$10/월이 되므로 그때 설계 재검토.
+> **검증 (2026-08-18):** "무료 MVP"가 인프라에서도 성립하는지 실측했다(research/07). 월 400건 기준 Firebase 청구액 **$0**(모든 항목이 무료 한도의 1/3 이하). 다만 **Blaze는 카드 등록이 필수**라는 전제가 ADR-0008에 빠져 있었고, 사용자가 이를 확인한 뒤 **Firebase 유지**를 결정했다. 통제 수단: `maxInstances`·spend cap budget·예산 알림·Artifact Registry 정리 정책. 월 4,000건(10배)부터는 대기 시간 과금이 무료 한도를 넘어 ~$10/월이 되므로 그때 설계 재검토.
 
 <a id="d9"></a>
 ## D9. MVP 단계 — Phase 1 초보~초중급 / Phase 2 상급
@@ -231,7 +231,7 @@
 - LLM은 **운동 선택·세션 구성**만. **모든 숫자(1RM/%1RM, 무게, 볼륨, 진행, 디로드)와 안전(부상 금기, 볼륨 상한)은 코드가 계산·검증.**
 - 생성 후 규칙엔진 검증 + 제한적 재시도(≤2).
 
-**왜:** LLM은 값 범위를 신뢰성 있게 보장 못 함(provider 무관). 안전·정확성은 코드가 소유해야 함. provider-비종속(D10)의 전제이기도 함. → 상세: [research/03](../research/03-ai-plan-generation.md) §4
+**왜:** LLM은 값 범위를 신뢰성 있게 보장 못 함(provider 무관). 안전·정확성은 코드가 소유해야 함. provider-비종속(D10)의 전제이기도 함. → 상세: research/03 §4
 
 ---
 
@@ -239,11 +239,11 @@
 ## D12. 온보딩 문항 — 필수 6문항 + 나머지는 기본값 (2026-08-17)
 
 - **필수 6문항:** ①목표 ②경험수준 ③주당 일수 ④운동 환경 ⑤장비(환경 프리셋이 채우고 사용자가 확인·수정) ⑥레드플래그(하드/저위험 체크). 여기에 **면책 동의**(문항이 아닌 동의 단계)가 더해진다.
-- **나머지 선택 필드는 묻지 않고** [questionnaire 계약](../specs/features/004-onboarding/contracts/questionnaire.md)의 기본값으로 채운다. 부족하면 **재온보딩(프로필 수정)** 으로 보완한다(004 T3.4).
+- **나머지 선택 필드는 묻지 않고** questionnaire 계약의 기본값으로 채운다. 부족하면 **재온보딩(프로필 수정)** 으로 보완한다(004 T3.4).
 
 - **보정(2026-08-17):** 묻지 않는 필드가 되면서 `cardio_pref` 기본값을 `none` → **`maintain_health`** 로 바꿨다. 기본값 `none`이면 대부분 사용자가 유산소 없는 플랜을 받아 제품 정의(웨이트+유산소)와 어긋난다.
 
-**왜:** PRD의 "필수 ≤8문항·중앙값 ≤3분"을 확실히 만족시키는 최소 구성. 안전(⑥)과 플랜 실행 가능성(③④⑤)은 기본값으로 대체할 수 없어 필수에 남긴다. → [004 spec](../specs/features/004-onboarding/spec.md)
+**왜:** PRD의 "필수 ≤8문항·중앙값 ≤3분"을 확실히 만족시키는 최소 구성. 안전(⑥)과 플랜 실행 가능성(③④⑤)은 기본값으로 대체할 수 없어 필수에 남긴다. → 004 spec
 
 ---
 
@@ -263,7 +263,7 @@
 - Google 연동 직후 `Workout Data/`의 `week-NN.json`·`body-metrics.json`을 **전부 읽어 Drift로 복원**한다. 사용자에게 복원 여부를 묻지 않는다.
 - 멀티기기 **동시** 사용 병합은 여전히 Phase 2(LWW 유지).
 
-**왜:** INV-5에서 원본은 사용자 Drive이므로 로컬은 언제든 재구성 가능한 캐시다. 주 단위 파일이라 전수 읽기 비용이 작고, "복원할까요?" 분기는 사용자가 답할 근거가 없는 질문이다. → [003 spec](../specs/features/003-drive-sync/spec.md)
+**왜:** INV-5에서 원본은 사용자 Drive이므로 로컬은 언제든 재구성 가능한 캐시다. 주 단위 파일이라 전수 읽기 비용이 작고, "복원할까요?" 분기는 사용자가 답할 근거가 없는 질문이다. → 003 spec
 
 ---
 
@@ -277,7 +277,7 @@
 
 **왜:** 익명 인증은 마찰이 0이지만 기기 초기화마다 uid가 새로 발급되어 **주간 생성 한도(주 3회)가 리셋**된다 — 과금이 걸린 한도를 사용자가 무료로 우회하는 통로가 된다. 구글 로그인은 온보딩 직후 첫 플랜 생성에 계정 선택이 한 번 끼는 대신 uid가 계정에 고정된다. 어차피 Drive 연동(003)에서 같은 계정으로 로그인하므로 **추가되는 계정은 없고 시점만 앞당겨진다.**
 
-**트레이드오프:** 온보딩 직후 첫 플랜 생성에 계정 선택 1회. → 계약 [generation-api.md](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) §1
+**트레이드오프:** 온보딩 직후 첫 플랜 생성에 계정 선택 1회. → 계약 generation-api.md §1
 
 ---
 
@@ -296,7 +296,7 @@
 
 **딸려오는 것:** INV-2는 적용 대상 소멸, INV-5는 "로컬 우선"→"서버 우선"으로 재정의, ADR-0003/0004/0007/0009는 미니앱에 미적용(대체 ADR 필요), D5(외부 AI가 Drive를 읽는 가치 제안)는 재설계 또는 명시적 포기가 필요하다. **미해결 선행 리스크:** Cloud Functions Gen2에서 토스 파트너 API로 나가는 **mTLS 클라이언트 인증서** 동작 미검증 — 막히면 ADR-0008까지 흔들린다.
 
-→ 문서 정합의 결론: [D42](#d42) · 근거: [research/04](../research/04-toss-platform-and-flutter.md)
+→ 문서 정합의 결론: [D42](#d42) · 근거: research/04
 
 ---
 
@@ -312,14 +312,14 @@
 
 **D16과의 관계 — 부분 예외 1건, D16의 동결은 그대로다.** 같은 날 D16이 Flutter 앱 라인을 보류로 돌렸고, 그 상태에서 **사용자가 이 항목만 진행하도록 지시했다**(2026-08-20). D16을 supersede 하지 않는다 — 동결은 유효하고, 이 결정이 유일한 예외다. 예외를 허용한 근거는 셋이다: 결정이 이미 필요했고(2026-08-19 QA), 변경이 화면 한 곳에 갇히며, 계약·저장·백엔드를 건드리지 않는다. **미니앱으로 갈아타면 이 코드도 동결 대상이다** — 살아남는 것은 결정 자체(요일 선택은 주간 스트립, 월간은 이력 질의가 선행)뿐이다. 이후 다른 앱 변경은 다시 D16을 따른다.
 
-**트레이드오프:** 지난 주를 화면에서 볼 수 없다(Drive의 `week-NN.md`가 그 역할을 한다). 필드·저장 동작·데이터 계약은 그대로이므로 스펙 개정은 하지 않았다 — [design-brief §4](../product/design-brief.md)의 같은 판단 기준을 따른다. → 구현 `app/lib/features/logging/session_screen.dart` `_WeekStrip`, 테스트 `app/test/logging_test.dart` UI-19([test-cases.md](../guides/test-cases.md) §6). 발원 2026-08-19 에뮬레이터 첫 생성 QA
+**트레이드오프:** 지난 주를 화면에서 볼 수 없다(Drive의 `week-NN.md`가 그 역할을 한다). 필드·저장 동작·데이터 계약은 그대로이므로 스펙 개정은 하지 않았다 — design-brief §4의 같은 판단 기준을 따른다. → 구현 `app/lib/features/logging/session_screen.dart` `_WeekStrip`, 테스트 `app/test/logging_test.dart` UI-19(test-cases.md §6). 발원 2026-08-19 에뮬레이터 첫 생성 QA
 
 ---
 
 <a id="d18"></a>
 ## D18. 등록 선시도 — 반려하면 미니앱을 파기하고 독립 앱으로 돌아간다 (2026-08-20)
 
-- **최소 동작 미니앱을 먼저 만들어 심사에 올린다.** 스펙·ADR·문서 정합([G4](../guides/execution-graph.md))은 **심사 통과 후**로 미룬다.
+- **최소 동작 미니앱을 먼저 만들어 심사에 올린다.** 스펙·ADR·문서 정합(G4)은 **심사 통과 후**로 미룬다.
 - **반려되면 미니앱을 파기하고 독립 Flutter 앱 출시로 복귀한다.** Flutter 앱은 [D16](#d16-배포-모델-전환--토스-미니앱-우선-flutter-앱-보류-2026-08-20)으로 **동결**돼 있어 그대로 살아난다 — 이게 이 전략을 싸게 만드는 보험이다.
 - **의료 기능은 파기한다** — 온보딩 의료 문진, 부상 금기 기반 운동 제외, 통증·레드플래그 경로. 미니앱 제품에 넣지 않는다.
 - `appName`은 **지금 정하지 않는다.** 콘솔 등록 시점에 정한다.
@@ -338,7 +338,7 @@
 
 **이것이 뒤집는 것:** [INV-6](../architecture/constitution.md)의 "하드 레드플래그는 생성 **비가역 차단**"은 **미니앱 제품에 적용하지 않는다**. 안전 표시(면책)는 유지되므로 INV-6의 절반은 산다. Flutter 제품에는 INV-6이 그대로 유효하다 — 동결된 코드는 손대지 않는다.
 
-→ 순서: [미니앱 백로그 §남은 일](../../miniapp/backlogs/00-START-HERE.md) · 문서 정합의 결론: [D42](#d42)
+→ 순서: 미니앱 백로그 §남은 일 · 문서 정합의 결론: [D42](#d42)
 
 ---
 
@@ -354,9 +354,9 @@
 
 **왜 Drive 자동 동기화를 접었나:** 기술이 아니라 **토스 오픈 정책** 때문이다. 서버가 Drive에 접근하려면 사용자가 미니앱 **밖에서** 구글 동의를 해야 하는데, 오픈 정책이 *"미니앱 내에서 '앱 내 기능'을 완결적으로 제공하지 않는 구조"* 를 금지한다. 저장은 이 앱의 핵심 기능이므로 정면으로 걸린다. 스태프 답변도 `window.location.href` 외부 호출을 명시적으로 불허한다. 구글 쪽은 오히려 성립했다 — `drive.file`은 비민감 스코프이고 서버측 refresh token 플로우도 정상 경로다(2026-08-20 조사).
 
-**왜 인앱 저장을 정본으로 쓰지 않나:** 토스 조사가 *"미니앱 자체 저장소는 **영속성 미보장**"* 이라고 못박았다([research/04](../research/04-toss-platform-and-flutter.md) §7.1). 스토리지가 비워지는 순간 기록이 사라지고, 사용자가 내보내기를 눌러두지 않았으면 복구 경로가 없다. **유실 가능성을 사용자 습관으로 막는 설계는 채택하지 않는다.** (클라이언트 캐시로 쓰는 것은 별개 문제이며 금지하지 않는다 — 정본이 아닐 뿐이다.)
+**왜 인앱 저장을 정본으로 쓰지 않나:** 토스 조사가 *"미니앱 자체 저장소는 **영속성 미보장**"* 이라고 못박았다(research/04 §7.1). 스토리지가 비워지는 순간 기록이 사라지고, 사용자가 내보내기를 눌러두지 않았으면 복구 경로가 없다. **유실 가능성을 사용자 습관으로 막는 설계는 채택하지 않는다.** (클라이언트 캐시로 쓰는 것은 별개 문제이며 금지하지 않는다 — 정본이 아닐 뿐이다.)
 
-> **근거 정정·캐시 채택(2026-09-09).** 위 영속성 표현은 저장소 종류와 삭제 조건을 구분하지 않은 당시 조사 요약이다. [research/04 §7.1](../research/04-toss-platform-and-flutter.md)에 공식 원문으로 정정했다. 일반적인 종료·재실행 시 내부 저장소가 지워진다는 뜻으로 쓰지 않는다. 사용자 요청으로 마지막 플랜·완료 기록을 `localStorage`에서 먼저 복원하고 서버로 갱신하도록 구현했다([미니앱 README](../../miniapp/README.md)). 이 결정의 **Firestore 정본은 유지**한다.
+> **근거 정정·캐시 채택(2026-09-09).** 위 영속성 표현은 저장소 종류와 삭제 조건을 구분하지 않은 당시 조사 요약이다. research/04 §7.1에 공식 원문으로 정정했다. 일반적인 종료·재실행 시 내부 저장소가 지워진다는 뜻으로 쓰지 않는다. 사용자 요청으로 마지막 플랜·완료 기록을 `localStorage`에서 먼저 복원하고 서버로 갱신하도록 구현했다(미니앱 README). 이 결정의 **Firestore 정본은 유지**한다.
 
 **왜 Firestore인가 — GCS 오브젝트를 검토했고 기각했다.** 근거는 둘이다.
 
@@ -378,13 +378,13 @@
 
 | # | 할 일 | 상태 |
 |---|---|---|
-| 1 | 사용자별 주간 플랜 컬렉션 + `GET /v1/plans/current` — `generation_jobs`(TTL 24h)는 잡 기록이라 여기에 담으면 [ADR-0011](0011-async-plan-generation.md) 설계를 거스른다 | ✅ **완료 2026-08-20** — `weekly_plans/{uid}/weeks/{week}`(TTL 없음, **주차별 1건**) + 계약 [§2.1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)(`current` = 최신 주차, `{YYYY-MM-DD}` = 그 주) |
-| 2 | 미니앱 제품의 프라이버시 조항([PRD](../product/01-prd.md) NFR-PRIV-1 대응) — 서버가 운동 이력을 **보관하게 된다** | ⛔ 미작성 |
+| 1 | 사용자별 주간 플랜 컬렉션 + `GET /v1/plans/current` — `generation_jobs`(TTL 24h)는 잡 기록이라 여기에 담으면 [ADR-0011](0011-async-plan-generation.md) 설계를 거스른다 | ✅ **완료 2026-08-20** — `weekly_plans/{uid}/weeks/{week}`(TTL 없음, **주차별 1건**) + 계약 §2.1(`current` = 최신 주차, `{YYYY-MM-DD}` = 그 주) |
+| 2 | 미니앱 제품의 프라이버시 조항(PRD NFR-PRIV-1 대응) — 서버가 운동 이력을 **보관하게 된다** | ⛔ 미작성 |
 | 3 | 내보내기(`.md`/`.json` 다운로드) | ⛔ 미구현 |
 
 **해소된 리스크:** 토스 로그인 토큰 교환에 필요한 **mTLS를 Node 22에서 실측 확인**(2026-08-20) — PEM 문자열·PKCS#12(base64) 둘 다 왕복 성공. [D16](mvp-decision-log.md)이 지목했던 "막히면 ADR-0008까지 흔들린다"는 리스크는 **닫혔다.**
 
-→ 근거: [research/04](../research/04-toss-platform-and-flutter.md) §7 · 비용 근거: [GCP 무료 등급](https://docs.cloud.google.com/free/docs/free-cloud-features) · [Firebase 요금](https://firebase.google.com/pricing)
+→ 근거: research/04 §7 · 비용 근거: [GCP 무료 등급](https://docs.cloud.google.com/free/docs/free-cloud-features) · [Firebase 요금](https://firebase.google.com/pricing)
 
 ---
 
@@ -416,7 +416,7 @@
 | `rep_intent`(렙 범위) | 드래프트 필드라 기존 확장 경로에 그대로 들어간다 |
 | 세트 수 | 드래프트에 없는 개념이다 — 확장 파이프라인에 "사용자 지정 세트 수"를 새로 넣어야 한다 |
 
-**조정 이력(`adjustments[]`)은 만들지 않는다.** [002 S-LOG-8](../specs/features/002-workout-logging/spec.md)이 요구한 것이지만 그 목적은 *실측 오염 방지*였고, D20-4 로 실측을 안 받으므로 그 목적이 공백이다. 대신 **`draft_original` 하나만** 보관해 "처음으로 되돌리기"를 준다 — 필드 하나로 사용자가 실제로 쓸 기능이 나온다.
+**조정 이력(`adjustments[]`)은 만들지 않는다.** 002 S-LOG-8이 요구한 것이지만 그 목적은 *실측 오염 방지*였고, D20-4 로 실측을 안 받으므로 그 목적이 공백이다. 대신 **`draft_original` 하나만** 보관해 "처음으로 되돌리기"를 준다 — 필드 하나로 사용자가 실제로 쓸 기능이 나온다.
 
 ### D20-4. 세션 기록 — 완료 체크만, 로컬 전용 ~~(2026-08-21 **D22-6** 이 supersede)~~
 
@@ -434,7 +434,7 @@
 
 **딸려오는 수정:** 무게가 항상 `null` 이므로 미니앱이 `null` 을 `"체중"` 으로 렌더하는 지금 동작은 **바벨 스쿼트를 영원히 "체중"으로 표시한다.** 맨몸 종목만 "체중"이고 나머지는 다른 문구를 쓴다.
 
-**→ 세션 기록:** [계약 §2.4](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 세션 기록:** 계약 §2.4
 
 ---
 
@@ -451,7 +451,7 @@
 
 **왜 팔·복근이 보조인가:** ①=A 를 그대로 넣고 골든 12케이스를 돌렸더니 PPL 주간이 `상체·상체·하체·상체·상체` 로 나왔다 — 푸시데이와 풀데이가 같은 제목이 되어 요일 구분이 사라진다. 주 부위만으로 랭킹하고 1개일 때만 보조를 붙이는 규칙이 사용자 예시(`가슴 + 삼두`·`등 + 이두`)를 그대로 낸다.
 
-→ 구현 `backend/src/generation/expand.ts` `focusLabel()`, 테스트 `backend/test/focus-label.test.ts`(표 기반 12케이스 + 골든 드래프트 어휘 검사) — **규칙의 정본은 이 테스트**다. 스키마에서 `focus` 를 빼는 것만 남았고 골든 재생성을 부르므로 [백로그 007](../../backlogs/007-backend-remaining.md) §5 로 이월했다.
+→ 구현 `backend/src/generation/expand.ts` `focusLabel()`, 테스트 `backend/test/focus-label.test.ts`(표 기반 12케이스 + 골든 드래프트 어휘 검사) — **규칙의 정본은 이 테스트**다. 스키마에서 `focus` 를 빼는 것만 남았고 골든 재생성을 부르므로 백로그 007 §5 로 이월했다.
 
 ---
 
@@ -530,7 +530,7 @@
 
 시작해 놓고 완료하지 않은 세션은 **그대로 남긴다**(2026-08-21). 날이 넘어가도 묻지 않고 버리지 않는다.
 
-귀결이 크다: 진행 상태가 요일에 붙으므로 **요일별로 동시에 진행할 수 있고**, `active_session` 같은 드래프트 수명·복원 상태기계가 **아예 없다**. `운동 시작`은 그 날 실행 화면으로 이동하는 것뿐이고, 앱을 껐다 켜도 복원할 것이 없다(상태가 애초에 요일에 있다). Flutter 가 쓰는 단일 드래프트 방식([002](../specs/features/002-workout-logging/spec.md) S-LOG-3)과 여기서 갈라진다.
+귀결이 크다: 진행 상태가 요일에 붙으므로 **요일별로 동시에 진행할 수 있고**, `active_session` 같은 드래프트 수명·복원 상태기계가 **아예 없다**. `운동 시작`은 그 날 실행 화면으로 이동하는 것뿐이고, 앱을 껐다 켜도 복원할 것이 없다(상태가 애초에 요일에 있다). Flutter 가 쓰는 단일 드래프트 방식(002 S-LOG-3)과 여기서 갈라진다.
 
 **대가:** 절반만 체크하고 방치한 날은 D22-4 의 잠금에 걸려 계속 못 옮긴다. 들어가서 마저 하거나 체크를 풀면 해제된다 — 사용자가 스스로 만든 상태라 조용히 정리하지 않는다.
 
@@ -567,9 +567,9 @@
 
 D22-4 의 이동이 생겨 급한 문제("이번 주만 요일을 바꾸고 싶다")는 풀렸다. 남은 값은 *매주 반복하지 않게 하는 것*인데, 그건 온보딩 UI + 확장 단계의 요일 매핑이라 **이번 범위 밖의 새 작업**이다.
 
-**그래서 지운다.** 남겨 두면 다음 사람이 "이미 되는 줄" 안다 — 계약에 있는 필드는 동작한다는 뜻이어야 한다. 필요해지는 날 **온보딩 UI·확장 매핑과 함께** 다시 넣는다(그때는 [G4](../guides/execution-graph.md)).
+**그래서 지운다.** 남겨 두면 다음 사람이 "이미 되는 줄" 안다 — 계약에 있는 필드는 동작한다는 뜻이어야 한다. 필요해지는 날 **온보딩 UI·확장 매핑과 함께** 다시 넣는다(그때는 G4).
 
-**→ 상세·구현 순서:** [미니앱 백로그 §남은 일](../../miniapp/backlogs/00-START-HERE.md) · 계약 [§2.2·§2.4](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 상세·구현 순서:** 미니앱 백로그 §남은 일 · 계약 §2.2·§2.4
 
 ---
 
@@ -578,7 +578,7 @@ D22-4 의 이동이 생겨 급한 문제("이번 주만 요일을 바꾸고 싶�
 
 **결정.** 온보딩 마지막(면책 동의 직전)에 **성별 + 현재 체중**을 묻는다. 둘 다 선택이다 — 숫자를 비우면 `다음` 버튼이 `건너뛰기` 로 바뀐다(버튼을 늘리지 않는다).
 
-**쓰는 곳은 화면 한 줄뿐이다.** 맨몸 종목의 `target_load_kg` 가 `null` 인 자리를 `체중 72.5kg` 으로 채운다. **부하 처방에는 쓰지 않는다** — `%체중 → 시작 무게` 계수표가 없어 어떤 숫자를 만들어도 지어낸 값이고 [INV-1](../architecture/constitution.md) 이 금지한다. 계수표가 생기는 날이 [G4](../guides/execution-graph.md) 다.
+**쓰는 곳은 화면 한 줄뿐이다.** 맨몸 종목의 `target_load_kg` 가 `null` 인 자리를 `체중 72.5kg` 으로 채운다. **부하 처방에는 쓰지 않는다** — `%체중 → 시작 무게` 계수표가 없어 어떤 숫자를 만들어도 지어낸 값이고 [INV-1](../architecture/constitution.md) 이 금지한다. 계수표가 생기는 날이 G4 다.
 
 | 항목 | 결정 |
 |---|---|
@@ -611,19 +611,19 @@ D22-4 의 이동이 생겨 급한 문제("이번 주만 요일을 바꾸고 싶�
 | 4분할 | ①가슴·삼두 ②등·이두 ③어깨 ④하체 | 4 | `body_part_4` |
 | 5분할 | ①가슴 ②등 ③하체 ④어깨 ⑤팔 | 5 | `body_part_5` |
 
-**남는 훈련일은 앞 부위부터 다시 돈다**(3분할 주 4일 = 가슴/등/하체/가슴). 근거 조사(RP)는 요일 고정 대신 **주 간 비동기 롤링**을 권하지만, 백엔드는 사용자 이력을 갖지 않으므로([NFR-PRIV-1](../specs/features/001-weekly-plan-generation/spec.md)) 주를 넘는 커서를 둘 자리가 없다. 주 안의 반복이 무상태 근사다 — 필요해지면 `recent_exercise_ids` 처럼 `split_cursor` 를 요청에 실으면 된다([G4](../guides/execution-graph.md)).
+**남는 훈련일은 앞 부위부터 다시 돈다**(3분할 주 4일 = 가슴/등/하체/가슴). 근거 조사(RP)는 요일 고정 대신 **주 간 비동기 롤링**을 권하지만, 백엔드는 사용자 이력을 갖지 않으므로(NFR-PRIV-1) 주를 넘는 커서를 둘 자리가 없다. 주 안의 반복이 무상태 근사다 — 필요해지면 `recent_exercise_ids` 처럼 `split_cursor` 를 요청에 실으면 된다(G4).
 
 ### D24-2. 문항은 환경 뒤에, 고를 게 둘 이상일 때만
 
 [D12](#d12-온보딩-문항--필수-6문항--나머지는-기본값-2026-08-17) 의 필수 문항이 **6 → 7개**가 된다(헬스장일 때만). 환경 문항 **뒤**에 온다 — 앞에 두면 아직 답하지 않은 값으로 문항이 나타났다 사라진다. 주당 일수로 돌릴 수 있는 분할만 보여주고(주 3일 → 2·3분할), **주 2일은 2분할 하나뿐이라 문항 자체를 건너뛴다.**
 
-`잘 모르겠어요` → **3분할**(주 2일이면 2분할). 5분할은 초보에게 근거상 비권장이지만([research/03](../research/03-ai-plan-generation.md) · ACSM) **막지 않고 한 줄로 알린다** — [D20](#d20-미니앱-제품-자세--추천일-뿐-최종-결정은-사용자-2026-08-21)(강제도 경고도 없다, 추천일 뿐)과 같은 자세다.
+`잘 모르겠어요` → **3분할**(주 2일이면 2분할). 5분할은 초보에게 근거상 비권장이지만(research/03 · ACSM) **막지 않고 한 줄로 알린다** — [D20](#d20-미니앱-제품-자세--추천일-뿐-최종-결정은-사용자-2026-08-21)(강제도 경고도 없다, 추천일 뿐)과 같은 자세다.
 
 ### D24-3. 강제는 검증이 한다 — 라벨을 갈아끼우는 것으로는 부족하다
 
 프롬프트에 `<split_plan>`(훈련일 순서별 부위)을 싣고, 확장 단계가 **n번째 훈련일의 주근육이 템플릿 밖이면 `problems`** 로 잡아 재시도시킨다(S-GEN-8). 요일(`day_index`) 배정은 그대로 LLM 이 하고 사용자가 옮긴다([D22-4](#d22-미니앱-주간-실행-루프--확정--오늘-화면--요일-이동--세션-기록-2026-08-21)). **사용자가 직접 넣은 종목(`user_pick`)은 보지 않는다** — 볼륨 예산과 같은 이유다([D20-1](#d20-1-강제도-경고도-없다)).
 
-**범위 — 고르지 않았으면 아무것도 바뀌지 않는다.** `split_pref` 가 없는 요청(홈짐·최소장비·맨몸·동결 Flutter 앱)은 종전대로 일수로 분할이 정해지고 부위 규칙도 돌지 않는다. 규칙을 소급 적용하면 지금 잘 나오던 생성이 부위 위반으로 실패한다. 그 대신 `full_body` 는 **비-헬스장 전용**이 된다 — [design §3.2](../specs/features/001-weekly-plan-generation/design.md) 의 "2–3일 → 풀바디" 규칙을 헬스장 경로에서만 뒤집는다.
+**범위 — 고르지 않았으면 아무것도 바뀌지 않는다.** `split_pref` 가 없는 요청(홈짐·최소장비·맨몸·동결 Flutter 앱)은 종전대로 일수로 분할이 정해지고 부위 규칙도 돌지 않는다. 규칙을 소급 적용하면 지금 잘 나오던 생성이 부위 위반으로 실패한다. 그 대신 `full_body` 는 **비-헬스장 전용**이 된다 — design §3.2 의 "2–3일 → 풀바디" 규칙을 헬스장 경로에서만 뒤집는다.
 
 **실측(2026-08-24, MiniMax-M3 실 호출 3회).** 3분할 2회·5분할 1회 모두 **첫 시도에 템플릿을 지켰다** — 재시도로 인한 실패는 관측되지 않았다. 위반이 잦아지면 `problems` 를 경고로 내리는 것이 후퇴 경로다.
 
@@ -650,9 +650,9 @@ D22-4 의 이동이 생겨 급한 문제("이번 주만 요일을 바꾸고 싶�
 - **자산은 0장이다.** 도해는 이미 실행 화면이 쓰는 `react-body-highlighter` 폴리곤이고, 근육 매핑도 도해 생성기의 표(`gen-muscles.mjs` `TO_MODEL` → `muscles.g.ts` `MUSCLE_TO_MODEL`)를 그대로 재사용한다 — 손으로 다시 적으면 두 벌이 갈린다.
 - **앞·뒤 중 한 컷만** 그린다(부위별로 지정). 두 컷이면 한 칸이 절반씩 작아져 정작 칠한 자리가 안 보인다. 방향을 잘못 고르면 **아무것도 안 칠해진 실루엣**이 나오는데 그건 "이 부위엔 근육이 없다"로 읽히므로, `check.mjs` 가 라이브러리의 앞/뒤 근육 목록과 대조해 11부위 전부가 칠해지는지 본다.
 
-**안 만든 것.** 변형 묶음·즐겨찾기·빈도 정렬·종목 동작 삽화는 카탈로그에 없는 데이터(그룹 축·사용 이력)를 요구하므로 파라미터가 아니라 새 스펙이고, 필요해지면 [G4](../guides/execution-graph.md) 로 연다.
+**안 만든 것.** 변형 묶음·즐겨찾기·빈도 정렬·종목 동작 삽화는 카탈로그에 없는 데이터(그룹 축·사용 이력)를 요구하므로 파라미터가 아니라 새 스펙이고, 필요해지면 G4 로 연다.
 
-**→ 구현:** [계약 §2.3](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) · `backend/src/generation/edit.ts`(`candidatesFor` `browse`·`muscle_counts`) · `backend/src/data/exercises.ts`(`PRIMARY_MUSCLES`) · `miniapp/src/App.tsx`(`MUSCLE_GROUP`·`musclesIn`·`chipsOf`·`GROUP_VIEW`) · `miniapp/src/muscles.tsx`(`GroupFigure`) · `miniapp/gen-muscles.mjs`(`MUSCLE_TO_MODEL`) · 가드 `backend/test/generation-api-contract.test.ts`("부위 훑기") · `miniapp/check.mjs`
+**→ 구현:** 계약 §2.3 · `backend/src/generation/edit.ts`(`candidatesFor` `browse`·`muscle_counts`) · `backend/src/data/exercises.ts`(`PRIMARY_MUSCLES`) · `miniapp/src/App.tsx`(`MUSCLE_GROUP`·`musclesIn`·`chipsOf`·`GROUP_VIEW`) · `miniapp/src/muscles.tsx`(`GroupFigure`) · `miniapp/gen-muscles.mjs`(`MUSCLE_TO_MODEL`) · 가드 `backend/test/generation-api-contract.test.ts`("부위 훑기") · `miniapp/check.mjs`
 
 ---
 
@@ -757,7 +757,7 @@ D22-4 의 이동이 생겨 급한 문제("이번 주만 요일을 바꾸고 싶�
 
 **만든 방법 — 기계가 옮기고 기계가 윤문했다.** 영문 원문 → 네 칸 한국어 요약(15갈래 병렬) → `humanize-korean` 진단 1회 + 12청크 병렬 윤문. 진단이 잡은 지배 패턴은 **문장 골격의 획일화**였다(호흡 줄 60개 중 58개가 골격 3개, 실수 줄 59/60이 `{오류}면 {교정}해요` 한 틀). 어휘 반복 자체는 손대지 않았다 — 868종이 같은 신체 부위를 말하는 것은 장르의 성질이고, 억지로 흩으면 내용이 틀린다.
 
-**사람 검수는 아직 없다.** 자세의 정확성을 승인한 사람이 없다는 뜻이고, 이것은 [백로그 021](../../backlogs/021-exercise-visual-assets.md#12-텍스트-설명은-이-백로그와-별도로-이미-해결됐다-2026-08-27) §11-4 가 그림에 대해 열어 둔 것과 **같은 미결**이다. 그림과 같은 사람이 같은 검수표로 본다.
+**사람 검수는 아직 없다.** 자세의 정확성을 승인한 사람이 없다는 뜻이고, 이것은 백로그 021 §11-4 가 그림에 대해 열어 둔 것과 **같은 미결**이다. 그림과 같은 사람이 같은 검수표로 본다.
 
 **감수한 대가: 번들 gzip 124KB → 188KB.** 카탈로그 사본 18KB + 설명 65KB 다(gzip 기준, 원본은 130KB·314KB). `.ait` 한도(100MB)와는 무관한 크기고, 목록 탭이 플랜 없이도 즉시 열리는 값으로 받았다. **설명을 동적 import 로 띄지 않는다** — 실행 화면이 같은 설명을 쓰므로(D22-6 주 흐름) 늦게 들어오면 운동 중에 설명이 비었다 채워진다. 더 커지면 그때 분할한다.
 
@@ -934,7 +934,7 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 **결정.** [D19](#d19-미니앱-저장-모델--서버-정본firestore--사용자-수동-내보내기-2026-08-20) 가 Drive 자동 동기화를 접는 대가로 약속한 **주간 `.md`/`.json` 수동 내보내기를 만들지 않는다**(사용자 지시 2026-08-30). 미니앱 백로그 014 는 이 결정으로 은퇴한다.
 
-**D5 의 처분이다.** [D16](#d16-배포-모델-전환--토스-미니앱-우선-flutter-앱-보류-2026-08-20) 이 *"[D5](#d5-외부-ai-피드백-범위--이식가능-데이터만-저장-사용자가-직접-연결) 는 재설계 또는 명시적 포기가 필요하다"* 고 적어 둔 갈림길에서 **포기 쪽**을 택한 것이다. 자동 동기화는 토스 오픈 정책이 막았고([D19](#d19)·[research/04](../research/04-toss-platform-and-flutter.md) §7), 남은 수동 경로마저 접으므로 **"사용자가 자기 AI 커넥터에 폴더를 연결해 피드백받는다"는 차별점은 v1 에서 성립하지 않는다.** 이 결정은 그것을 감춘 채 진행하지 않기 위해 존재한다.
+**D5 의 처분이다.** [D16](#d16-배포-모델-전환--토스-미니앱-우선-flutter-앱-보류-2026-08-20) 이 *"[D5](#d5-외부-ai-피드백-범위--이식가능-데이터만-저장-사용자가-직접-연결) 는 재설계 또는 명시적 포기가 필요하다"* 고 적어 둔 갈림길에서 **포기 쪽**을 택한 것이다. 자동 동기화는 토스 오픈 정책이 막았고([D19](#d19)·research/04 §7), 남은 수동 경로마저 접으므로 **"사용자가 자기 AI 커넥터에 폴더를 연결해 피드백받는다"는 차별점은 v1 에서 성립하지 않는다.** 이 결정은 그것을 감춘 채 진행하지 않기 위해 존재한다.
 
 **왜.** 내보내기를 붙여도 파일을 실제로 Drive 로 옮기는 사용자 수는 한 번도 측정된 적이 없고, 측정하려면 먼저 출시해야 하는데 그 코드가 출시를 앞당기지 않는다. 대신 이미 계산돼 있으나 화면에 닿지 않는 값을 쓰는 쪽으로 간다 — 주간 피드백([D37](#d37)).
 
@@ -942,12 +942,12 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 | 항목 | 왜 남나 | 새 정본 |
 |---|---|---|
-| **오프라인 캐시**(서버가 답하지 못하면 빈 화면) | 내보내기와 근거가 다르다. [FR-GEN-7](../product/01-prd.md)·[S-GEN-8](../specs/features/001-weekly-plan-generation/spec.md) 이 같은 것을 요구하지만 **그건 Flutter PRD 조항이고 미니앱에 채택된 적이 없다**(`01-prd.md:4`). 그래도 빈 화면은 실재하므로 **채택 여부를 물을 항목**으로 남긴다 | [미니앱 백로그 §남은 일](../../miniapp/backlogs/00-START-HERE.md) |
-| **클라이언트 오류 관측** | 애초에 [009 §3.2](../../backlogs/009-observability.md) 에서 014 로 이관됐던 항목이다. 014 가 은퇴하면 출발지로 돌아간다 | [009](../../backlogs/009-observability.md) |
+| **오프라인 캐시**(서버가 답하지 못하면 빈 화면) | 내보내기와 근거가 다르다. FR-GEN-7·S-GEN-8 이 같은 것을 요구하지만 **그건 Flutter PRD 조항이고 미니앱에 채택된 적이 없다**(`01-prd.md:4`). 그래도 빈 화면은 실재하므로 **채택 여부를 물을 항목**으로 남긴다 | 미니앱 백로그 §남은 일 |
+| **클라이언트 오류 관측** | 애초에 009 §3.2 에서 014 로 이관됐던 항목이다. 014 가 은퇴하면 출발지로 돌아간다 | 009 |
 
 **되돌리려면.** 서버는 이미 준비돼 있다 — `GET /v1/plans/{YYYY-MM-DD}`(`backend/src/index.ts` `plansGet`)가 주차별 플랜·세션을 통째로 주고, 주석이 *"이게 없으면 이력이 write-only 다(내보내기·주차 비교가 이 경로로 읽는다)"* 라고 적혀 있다. 내보내기는 **클라이언트 코드만으로 되살아난다.** 이 결정은 경로를 막은 것이 아니라 **지금 만들지 않기로** 한 것이다.
 
-**→ 문서:** [D37](#d37)(주간 피드백) · [미니앱 백로그 §남은 일](../../miniapp/backlogs/00-START-HERE.md) · [009](../../backlogs/009-observability.md)
+**→ 문서:** [D37](#d37)(주간 피드백) · 미니앱 백로그 §남은 일 · 009
 
 <a id="d35"></a>
 ## D35. 종목 이력은 새 경로를 열지 않는다 — `/v1/plans/history` 에 `exercise_id` 를 얹는다 (2026-08-30)
@@ -966,7 +966,7 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 **되돌리려면.** 집계 로직은 Firestore 를 모르는 순수함수로 두므로(실행 그래프 N0), 나중에 `/v1/exercises/**` 를 열고 싶어지면 **핸들러 배선과 rewrite 한 줄만** 바꾸면 된다. 규칙도 응답 모양도 그대로 옮겨 간다.
 
-**→ 문서:** [실행 그래프 §3](../guides/miniapp-025-execution-graph.md) · 계약 [generation-api.md](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 문서:** 실행 그래프 §3 · 계약 generation-api.md
 
 ---
 
@@ -1002,9 +1002,9 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 **결정.** 서버가 매주 계산해 플랜에 실어 보내는 `progression_decision` 을 **주간플랜 탭의 종목 줄 아래 한 줄**로 읽어 준다. 별도 화면·탭·LLM 호출은 만들지 않는다.
 
-**요구사항이 아니라 새 제품 결정이다.** [FR-FB-3](../product/01-prd.md) 의 AC 는 *"target_load 하향 또는 대체; 사유 필드 기록"* 까지이고 **표시를 요구하는 조항은 PRD·스펙 어디에도 없다**(codex 교차검증 2026-08-30). 엔진([FR-FB-1·2](../product/01-prd.md))은 이미 끝나 있었다 — 다만 **조용히** 돌았다. 무게가 60에서 62.5가 된 것은 보이는데 *왜* 는 어디에도 안 나와, 사용자에게 그 숫자는 AI 가 그냥 준 값과 구별되지 않았다.
+**요구사항이 아니라 새 제품 결정이다.** FR-FB-3 의 AC 는 *"target_load 하향 또는 대체; 사유 필드 기록"* 까지이고 **표시를 요구하는 조항은 PRD·스펙 어디에도 없다**(codex 교차검증 2026-08-30). 엔진(FR-FB-1·2)은 이미 끝나 있었다 — 다만 **조용히** 돌았다. 무게가 60에서 62.5가 된 것은 보이는데 *왜* 는 어디에도 안 나와, 사용자에게 그 숫자는 AI 가 그냥 준 값과 구별되지 않았다.
 
-**비용이 이 결정을 싸게 만들었다.** 백엔드 diff 0(`ALLOWED_REASONS` 에 `export` 한 글자뿐) · 새 화면 0 · 새 호출 0 · 새 저장 0. **서버는 이미 보내고 있었고 클라이언트가 그 필드를 선언조차 안 해 버리고 있었다** — 만드는 것이 아니라 **끊긴 배선을 잇는 일**에 가깝다. 022 §1(현 [수요·수익화 §1](../../miniapp/backlogs/사용량_분석_성장/03-demand-monetization.md)) 의 기능 개발 동결에 면제를 주장하지 않는다. 착수는 사용자 결정이었다(2026-09-01).
+**비용이 이 결정을 싸게 만들었다.** 백엔드 diff 0(`ALLOWED_REASONS` 에 `export` 한 글자뿐) · 새 화면 0 · 새 호출 0 · 새 저장 0. **서버는 이미 보내고 있었고 클라이언트가 그 필드를 선언조차 안 해 버리고 있었다** — 만드는 것이 아니라 **끊긴 배선을 잇는 일**에 가깝다. 022 §1(현 수요·수익화 §1) 의 기능 개발 동결에 면제를 주장하지 않는다. 착수는 사용자 결정이었다(2026-09-01).
 
 **`reason_code` 만 보면 틀린다.** `substitute` 는 `decision` 값이고 그때의 사유는 `pain_flag`·`missed_reps` 라, 사유만 매핑하면 **교체를 권해야 할 자리에 "무게를 낮췄어요" 가 나온다**(codex 2026-08-30). 두 축을 같이 판별한다 — 표의 키가 `decision:reason_code` 인 이유다.
 
@@ -1016,7 +1016,7 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 **화면이 다시 계산하지 않는다**([INV-1](../architecture/constitution.md)). `decision`·`from`·`to` 를 읽어 옮길 뿐이고, 표시 단위(kg/lb)만 `toDisplay` 를 탄다. **사용자가 무게를 직접 정한 종목에는 아무 말도 붙지 않는다** — `expand.ts` 가 그때 결정을 `null` 로 만든다(그 처방을 더는 설명하지 못하므로).
 
-**LLM 회고는 여전히 미정이다**(022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용량_분석_성장/03-demand-monetization.md))). 사유 코드 7종은 유한 집합이라 문장을 지어낼 이유가 없다 — 표 하나면 끝난다. 이 결정이 그쪽의 전제이기도 하다: 근거가 화면에 먼저 자리를 잡아야, 나중에 LLM 문장이 근거와 어긋나는지를 사람이 대조할 수 있다.
+**LLM 회고는 여전히 미정이다**(022 §3(현 수요·수익화 §5)). 사유 코드 7종은 유한 집합이라 문장을 지어낼 이유가 없다 — 표 하나면 끝난다. 이 결정이 그쪽의 전제이기도 하다: 근거가 화면에 먼저 자리를 잡아야, 나중에 LLM 문장이 근거와 어긋나는지를 사람이 대조할 수 있다.
 
 **→ 문서:** `miniapp/src/types.ts`(`ProgressionDecision`) · `miniapp/src/App.tsx`(`PROGRESSION_NOTES`·`progressionNote`·`SetLine`) · `miniapp/check.mjs` · `backend/src/generation/plan-rules.ts`(`export`)
 
@@ -1050,9 +1050,9 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 
 **근거는 플랫폼이다, 취향이 아니다.** 앱인토스 FAQ: *"현재 앱인토스 미니앱은 다크 모드를 전체 화면 기준으로는 지원하지 않아요. 그래서 배경도 라이트 모드 기준으로 개발하는 게 기본이에요."* 네비게이션 바만 `light/dark` 를 고를 수 있다. 토스 앱 안에서 어두운 미니앱은 이질적이고, 심사 기준과도 어긋난다.
 
-**2026-08-19 의 「다크 온리」를 뒤집는 것이 아니다.** 그 결정은 [design-execution-graph §16](../guides/design-execution-graph.md) 의 **Flutter 앱** 결정이고 근거는 체육관 조명이었다. 미니앱은 [D16](#d16) 이 세운 **두 번째 클라이언트 제품**이라 같은 백엔드를 쓰되 화면 결정은 따로 갖는다 — 지금까지는 그 결정을 미니앱이 **묻지 않고 물려받고** 있었다(`index.css` 첫 줄 `color-scheme: dark`). Flutter 앱이 재개되면 그쪽은 여전히 다크다.
+**2026-08-19 의 「다크 온리」를 뒤집는 것이 아니다.** 그 결정은 design-execution-graph §16 의 **Flutter 앱** 결정이고 근거는 체육관 조명이었다. 미니앱은 [D16](#d16) 이 세운 **두 번째 클라이언트 제품**이라 같은 백엔드를 쓰되 화면 결정은 따로 갖는다 — 지금까지는 그 결정을 미니앱이 **묻지 않고 물려받고** 있었다(`index.css` 첫 줄 `color-scheme: dark`). Flutter 앱이 재개되면 그쪽은 여전히 다크다.
 
-**같은 인터뷰(2026-09-06)의 결정 9개.** Codex 라이트 10장과 Claude v2/v3 다크 8장을 화면별로 견줘 정했다. **기반은 Codex 라이트다.** 시안 `Final*` 10장은 [design-canvas](../design-canvas/00-START-HERE.md), Codex 시안의 근거는 [research/08](../research/08-miniapp-ui-design-review.md). 구현은 [026 실행 그래프](../guides/miniapp-026-execution-graph.md)에 따라 2026-09-08 완료.
+**같은 인터뷰(2026-09-06)의 결정 9개.** Codex 라이트 10장과 Claude v2/v3 다크 8장을 화면별로 견줘 정했다. **기반은 Codex 라이트다.** 시안 `Final*` 10장은 design-canvas, Codex 시안의 근거는 research/08. 구현은 026 실행 그래프에 따라 2026-09-08 완료.
 
 **정정(2026-09-10, 사용자 결정).** 시안의 종목 줄 「N번째」(누적 횟수, 026 G4-1)는 **만들지 않는다.** 요구 근거가 시안 한 줄뿐이고 서버에 값이 없어 계약 §2.6.1 을 넓혀야 했다 — 출시 후 실사용자 피드백(027)이 우선이다. 「마지막·최고」는 그대로 산다.
 
@@ -1062,7 +1062,7 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 ### D39-2. 홈 — 주간 스트립 + 오늘 카드 + 부위 도넛 + 최근 운동
 미니 추이 2개는 기록 화면으로 보낸다. 출처 Codex(덜어냄). 도넛은 완료한 전체 세트 중 부위별 비중이며 계획 달성률이 아니다.
 
-**정정(2026-09-14, 사용자 결정 · 027 #15).** 완료 부위가 **하나뿐이면 도넛·범례를 그리지 않고** 「지금까지 {부위} N세트」 한 줄만 둔다(단색 100% 원이 진행률로 읽혔다). 제목 「운동 비중」은 그대로다. 진행률은 머리줄 한 곳에 **세트 단위**로 붙인다 — `{done} / {total}일 완료 · 세트 {p}%`, 수행 워킹 세트 / 훈련일 계획 워킹 세트, 반올림 · 100 에서 멈춤 · 계획 세트 0 이면 퍼센트 없음. 근거·테스트: [033 실행 그래프](../guides/miniapp-033-execution-graph.md) §3.
+**정정(2026-09-14, 사용자 결정 · 027 #15).** 완료 부위가 **하나뿐이면 도넛·범례를 그리지 않고** 「지금까지 {부위} N세트」 한 줄만 둔다(단색 100% 원이 진행률로 읽혔다). 제목 「운동 비중」은 그대로다. 진행률은 머리줄 한 곳에 **세트 단위**로 붙인다 — `{done} / {total}일 완료 · 세트 {p}%`, 수행 워킹 세트 / 훈련일 계획 워킹 세트, 반올림 · 100 에서 멈춤 · 계획 세트 0 이면 퍼센트 없음. 근거·테스트: 033 실행 그래프 §3.
 
 ### D39-3. 운동 중 편집 — 종목 편집/교체 + 남은 세트 수정 시트(오늘만/이번 주) + 기구 메모
 출처 Codex.
@@ -1077,7 +1077,7 @@ D28 이 사진을 되살린 근거는 *"사진이 어떻게 하는지를 맡는�
 홈 「최근 운동」에서 들어간다. 탭은 당시 5개 그대로(이후 [D27](#d27)·[D31](#d31)로 바뀜). 출처 Codex 08장.
 
 ### D39-7. 주간 리뷰 — 계획 대비 · 내가 바꾼 것 · 다음 주 메모 + 엔진 예고 블록
-AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용량_분석_성장/03-demand-monetization.md)) 전까지 비운다. 출처 둘 다.
+AI 회고는 022 §3(현 수요·수익화 §5) 전까지 비운다. 출처 둘 다.
 
 ### D39-8. 내보내기 — D34 유지
 리뷰 화면만, 버튼 없음. [D34](#d34).
@@ -1120,14 +1120,14 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **결정(사용자, 2026-09-11).** [D18](#d18)이 심사 뒤로 미뤄 뒀던 **G4 문서 정합**을 여기서 닫는다.
 
-- **미니앱 제품의 정본은 이 결정 로그(D16~)와 [생성 API 계약](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)이다.** `docs/specs/features/` 에 미니앱 판 스펙 트리를 새로 열지 않는다. 진입점은 [miniapp/README](../../miniapp/README.md)·[miniapp/AGENTS.md](../../miniapp/AGENTS.md).
+- **미니앱 제품의 정본은 이 결정 로그(D16~)와 생성 API 계약이다.** `docs/specs/features/` 에 미니앱 판 스펙 트리를 새로 열지 않는다. 진입점은 miniapp/README·miniapp/AGENTS.md.
 - **미니앱 저장 ADR 은 [D19](#d19) 가 이미 그것이다** — Firestore 정본, 포맷은 ADR-0007 재사용, ADR-0004·0005·0007 은 "supersede 가 아니라 적용 범위 밖"까지 D19 본문이 갖는다. 같은 내용을 ADR 번호로 한 벌 더 만들지 않는다.
 - **미니앱 상태관리 ADR 은 만들지 않는다** — 미니앱에 상태관리 라이브러리가 없다(`miniapp/package.json` = react·TDS·Sentry·es-hangul, 전부 `useState`). [ADR-0003](0003-local-store-drift.md)(Drift)·[ADR-0009](0009-state-management-riverpod.md)(Riverpod)는 제목 그대로 Flutter 소관이다. **라이브러리를 들이는 날 그때 쓴다.**
 - **LLM 자유 텍스트 출력 언어는 한국어다.** 유일하게 정말로 비어 있던 규정이었다(전역 검색 0건, 근거는 `backend/src/generation/prompt.ts` 프롬프트 한 줄뿐) — [02-data-model §B1](../architecture/02-data-model.md)에 못박았다.
 
 **왜.** 출시가 끝난 제품에 사후 SDD 트리를 쓰면 계약·결정 로그와 **같은 내용이 두 벌**이 되고, 둘이 어긋나는 날 어느 쪽이 정본인지 다시 싸운다. 문서를 늘리는 대신 **어디가 정본인지 한 줄로 못박는 편**이 싸다. 미니앱에 스펙 트리가 필요해지는 조건은 "계약에 없는 화면 규칙이 코드에만 있어 재구현이 불가능해질 때"이고, 지금은 계약 §2 + D20~D41 이 그 자리를 채우고 있다.
 
-**→ 이걸로 백로그 010(미니앱 배경·문서 부채)이 비었다 — 삭제했다**(그 문서의 해제 조건이 "§6 이 비면 지운다" 였다). 배경은 [D16](#d16)·[research/04](../research/04-toss-platform-and-flutter.md), 남은 일 순서는 [미니앱 백로그 §남은 일](../../miniapp/backlogs/00-START-HERE.md).
+**→ 이걸로 백로그 010(미니앱 배경·문서 부채)이 비었다 — 삭제했다**(그 문서의 해제 조건이 "§6 이 비면 지운다" 였다). 배경은 [D16](#d16)·research/04, 남은 일 순서는 미니앱 백로그 §남은 일.
 
 ---
 
@@ -1140,7 +1140,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **조사 사실과 결정은 구분한다.** [토스 오픈 정책 §2-4](https://developers-apps-in-toss.toss.im/intro/guide)가 사전 고지와 결과물 표시를 구분한다는 조사 결과를 뒤집거나, 이번 파기를 정책 충족 판정으로 기록하지 않는다.
 
-**후속 순서.** 표시안 준비·선택을 022(현 [수요·수익화](../../miniapp/backlogs/사용량_분석_성장/03-demand-monetization.md))의 남은 작업에서 내린다. 다음은 기존 계측 확인과 수요·생성 원가 측정이며, 이 표시안을 선행 조건으로 두지 않는다.
+**후속 순서.** 표시안 준비·선택을 022(현 수요·수익화)의 남은 작업에서 내린다. 다음은 기존 계측 확인과 수요·생성 원가 측정이며, 이 표시안을 선행 조건으로 두지 않는다.
 
 ---
 
@@ -1163,7 +1163,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **정정(2026-09-14, 027 #1).** 신체 칸에는 **예시 숫자 placeholder 를 두지 않는다.** 예시는 이미 채워진 값으로 읽힌다(체중 칸의 `72.5` 가 성별 평균과도 다른 제3의 숫자였다). 비워도 된다는 사실과 비웠을 때의 표시는 힌트 줄과 「건너뛰기」 라벨이 말한다. 지금의 체중 칸에서 지웠고, 7단계로 늘어나는 키·목표체중 칸에도 같이 적용된다 — `check.mjs` 가 온보딩 소스의 숫자 placeholder 를 막는다.
 
-**→ 구현:** `miniapp/src/onboarding.tsx`(`stepsFor`·단계 구성·`Profile` 확장) · `miniapp/src/types.ts` · `miniapp/src/weight.tsx`(`Store.goal` 공유) · `backend/src/generation/types.ts`·`validate-profile.ts`(새 필드는 선택) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 구현:** `miniapp/src/onboarding.tsx`(`stepsFor`·단계 구성·`Profile` 확장) · `miniapp/src/types.ts` · `miniapp/src/weight.tsx`(`Store.goal` 공유) · `backend/src/generation/types.ts`·`validate-profile.ts`(새 필드는 선택) · 계약 §1
 
 ---
 
@@ -1172,7 +1172,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **결정(사용자 인터뷰, 2026-09-12).** 실사용자 보고(027 #9): 「주 2회 체크했는데 주 3회 운동이 나온다」. 사용자의 말이 판정이다 — **「근력 2일 + 유산소 1일은 3일이다」.**
 
-**① `days_per_week` 의 뜻을 바꾼다.** 지금 [계약 §2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) 는 「**리프팅 세션 수**다 · 유산소가 별도 날에 붙어 **활동일은 더 많을 수 있다**」고 적는다. 앞으로는 **활동일 총수**다 — 사용자가 준 유일한 가용성 제약을 앱이 넘기지 않는다([D20](#d20) 「추천일 뿐, 최종 결정은 사용자」). `planCardio` 의 `rest_day` 배치를 없애고 유산소는 **운동일 안에서** 붙는다(`after_lifting`, 무거운 하체일이면 `separate_session` — 같은 날이라 활동일이 늘지 않는다). 하루에 유산소는 한 번이다.
+**① `days_per_week` 의 뜻을 바꾼다.** 지금 계약 §2 는 「**리프팅 세션 수**다 · 유산소가 별도 날에 붙어 **활동일은 더 많을 수 있다**」고 적는다. 앞으로는 **활동일 총수**다 — 사용자가 준 유일한 가용성 제약을 앱이 넘기지 않는다([D20](#d20) 「추천일 뿐, 최종 결정은 사용자」). `planCardio` 의 `rest_day` 배치를 없애고 유산소는 **운동일 안에서** 붙는다(`after_lifting`, 무거운 하체일이면 `separate_session` — 같은 날이라 활동일이 늘지 않는다). 하루에 유산소는 한 번이다.
 
 **② 유산소를 할지·어느 요일에·무엇으로는 LLM 이 제안하고 사용자가 고친다.** 스키마가 이미 그렇게 생겼다 — `draft-plan.schema.json` 의 `session_type` 에 `lift_plus_cardio`·`cardio_only` 가 있고 `items[].kind: "cardio"` 와 `cardio_kind {modality, style}` 를 LLM 이 채운다. 그런데 `planCardio` 가 그 제안을 버리고 `CARDIO_DOSE[cardio_pref]` 표로 덮는다. **계약을 넓히는 일이 아니라 버려지던 값을 주워 쓰는 일이다.**
 
@@ -1182,7 +1182,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **유산소 취향(`cardio_pref`) 문항은 만들지 않는다.** 목표(`goals`)가 프롬프트의 `profile` 로 이미 LLM 에 전달된다 — 감량을 고른 사람에게 유산소가 붙는 근거는 그것이고, 온보딩 문항을 하나 더 만들 이유가 없다([D44](#d44)).
 
-**→ 구현:** `backend/src/generation/cardio.ts`(`planCardio` — 제안 수용 + `rest_day` 제거) · `backend/src/generation/expand.ts` · `miniapp/src/plan.tsx`(유산소 줄 편집 시트) · [계약 §2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)(`days_per_week` 문장 교체)
+**→ 구현:** `backend/src/generation/cardio.ts`(`planCardio` — 제안 수용 + `rest_day` 제거) · `backend/src/generation/expand.ts` · `miniapp/src/plan.tsx`(유산소 줄 편집 시트) · 계약 §2(`days_per_week` 문장 교체)
 
 ---
 
@@ -1199,7 +1199,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **사용자가 다르게 원하면 옮긴다** — 요일 이동은 이미 있다([D22](#d22)-4 의 `move` op).
 
-**→ 구현:** `miniapp/src/onboarding.tsx`(가능요일 문항) · `backend/src/generation/expand.ts`(요일 배치 · 검증) · `backend/src/generation/prompt.ts`(`splitPlanBlock` 의 요일 재량 문구 제거) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)(`available_days` 추가)
+**→ 구현:** `miniapp/src/onboarding.tsx`(가능요일 문항) · `backend/src/generation/expand.ts`(요일 배치 · 검증) · `backend/src/generation/prompt.ts`(`splitPlanBlock` 의 요일 재량 문구 제거) · 계약 §1(`available_days` 추가)
 
 ---
 
@@ -1248,7 +1248,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **프로필은 바뀌지 않는다** — 칩은 그 주 요청에만 적용된다. 항상 조건이 바뀐 것이면 「기본정보 재설정」이 맞는 문이고, 화면이 그렇게 말한다.
 
-**→ 구현:** `miniapp/src/plan.tsx`(`PlanCreate`) · `miniapp/src/api.ts` · `backend/src/generation/types.ts`(`GenerateRequest.user_request` — 선택) · `backend/src/generation/prompt.ts`(`buildUserContext`) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 구현:** `miniapp/src/plan.tsx`(`PlanCreate`) · `miniapp/src/api.ts` · `backend/src/generation/types.ts`(`GenerateRequest.user_request` — 선택) · `backend/src/generation/prompt.ts`(`buildUserContext`) · 계약 §1
 
 ---
 
@@ -1280,7 +1280,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **두 컷을 번갈아 돌린다.** 사용자가 「짧은 영상」을 요청했고, **시작·끝 두 장을 번갈아 교대**하면 동작의 궤적이 보인다 — 새 에셋 0 · 새 조사 0 · 용량 증가 0. 진짜 영상(촬영·구매·외부 임베드)은 출처·용량·토스 웹뷰 재생을 새로 봐야 하는 별개 작업이라 지금 열지 않는다.
 
-**대체 그림이 생기면 같은 경로로 교체한다** — 유료 도해·생성 그림의 선택은 [021](../../backlogs/021-exercise-visual-assets.md) 이 계속 갖는다. [D26](#d26) 의 판단은 사라지지 않았다 — 사용자가 원한 그림은 「회색 3D 몸 + 동작 중인 기구 + 쓰는 근육 빨강」이고 헬스장 사진에는 **근육이 안 보인다**(초보자에게 필요한 절반). 그래서 이 결정은 **021 이 닫힐 때까지의 자리**다.
+**대체 그림이 생기면 같은 경로로 교체한다** — 유료 도해·생성 그림의 선택은 021 이 계속 갖는다. [D26](#d26) 의 판단은 사라지지 않았다 — 사용자가 원한 그림은 「회색 3D 몸 + 동작 중인 기구 + 쓰는 근육 빨강」이고 헬스장 사진에는 **근육이 안 보인다**(초보자에게 필요한 절반). 그래서 이 결정은 **021 이 닫힐 때까지의 자리**다.
 
 **→ 구현:** `miniapp/src/catalog.tsx`(`ExerciseDetail`) · `miniapp/src/session.tsx`(종목 상세) · 2컷 교대 컴포넌트(신규) · `miniapp/src/index.css`
 
@@ -1310,7 +1310,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **그대로인 것.** 시작은 이번 주·오늘·훈련일에만 열린다(D22-3). 이미 시작한 날은 옮길 수 없다(D22-4). 재생성 확인창도 남는다(D36).
 
-**→ 구현:** 백로그 038(사용자 확인 후 해소·삭제 2026-09-15 · [CHANGELOG](../../miniapp/CHANGELOG.md)) — `miniapp/src/plan.tsx`(`canStart`·하단 버튼·`saveConfirmed`·`confirmed` 상태 삭제) · `miniapp/src/home.tsx`(`todayCta`·`ctaTarget`) · `miniapp/src/App.tsx`(`confirmKey`·`loadConfirmed` 삭제) · `miniapp/check.mjs`
+**→ 구현:** 백로그 038(사용자 확인 후 해소·삭제 2026-09-15 · CHANGELOG) — `miniapp/src/plan.tsx`(`canStart`·하단 버튼·`saveConfirmed`·`confirmed` 상태 삭제) · `miniapp/src/home.tsx`(`todayCta`·`ctaTarget`) · `miniapp/src/App.tsx`(`confirmKey`·`loadConfirmed` 삭제) · `miniapp/check.mjs`
 
 ---
 
@@ -1327,7 +1327,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **③ 반복되는 글자를 지운다.** 큰 입력 카드의 「지금 할 N세트」 **제목만** 지우고, 입력과 「직전·목표」 줄은 남긴다. 선택지는 「카드 통째」·「제목만」·「카드만」이었다. 세트 줄마다 붙은 「지난 운동 …」도 지운다. 모든 줄에 같은 주간 집계가 반복될 뿐이고, 같은 값이 「전체 세트」 머리에 한 번 있다.
 
-**→ 구현:** [039 실행 그래프](../guides/miniapp-039-execution-graph.md)(백로그 039 는 2026-09-16 해소·삭제) — `miniapp/src/session.tsx` · `miniapp/src/index.css` · (①) `backend/src/schemas/weekly-plan.schema.json` · `backend/src/generation/expand.ts`·`handler.ts`·`edit.ts` · [02-data-model](../architecture/02-data-model.md) · [계약](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)
+**→ 구현:** 039 실행 그래프(백로그 039 는 2026-09-16 해소·삭제) — `miniapp/src/session.tsx` · `miniapp/src/index.css` · (①) `backend/src/schemas/weekly-plan.schema.json` · `backend/src/generation/expand.ts`·`handler.ts`·`edit.ts` · [02-data-model](../architecture/02-data-model.md) · 계약
 
 ---
 
@@ -1335,7 +1335,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D55. 입문자 플랜 — 머신·덤벨 우선 · 장비별 시작 무게 · 낮은 증량 · 중점 부위 문항 (2026-09-15)
 
-**결정(사용자 인터뷰, 2026-09-15).** 사용자 요청은 「추천이 초보자에게 더 잘 맞아야 한다 — 여성은 하체·남성은 상체 선호, 머신 위주, 낮은 무게에서 시작. 지금은 그런 게 하나도 없어 추천이 올바른지 모르겠다」. 리포 확인 결과 **데이터가 없어서가 아니라 수집한 값을 생성이 안 쓰는 것**이 원인이다: `experience_level` 은 `plan_meta` 에 실리고 프롬프트 `profile` 로 LLM 이 읽을 뿐 후보 필터·렙 범위·무게·증량 어디에도 분기가 없다. 성별은 미니앱 로컬(체중 표시)에만 있다. 1주차 무게는 전부 `null` 이다. 프롬프트는 `order=1` 을 자유중량 복합운동(바벨·덤벨)으로 못박고 경험별 예외가 없어, 입문자에게도 머신 복합운동은 첫 종목이 될 수 없다. 근거는 [research/03 §초보자·성별 배려](../research/03-ai-plan-generation.md#초보자성별-배려--머신시작-무게증량부위-선호-d55).
+**결정(사용자 인터뷰, 2026-09-15).** 사용자 요청은 「추천이 초보자에게 더 잘 맞아야 한다 — 여성은 하체·남성은 상체 선호, 머신 위주, 낮은 무게에서 시작. 지금은 그런 게 하나도 없어 추천이 올바른지 모르겠다」. 리포 확인 결과 **데이터가 없어서가 아니라 수집한 값을 생성이 안 쓰는 것**이 원인이다: `experience_level` 은 `plan_meta` 에 실리고 프롬프트 `profile` 로 LLM 이 읽을 뿐 후보 필터·렙 범위·무게·증량 어디에도 분기가 없다. 성별은 미니앱 로컬(체중 표시)에만 있다. 1주차 무게는 전부 `null` 이다. 프롬프트는 `order=1` 을 자유중량 복합운동(바벨·덤벨)으로 못박고 경험별 예외가 없어, 입문자에게도 머신 복합운동은 첫 종목이 될 수 없다. 근거는 research/03 §초보자·성별 배려.
 
 **① 입문자 프리셋 — `experience_level=beginner` 에만.** 초중급(`novice_intermediate`)은 후보·렙 범위·시작 무게가 지금 그대로다(1년 이상 한 사람에게 빈 바를 주면 첫 인상이 「입문 플랜」이 된다 — D44 가 막으려던 것). 단 **덤벨·케틀벨의 증량 2kg·격자 1kg 는 초중급에도 적용**된다 — 장비 사실이지 입문 배려가 아니다.
 - **후보 정렬 + 프롬프트 규칙, 검증기는 안 건드린다.** `candidateIdsFor` 가 `level=expert` 를 빼고 머신·케이블·덤벨을 앞에 놓는다 — 그룹 안 선정 순서뿐 아니라 **마지막 `sort()`(id 순) 도 바꿔야** 프롬프트 목록에서 앞에 온다. 그룹당 10개로 자르므로 **`recent_exercise_ids` 는 장비·금기를 통과하는 한 후보에 항상 보존**한다(안 그러면 이어가라는 바벨 종목이 목록에서 빠져 프롬프트 규칙끼리 모순). 편집 시트의 `edit.ts` `candidatesFor` 는 `candidateIdsFor` 를 안 타고 `find`+한글 이름순이라 **자동으로 따라오지 않는다** — 편집 추천에도 적용하려면 따로 고친다(이번 범위 밖 — 필요해지면 새 백로그로 연다). 프롬프트는 「입문자는 primary 도 머신·덤벨 복합 허용, 바벨 복합은 세션당 1개까지」. 드래프트 검증에 넣지 않는다 — Haugen 2023·ACSM 2026 모두 장비가 결과를 좌우하지 않는다고 하므로 재생성 루프를 늘릴 만큼 강한 근거가 아니다. 바벨을 아예 빼지도 않는다(`gain_strength` 와 충돌).
@@ -1365,7 +1365,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **바꾸지 않는 것.** `WEEKLY_VOLUME_CAPS`·`MEV_ANCHORS`(이미 beginner 값) · 분할 템플릿 · 5분할 입문자 경고([D20](#d20)) · 유산소 처방.
 
-**→ 구현:** 백로그 040(사용자 확인 후 해소·삭제 2026-09-15) · [040 그래프](../guides/miniapp-040-execution-graph.md) — `backend/src/data/exercises.ts` `candidateIdsFor` · `backend/src/generation/prompt.ts` `buildSystemPrefix` · `loading.ts` `repRangeFor`·`prescribeLoad`·`roundToPlate` · `data/constants.ts`(시작 하한·증량 표) · `expand.ts` `allocateVolume`·`plan_meta` · `types.ts`·`validate-profile.ts`(`sex?`·`focus_area?`) · `miniapp/src/onboarding.tsx`(중점 부위 칩 · 성별 전송) · `session.tsx`(무게 찾기 안내) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) · [design §3.2.1](../specs/features/001-weekly-plan-generation/design.md)(1주차 null 규칙·렙 범위·증량 상수 갱신) · [02-data-model](../architecture/02-data-model.md)
+**→ 구현:** 백로그 040(사용자 확인 후 해소·삭제 2026-09-15) · 040 그래프 — `backend/src/data/exercises.ts` `candidateIdsFor` · `backend/src/generation/prompt.ts` `buildSystemPrefix` · `loading.ts` `repRangeFor`·`prescribeLoad`·`roundToPlate` · `data/constants.ts`(시작 하한·증량 표) · `expand.ts` `allocateVolume`·`plan_meta` · `types.ts`·`validate-profile.ts`(`sex?`·`focus_area?`) · `miniapp/src/onboarding.tsx`(중점 부위 칩 · 성별 전송) · `session.tsx`(무게 찾기 안내) · 계약 §1 · design §3.2.1(1주차 null 규칙·렙 범위·증량 상수 갱신) · [02-data-model](../architecture/02-data-model.md)
 
 ---
 
@@ -1373,7 +1373,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D56. D44·D46 구현 확정 — 신체값은 기기에만 · 가능요일은 가장 벌어지게 (2026-09-15)
 
-**결정(사용자, 2026-09-15 — [D44 실행 그래프](../guides/miniapp-d44-execution-graph.md) G0 의 답).** 034 진행 요청에 사용자가 「D44 전체 구현」을 골랐고, 그래프를 자르며 결정 문서가 답하지 않은 것을 물었다.
+**결정(사용자, 2026-09-15 — D44 실행 그래프 G0 의 답).** 034 진행 요청에 사용자가 「D44 전체 구현」을 골랐고, 그래프를 자르며 결정 문서가 답하지 않은 것을 물었다.
 
 **① 키·생년·목표체중은 기기에만 둔다 — [D44](#d44) ② 「LLM 판단 재료」를 철회한다.** 개인정보 처리방침(`backend/public/terms/privacy.html`) §1 이 「생년월일은 수집하지 않습니다」이고 LLM 위탁 항목에도 이 값들이 없다. 방침을 고치는 대신 **보내지 않는다.** 서버는 받은 프로필을 플랜 문서에 스냅샷으로 저장하므로(`backend/src/index.ts`) `Profile` 에 넣는 순간 보낸 것이 된다 — 그래서 **현재 체중·성별과 같은 로컬 키 `burnweek.bodyweight.v1`**([D23](#d23))에 둔다. 계약·`validateProfile` 은 신체값 때문에 바뀌지 않는다.
 - 목표 체중 → `weight.tsx` `Store.goal`(D44 「정본은 하나」 그대로). 쓰는 곳은 체중 탭 목표선.
@@ -1389,7 +1389,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **③ 유산소 휴식일 배치는 그대로 둔다.** 근력일이 모자랄 때 LISS·HIIT 를 휴식일로 넘기는 지금의 `planCardio` 는 가능요일 밖 요일에 유산소를 놓을 수 있다. D46 「가능요일이 곧 운동일」과 어긋나는 것을 알고 [D45](#d45)(`rest_day` 제거) 구현까지 수용한다. *(2026-09-25 D45 ① 구현으로 끝났다 — 백로그 078.)*
 
-**→ 구현:** [D44 실행 그래프](../guides/miniapp-d44-execution-graph.md)
+**→ 구현:** D44 실행 그래프
 
 ---
 
@@ -1399,7 +1399,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 > 2026-10-26: 직전 주만 참조하던 처방 이력 범위는 [ADR-0030](./0030-four-week-prescription-history.md)이 부분 대체한다. 최근 4주 운동별 최근 수행을 읽고, 지난주 미수행 운동의 자동 상승은 보류한다.
 
-**결정(사용자 인터뷰 + [041 실행 그래프](../guides/miniapp-041-execution-graph.md) G0, 2026-09-15).** 사용자 원문: 「유산소인 경우에 무조건 30분으로 되어있는데 시간을 설정할수 있게 해줘. 러닝인 경우에는 km랑 시간 … 워킹은 경사도, km, 시간 (마이마운틴 포함) 사이클은 강도, 시간 … 혹은 인터벌로 하는 경우도있어.」 재현: 기록 화면에서 무엇을 해도 유산소 세트는 플랜의 `duration_min` 으로 저장된다(041 §1). A-번호는 041 그래프가 인용하는 번호다.
+**결정(사용자 인터뷰 + 041 실행 그래프 G0, 2026-09-15).** 사용자 원문: 「유산소인 경우에 무조건 30분으로 되어있는데 시간을 설정할수 있게 해줘. 러닝인 경우에는 km랑 시간 … 워킹은 경사도, km, 시간 (마이마운틴 포함) 사이클은 강도, 시간 … 혹은 인터벌로 하는 경우도있어.」 재현: 기록 화면에서 무엇을 해도 유산소 세트는 플랜의 `duration_min` 으로 저장된다(041 §1). A-번호는 041 그래프가 인용하는 번호다.
 
 - **A1 계획과 기록 둘 다** 사용자가 숫자를 정한다. 계획 목표를 넣으면 기록 화면에 미리 채워지고 실측으로 고친다.
 - **A2 유산소 13종(id):** 기존 6종(`bicycling_stationary`·`rowing_stationary`·`elliptical_trainer`·`walking_treadmill`·`running_treadmill`·`stairmaster`) + 마이마운틴 `mymountain`(별도 종류 · 카탈로그 신규, A15) + `trail_running_walking`(실외 러닝·걷기) · `bicycling`(실외 자전거) · `rope_jumping`(줄넘기) · `step_mill`(스텝밀) · `recumbent_bike`(리컴번트) · `jogging_treadmill`(조깅 트레드밀). **전부 유산소다.** 인터뷰 기록의 「14종」은 개수 오기다 — **열거된 13개로 확정**(사용자 확인 2026-09-15, N0 확인 라운드). 카탈로그의 다른 유산소(`prowler_sprint`·`skating`)는 이 목록에 없다.
@@ -1417,9 +1417,9 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **A14 다른 유산소로 바꾸면 새 운동의 설정 방식을 따른다** — 목표 중 새 방식에 있는 칸만 남기고 나머지는 버린다(방식·시간은 늘 남는다 · 러닝→걷기면 km 도 남는다 · 러닝→사이클이면 km 는 버린다). 구간도 같은 규칙.
 - **A15 마이마운틴 카탈로그 항목은 조사로 채운다.** `id` `mymountain` · `name` `MyMountain` · `name_ko` 마이마운틴([디랙스](https://www.draxfit.com/ko/treadmills/incline-trainer)) · `category`·`modality` `cardio` · `default_metric` `duration` · `level` `beginner` · `mechanic`·`force` `null` · `equipment` `machine` · 내부 분류 `incline_walk` · `primary_muscles` `glutes` · `secondary_muscles` `hamstrings`·`calves`·`quadriceps`·`lower back`([Kundu 외 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC11728598/) · [Krieger 외 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12510700/)) · 설명 4줄([D29](#d29) 틀, [플랜핏](https://planfit.ai/ko/exercise/my-mountain)을 옮겨 씀): 세팅 「올라서 손잡이를 잡고 균형을 잡은 뒤 경사와 속도를 맞춰요.」 · 동작 「등산하듯 발을 번갈아 내딛어요.」 · 호흡 「자연스럽게 이어 쉬어요.」 · 흔한 실수 「체중을 한쪽 발에만 싣지 않아요. 무릎이 아프면 속도를 낮추고 멈춰요.」 · 동작 사진 없음(저작권) — 사진 가드는 `is_custom` 을 뺀다.
 
-**대체하는 것.** [D45](#d45) ③ 의 「HIIT 주 상한」·「시간·강도존」·「분·존은 `CARDIO_DOSE`·`ZONE` 이 계속 소유한다」는 **사용자가 넣은 값에는 적용하지 않는다**(A1·A11). 사용자가 아무것도 넣지 않았을 때 **생성이 스스로 놓는 배치**(도스 분·HIIT 상한·존)는 D45 그대로다. [D7](#d7) 「기록은 간단히」는 A4·A6 으로 넓어진다. [계약 §2.2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) 「유산소 줄 — 분·존·스타일·배치는 코드」 문장은 구현 노드(041 N4)가 바꾼다.
+**대체하는 것.** [D45](#d45) ③ 의 「HIIT 주 상한」·「시간·강도존」·「분·존은 `CARDIO_DOSE`·`ZONE` 이 계속 소유한다」는 **사용자가 넣은 값에는 적용하지 않는다**(A1·A11). 사용자가 아무것도 넣지 않았을 때 **생성이 스스로 놓는 배치**(도스 분·HIIT 상한·존)는 D45 그대로다. [D7](#d7) 「기록은 간단히」는 A4·A6 으로 넓어진다. 계약 §2.2 「유산소 줄 — 분·존·스타일·배치는 코드」 문장은 구현 노드(041 N4)가 바꾼다.
 
-**→ 구현:** [041 실행 그래프](../guides/miniapp-041-execution-graph.md) N1–N7 — op 모양(`cardio`)·빈 총 시간 처리·이력 응답(`previous_cardio`)은 그 문서 §3 G0 표.
+**→ 구현:** 041 실행 그래프 N1–N7 — op 모양(`cardio`)·빈 총 시간 처리·이력 응답(`previous_cardio`)은 그 문서 §3 G0 표.
 
 ---
 
@@ -1436,7 +1436,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **오늘이 휴식일(이번 주)이면 한 번에 당겨 시작한다.** 메인 오늘 카드와 주간플랜 하단 버튼이 「{요일}요일 운동 오늘 하기」가 되고, 누르면 그 날을 오늘로 옮기고([D22-4](#d22-4-요일-이동--주간-스트립-드래그앤드롭-놓으면-맞바꾼다) `move` · 오늘은 비어 있으니 merge) **바로 실행 화면을 연다.** 이동이 실패하면 열지 않는다(사유는 편집 오류 줄).
 - **당겨 올 날은 가장 가까운 뒤의 미완료 훈련일, 없으면 가장 가까운 앞의 것**(`pullCandidate`). 주간플랜에서 훈련일을 골라 두었으면 그 날. 기록이 있거나 진행 중인 날(D22-4 잠금)·종목 없는 날은 못 당긴다. 당길 날이 없으면 버튼이 없다 — **훈련 빈도를 늘리는 문은 여전히 열지 않는다**(D22-3 의 이유).
 - **D22-3 은 그대로다.** 기록 날짜는 실제 날짜와 같다(옮긴 뒤 오늘로 기록된다). 오늘이 훈련일이면 종전대로 「운동 시작」.
-- 같은 날 발견한 결함: 「다른 날로 옮기기」 안내 띠가 한 글자씩 세로로 깨지고 「취소」가 줄 전체를 덮었다 — 전역 `button { width:100% }` 위의 `flex:0 0 auto` 함정([miniapp/AGENTS.md](../../miniapp/AGENTS.md) 「알아둘 것」). `width:auto` 한 줄로 고쳤다(Orca 브라우저로 재현·확인).
+- 같은 날 발견한 결함: 「다른 날로 옮기기」 안내 띠가 한 글자씩 세로로 깨지고 「취소」가 줄 전체를 덮었다 — 전역 `button { width:100% }` 위의 `flex:0 0 auto` 함정(miniapp/AGENTS.md 「알아둘 것」). `width:auto` 한 줄로 고쳤다(Orca 브라우저로 재현·확인).
 
 **→ 구현:** `miniapp/src/plan.tsx`(`pullCandidate` · 하단 버튼 · `pullToToday`) · `miniapp/src/home.tsx`(휴식일 CTA · `onPull`) · `miniapp/src/App.tsx` · `miniapp/src/index.css`(`.move-bar button`) · `miniapp/check.mjs`. 직행(D50 · 백로그 030 §2.2)은 별도.
 
@@ -1450,17 +1450,17 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - 주간플랜 하단 「편집 되돌리기」 버튼을 지운다.
 - 편집 op `reset` 을 계약에서 지운다 — 보내면 알 수 없는 op 와 같이 **400**.
 - 생성 저장이 `draft_original` 을 더는 쓰지 않는다. **이미 저장된 문서의 `draft_original` 은 지우지 않고 읽지도 않는다**(저장이 깊은 병합이라 남지만 쓰는 곳이 없다).
-- 백로그 016 §6.5 4(되돌리기)와 [계약 §2.2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) 의 `reset` 문단을 대체한다. 편집 자체(D20)·빈 주(D20-2)는 그대로다.
+- 백로그 016 §6.5 4(되돌리기)와 계약 §2.2 의 `reset` 문단을 대체한다. 편집 자체(D20)·빈 주(D20-2)는 그대로다.
 - **생성 크레딧은 건드리지 않는다**(사용자, 같은 날). 이름이 비슷한 주간 무료 생성 창(`resets_at`)·보상 크레딧(`reward_credits`)·계정 초기화(`ACCOUNT_RESET`)는 편집 되돌리기와 무관하며 그대로다([ADR-0013](0013-rewarded-plan-generation.md)).
 
-**→ 구현:** [039 실행 그래프](../guides/miniapp-039-execution-graph.md) N0 — `miniapp/src/plan.tsx` · `miniapp/src/api.ts` · `miniapp/src/index.css` · `backend/src/generation/edit.ts` · `backend/src/index.ts` · 계약 §2.2
+**→ 구현:** 039 실행 그래프 N0 — `miniapp/src/plan.tsx` · `miniapp/src/api.ts` · `miniapp/src/index.css` · `backend/src/generation/edit.ts` · `backend/src/index.ts` · 계약 §2.2
 
 ---
 
 <a id="d60"></a>
 ## D60. 재생성은 완료한 날을 그대로 두고, 분할을 고른 사용자에게만 다음날 같은 축 부위를 막는다 (2026-09-16)
 
-**결정(사용자, 2026-09-16 · [044 실행 그래프](../guides/miniapp-044-execution-graph.md) G0).** 원문 요청 「운동한 운동은 빼고 운동 플랜이 생성되게. 월요일에 하체를 했는데 다음날 또 하체하라고 하면 이상하잖아」([백로그 044](../guides/miniapp-044-execution-graph.md)). 백로그 §3 의 6문항과 그래프가 옮긴 4문항에 답했다.
+**결정(사용자, 2026-09-16 · 044 실행 그래프 G0).** 원문 요청 「운동한 운동은 빼고 운동 플랜이 생성되게. 월요일에 하체를 했는데 다음날 또 하체하라고 하면 이상하잖아」(백로그 044). 백로그 §3 의 6문항과 그래프가 옮긴 4문항에 답했다.
 
 | Q | 답 | 사용자 원문 |
 |---|---|---|
@@ -1476,7 +1476,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **뜻.** ① [D22-7](#d22) 「완료는 보존」이 **세션뿐 아니라 그 요일의 플랜·드래프트까지**다 — 재생성은 완료한 요일의 `plan.week`·`draft.week` 항목을 옛 것으로 되살려 저장한다. 주 총 회수가 `days_per_week` 를 넘어도 된다. ② 새 플랜의 **다음날**에 완료한 날과 같은 축(가슴·등·하체) 부위를 두지 않는다 — `split_pref` 가 있는 사용자에게만, 이번 주 안에서만. 위반은 재시도 프롬프트로 돌아간다(S-GEN-8). ③ 이번 주 완료 기록은 **비수치 신호로만** 프롬프트에 실린다 — `prior_logs` 에는 여전히 들어가지 않는다([INV-1](../architecture/constitution.md) 되먹임 금지, 계약 §1). ④ [D24-1](#d24) 이 G4 로 남긴 주 간 커서는 열지 않는다.
 
-**→ 구현:** [044 실행 그래프](../guides/miniapp-044-execution-graph.md) N1·N2(2026-09-16 완료) — `backend/src/index.ts` · `generation/session.ts`(`preserveCompletedDays`) · `generation/expand.ts`(`splitCursor`·`slotAssignment`) · `generation/prompt.ts`(`completedThisWeek`) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md). **② 의 구현 형태:** 별도 「다음날 금지」 규칙이 아니라 **분할 템플릿을 완료한 부위의 다음 슬롯부터 잇는다** — 가능요일이 붙어 있으면 템플릿(화=2번째=하체)과 금지 규칙이 모순이라 재시도가 전부 실패하기 때문([그래프 §1](../guides/miniapp-044-execution-graph.md)). 결과는 같다: 어제 한 축 부위가 다음날 오지 않고, 위반은 재시도로 돌아간다.
+**→ 구현:** 044 실행 그래프 N1·N2(2026-09-16 완료) — `backend/src/index.ts` · `generation/session.ts`(`preserveCompletedDays`) · `generation/expand.ts`(`splitCursor`·`slotAssignment`) · `generation/prompt.ts`(`completedThisWeek`) · 계약 §1. **② 의 구현 형태:** 별도 「다음날 금지」 규칙이 아니라 **분할 템플릿을 완료한 부위의 다음 슬롯부터 잇는다** — 가능요일이 붙어 있으면 템플릿(화=2번째=하체)과 금지 규칙이 모순이라 재시도가 전부 실패하기 때문(그래프 §1). 결과는 같다: 어제 한 축 부위가 다음날 오지 않고, 위반은 재시도로 돌아간다.
 
 ---
 
@@ -1498,7 +1498,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 <a id="d62"></a>
 ## D62. 휴식이 끝나면 화면이 말한다 — 확인해야 닫히는 모달 · 끊어치는 진동 · 마지막 세트에도 휴식 (2026-09-16)
 
-**결정(사용자 인터뷰·실기기 측정, 2026-09-16).** 실사용자 피드백 「이어폰 없이 운동해서 휴식 끝을 확인하기 어렵다」·「진동이 너무 약하다」에 대한 결정이다([백로그 043](../guides/miniapp-043-execution-graph.md) — 해소·삭제 2026-09-17). 헬스장에서는 소리를 못 듣는 것이 정상 상태라, 소리·진동만으로는 알림이 0개가 된다.
+**결정(사용자 인터뷰·실기기 측정, 2026-09-16).** 실사용자 피드백 「이어폰 없이 운동해서 휴식 끝을 확인하기 어렵다」·「진동이 너무 약하다」에 대한 결정이다(백로그 043 — 해소·삭제 2026-09-17). 헬스장에서는 소리를 못 듣는 것이 정상 상태라, 소리·진동만으로는 알림이 0개가 된다.
 
 **① 휴식이 끝나면 화면 전체 모달이 뜨고, 버튼을 눌러야 닫힌다.** 선택지는 「몇 초 뒤 자동」·「다음 세트를 누를 때까지」·「확인 버튼」이었고 사용자는 **확인 버튼**을, 세기는 「바만 바뀐다」·「바 + 깜빡임」·「화면 전체」 중 **화면 전체**를 골랐다. 다음 세트 버튼을 가리는 대가는 설계가 된다 — 가리는 것이 곧 확인을 누르게 하는 것이다. 다른 종목을 보는 중에 끝나도 같은 모달이다. 「건너뛰기」·통증·저장 시작·종목 변경처럼 **중간에 끝낸 휴식에는 뜨지 않는다**.
 
@@ -1510,7 +1510,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **⑤ 마지막 세트를 끝내도 휴식이 걸린다.** 사용자 보고 「2세트짜리 종목의 2세트를 완료하면 휴식이 안 뜬다」. 「뒤 칸이 있을 때만 휴식」은 어느 결정에도 없던 제약이었다 — [ADR-0015](0015-rest-notifications.md) 결정 2 는 휴식이 취소되는 경우만 정한다. 완료하면 언제나 쉬고, 완료를 되돌리면 그 세트의 휴식만 끈다.
 
-**→ 구현:** [043 실행 그래프](../guides/miniapp-043-execution-graph.md) N1~N11 · `miniapp/src/session.tsx`(`restExpired`·`restSetIndex`·`countdownUrgent`·`scheduleRestCue`·`toggleSet`) · `miniapp/src/toss.ts`(`buzz`·`stopBuzz`·`VIBRATE_SHORT`·`VIBRATE_LONG`) · `miniapp/src/index.css`(`.rest-done`) · 가드 `check.mjs`·`rest-check.mjs`
+**→ 구현:** 043 실행 그래프 N1~N11 · `miniapp/src/session.tsx`(`restExpired`·`restSetIndex`·`countdownUrgent`·`scheduleRestCue`·`toggleSet`) · `miniapp/src/toss.ts`(`buzz`·`stopBuzz`·`VIBRATE_SHORT`·`VIBRATE_LONG`) · `miniapp/src/index.css`(`.rest-done`) · 가드 `check.mjs`·`rest-check.mjs`
 
 ---
 
@@ -1529,13 +1529,13 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **그대로인 것.** 서버는 날짜를 막지 않는다(요일 번호와 형식만 본다) — 이 결정은 화면만 바꾼다. 이미 시작한 날은 옮길 수 없다([D22-4](#d22)).
 
-**→ 구현:** 백로그 045(사용자 확인 후 해소·삭제 2026-09-17 · [CHANGELOG](../../miniapp/CHANGELOG.md)) — `miniapp/src/plan.tsx`(운동 줄 `plan-row-go` · 하단 버튼 삭제) · `miniapp/src/App.tsx`(`runningExercise`) · `miniapp/src/session.tsx`(`firstOpenExercise` · `initialExerciseId`) · 가드 `check.mjs` · `startup-check.mjs`
+**→ 구현:** 백로그 045(사용자 확인 후 해소·삭제 2026-09-17 · CHANGELOG) — `miniapp/src/plan.tsx`(운동 줄 `plan-row-go` · 하단 버튼 삭제) · `miniapp/src/App.tsx`(`runningExercise`) · `miniapp/src/session.tsx`(`firstOpenExercise` · `initialExerciseId`) · 가드 `check.mjs` · `startup-check.mjs`
 
 
 <a id="d64"></a>
 ## D64. 플랜 만들기는 주간플랜의 「추천 플랜 생성」 하나 — 메인은 늘 이번 주 모양, 플랜이 없으면 빈 주 (2026-09-18)
 
-**결정(사용자, 2026-09-17~18 · [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) G0 Q4·Q5·Q6 — 권고 채택).** 사용자 원문: 「플랜 만들 때 메인에서 플랜 만드는 중입니다 나오고 있는 게 안 나오게」 · 「"플랜만 새로짜기" 아니고 "추천 플랜 생성"」 · 「수동플랜은 어차피 주간플랜에서 바로바로 등록할 수 있으니까 선택할 수 있는 건 빼 줘. 바로 추천 플랜으로 진행하면 돼」 · 「지금 메인 화면(플랜 생성됐을 때)으로 보여 주면 됨. 메인에서 플랜 생성하는 버튼 없애 줘」(백로그 047·050).
+**결정(사용자, 2026-09-17~18 · 047~053 실행 그래프 G0 Q4·Q5·Q6 — 권고 채택).** 사용자 원문: 「플랜 만들 때 메인에서 플랜 만드는 중입니다 나오고 있는 게 안 나오게」 · 「"플랜만 새로짜기" 아니고 "추천 플랜 생성"」 · 「수동플랜은 어차피 주간플랜에서 바로바로 등록할 수 있으니까 선택할 수 있는 건 빼 줘. 바로 추천 플랜으로 진행하면 돼」 · 「지금 메인 화면(플랜 생성됐을 때)으로 보여 주면 됨. 메인에서 플랜 생성하는 버튼 없애 줘」(백로그 047·050).
 
 **① 메인에는 생성 버튼도, 생성 중 화면도 없다.** 메인은 플랜이 있을 때와 같은 모양(주 스트립 · 오늘 카드 · 기록)을 늘 그린다. [D36](#d36) 의 「빈 상태의 0클릭」과 2026-08-28 「메인 빈 상태 버튼은 그 자리에서 만든다」를 대체한다 — 메인에서 생성을 시작하지 않으니 「도는지 알 수 없다」(2026-09-08)도 생기지 않는다.
 
@@ -1547,44 +1547,44 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **⑤ 빈 주 메인의 오늘 카드는 「아직 운동이 없어요」 + 「플랜 >」 링크다(Q6 ㉡)** — 쉬는 날(「휴식일이에요」)과 구별한다.
 
-**→ 구현:** 백로그 047·050(사용자 실기기 확인 후 해소·삭제 2026-09-21 · 테스트 번들 `20260919-36` — **라이브 `20260917-35` 에는 미반영**, 출시는 [docs/00-START-HERE §현재 상태](../00-START-HERE.md)) — [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) N2·N6 · `miniapp/src/home.tsx`(`homeWeek` · 생성 중 화면·빈 상태 버튼 삭제) · `plan.tsx`(`PlanActions` 「추천 플랜 생성」 · `PlanCreate`·`PlanEmpty` 삭제) · `App.tsx`(`editSequence` · `weekDocOnServer` blank 직전 서버 조회) · 가드 `check.mjs`·`startup-check.mjs`·`reward-check.mjs`
+**→ 구현:** 백로그 047·050(사용자 실기기 확인 후 해소·삭제 2026-09-21 · 테스트 번들 `20260919-36` — **라이브 `20260917-35` 에는 미반영**, 출시는 docs/00-START-HERE §현재 상태) — 047~053 실행 그래프 N2·N6 · `miniapp/src/home.tsx`(`homeWeek` · 생성 중 화면·빈 상태 버튼 삭제) · `plan.tsx`(`PlanActions` 「추천 플랜 생성」 · `PlanCreate`·`PlanEmpty` 삭제) · `App.tsx`(`editSequence` · `weekDocOnServer` blank 직전 서버 조회) · 가드 `check.mjs`·`startup-check.mjs`·`reward-check.mjs`
 
 <a id="d65"></a>
 ## D65. 메인 휴식일 카드에는 버튼이 없다 — 문구와 「플랜 >」 링크만 (2026-09-18)
 
-**결정(사용자, 2026-09-17 · [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) G0 Q7 — 권고 채택).** 원문: 「메인에서 휴식일일 때 다른 날짜 운동하기 버튼 나오고 있는데 안 나오게 할 거야」(백로그 051). 오늘 카드가 휴식일이면 「{요일}요일 운동 오늘 하기」([D58](#d58))와 「다른 날 운동 옮겨오기」를 둘 다 없애고, 문구와 훈련일 카드와 같은 「플랜 >」 링크만 둔다. 다른 요일 운동은 주간플랜의 운동 줄로 들어간다([D63](#d63)).
+**결정(사용자, 2026-09-17 · 047~053 실행 그래프 G0 Q7 — 권고 채택).** 원문: 「메인에서 휴식일일 때 다른 날짜 운동하기 버튼 나오고 있는데 안 나오게 할 거야」(백로그 051). 오늘 카드가 휴식일이면 「{요일}요일 운동 오늘 하기」([D58](#d58))와 「다른 날 운동 옮겨오기」를 둘 다 없애고, 문구와 훈련일 카드와 같은 「플랜 >」 링크만 둔다. 다른 요일 운동은 주간플랜의 운동 줄로 들어간다([D63](#d63)).
 
-**→ 구현:** 백로그 051(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) N1
+**→ 구현:** 백로그 051(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — 047~053 실행 그래프 N1
 
 <a id="d66"></a>
 ## D66. 운동 기록 상세의 큰 입력 카드를 없앤다 — 현재 세트는 펼친 줄에서 입력, 첫 무게 안내는 남는다 (2026-09-18)
 
-**결정(사용자, 2026-09-17 · 실기기 캡처 · [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) G0 Q1·Q2 — 권고 채택).** 원문: 「운동기록 상세에서 빨간색 네모칸 부분 삭제할 거야」(백로그 048). 캡처의 네모는 `0 / 4` · 무게·횟수 큰 칸 · 「첫 세트 / 목표 8–12회」 줄이다.
+**결정(사용자, 2026-09-17 · 실기기 캡처 · 047~053 실행 그래프 G0 Q1·Q2 — 권고 채택).** 원문: 「운동기록 상세에서 빨간색 네모칸 부분 삭제할 거야」(백로그 048). 캡처의 네모는 `0 / 4` · 무게·횟수 큰 칸 · 「첫 세트 / 목표 8–12회」 줄이다.
 
 - **① 큰 입력 카드를 통째로 없앤다** — [D54](#d54) ③ 이 「제목만」을 고르며 안 고른 「카드 통째」다. 하단 「N세트 완료」 · 세트 줄 현재 강조는 그대로다.
 - **② 종목을 열면 현재 세트 줄이 펼쳐져 있다(Q2 ㉡)** — 무게·횟수는 그 줄에서 넣는다. 휴식 중에는 억지로 펼치지 않고, 사용자가 접은 줄을 다시 펴지 않는다.
 - **③ 입문자 1주차 첫 무게 안내는 남긴다(Q1 ㉠)** — 「전체 세트」 위로 옮긴다. [D55](#d55) ② 는 유효하다.
 
-**→ 구현:** 백로그 048(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) N3
+**→ 구현:** 백로그 048(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — 047~053 실행 그래프 N3
 
 <a id="d67"></a>
 ## D67. 운동목록 「최근」은 본 것과 한 것이다 — 운동 저장에 성공하면 그 종목이 앞에 온다 (2026-09-18)
 
-**결정(사용자, 2026-09-17 · [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) G0 Q3 — 권고 채택).** 원문: 「운동목록에 최근 한 운동이 표시가 안 돼. 그래서 사라진 걸로 표현했어」(백로그 049). [D33](#d33) 의 「최근」은 **열어 본** 종목뿐이었다. 이제 운동을 저장(「운동 끝」·교체 전 선저장)하는 데 **성공하면** 그 종목들이 같은 목록 앞에 들어간다 — 수행 순서대로, 중복 없이, 상한 30. 실패하면 넣지 않는다. 기기 로컬 편의값이라는 D33 의 성격은 그대로다(서버에 안 올린다). 제목은 「최근 본·한 운동 · 즐겨찾기」 — **2026-09-22 백로그 064(사용자 지시)로 첫 화면 목록은 「즐겨찾기 목록」(★ 만)이 됐고, 「최근」은 「최근」칩을 켰을 때 그 자리에 「최근 본·한 운동」으로 선다.** 본 것·한 것이라는 뜻은 그대로다.
+**결정(사용자, 2026-09-17 · 047~053 실행 그래프 G0 Q3 — 권고 채택).** 원문: 「운동목록에 최근 한 운동이 표시가 안 돼. 그래서 사라진 걸로 표현했어」(백로그 049). [D33](#d33) 의 「최근」은 **열어 본** 종목뿐이었다. 이제 운동을 저장(「운동 끝」·교체 전 선저장)하는 데 **성공하면** 그 종목들이 같은 목록 앞에 들어간다 — 수행 순서대로, 중복 없이, 상한 30. 실패하면 넣지 않는다. 기기 로컬 편의값이라는 D33 의 성격은 그대로다(서버에 안 올린다). 제목은 「최근 본·한 운동 · 즐겨찾기」 — **2026-09-22 백로그 064(사용자 지시)로 첫 화면 목록은 「즐겨찾기 목록」(★ 만)이 됐고, 「최근」은 「최근」칩을 켰을 때 그 자리에 「최근 본·한 운동」으로 선다.** 본 것·한 것이라는 뜻은 그대로다.
 
-**→ 구현:** 백로그 049(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) · 064(첫 화면은 「즐겨찾기 목록」, 「최근」은 칩 — 같은 날 확인·삭제) — [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) N4 · [061~069](../guides/miniapp-061-069-execution-graph.md) N5
+**→ 구현:** 백로그 049(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) · 064(첫 화면은 「즐겨찾기 목록」, 「최근」은 칩 — 같은 날 확인·삭제) — 047~053 실행 그래프 N4 · 061~069 N5
 
 <a id="d68"></a>
 ## D68. 안드로이드 뒤로가기는 앱이 받는다 — 열린 것 하나 닫기, 루트는 두 번 눌러 종료 (2026-09-18)
 
-**결정(사용자, 2026-09-17 · [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) G0 Q8 — 권고 채택).** 원문: 「안드로이드에서 뒤로가기 버튼을 눌렀더니 앱이 꺼지네. 2번 눌렀을 때 꺼지게 해 줘. 뒤로가기 눌렀을 때 이전 페이지로 넘어가게는 못 하나?」(백로그 052). SDK `graniteEvent` `backEvent` 를 구독하면 기본 뒤로가기(미니앱 종료)가 막힌다(앱인토스 공식 문서 「화면 이벤트」). [D27](#d27)·[D30](#d30) 의 「뒤로가기는 토스가 미니앱 단위로 가져간다」를 대체한다. 라우터는 여전히 없다.
+**결정(사용자, 2026-09-17 · 047~053 실행 그래프 G0 Q8 — 권고 채택).** 원문: 「안드로이드에서 뒤로가기 버튼을 눌렀더니 앱이 꺼지네. 2번 눌렀을 때 꺼지게 해 줘. 뒤로가기 눌렀을 때 이전 페이지로 넘어가게는 못 하나?」(백로그 052). SDK `graniteEvent` `backEvent` 를 구독하면 기본 뒤로가기(미니앱 종료)가 막힌다(앱인토스 공식 문서 「화면 이벤트」). [D27](#d27)·[D30](#d30) 의 「뒤로가기는 토스가 미니앱 단위로 가져간다」를 대체한다. 라우터는 여전히 없다.
 
 - **① 뒤로가기 = 열린 것 하나 닫기.** 시트·상세·전체 화면은 각자의 닫기(화살표와 같은 콜백)를 부른다. 메인이 아닌 탭은 메인으로 간다. 온보딩 중간 단계는 이전 단계로 간다.
 - **② 루트(메인 탭 · 최초 온보딩 첫 단계)에서는 두 번 눌러 종료.** 첫 누름에 「한 번 더 누르면 종료돼요」, 2초 안에 다시 누르면 미니앱을 닫는다(`closeView`).
 - **③ 잠긴 화면은 뒤로가기를 무시한다** — 저장 중(`busy`), 휴식 끝 확인 모달([D62](#d62) 「확인해야 닫힌다」). 닫지도 종료하지도 않는다.
 - 토스 밖(브라우저)에서는 구독하지 않는다.
 
-**→ 구현:** 백로그 052(**사용자 지시로 백로그 삭제 2026-10-01**) — [047~053 실행 그래프](../guides/miniapp-047-053-execution-graph.md) N5. **2026-09-21 실기기(`20260919-36` · 안드로이드) 재보고: 운동 기록 상세에서 뒤로 → 앱이 꺼진다**(052 §6) — 결정은 그대로, 구현이 실기기에서 안 돈다(가짜 SDK 로만 검증됨)
+**→ 구현:** 백로그 052(**사용자 지시로 백로그 삭제 2026-10-01**) — 047~053 실행 그래프 N5. **2026-09-21 실기기(`20260919-36` · 안드로이드) 재보고: 운동 기록 상세에서 뒤로 → 앱이 꺼진다**(052 §6) — 결정은 그대로, 구현이 실기기에서 안 돈다(가짜 SDK 로만 검증됨)
 
 <a id="d69"></a>
 ## D69. 메인은 월 달력이 맨 위, 운동 비중이 맨 아래 — 달력은 기록 화면에서 메인으로 (2026-09-21)
@@ -1599,7 +1599,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **⑥ 달력 칸을 누르면 그 날을 고를 뿐, 화면을 옮기지 않는다**(사용자 지시 2026-09-22 실기기 `-40`: 「달력 눌렀을 때는 날짜만 이동하게 해. 오늘 날짜 누르면 자꾸 주간플랜으로 이동해버리고 있잖아」). 모든 날이 눌린다(`aria-pressed`) · 기록한 날은 아래 한 줄 · 플랜으로 가는 문은 오늘 카드의 「플랜 >」과 하단 탭. ② 의 「플랜 탭 문」을 대체한다.
 - 정하지 않은 것: 달력이 오늘 카드를 첫 화면 아래로 밀면(360px 에서 「운동 시작」이 접힌 아래) 달력을 접는 안 — 실기기 확인 뒤.
 
-**→ 구현:** 백로그 059(사용자 지시로 해소·삭제 2026-09-22 · 테스트 번들 `20260922-42` `3fc2c7b`(⑥ 포함) — **사용자 실기기 확인 완료 2026-09-22** · **라이브 `20260917-35` 에는 미반영**, 출시는 [docs/00-START-HERE §현재 상태](../00-START-HERE.md)) — `miniapp/src/home.tsx`(`useWeekDocs`·`monthWeekStarts`·`calendarCells`·`CALENDAR_HEAD` · 달력 · 절 순서) · `history.tsx`(달력 삭제 · 같은 훅으로 최근 8주) · `index.css`(`.week-strip` 삭제 · `.month-grid .cal-*` · `--red`) · 가드 `check.mjs`·`startup-check.mjs`·`shots.mjs`(메인 절 순서 · 달력 줄 수·오늘 칸 margin 0). 실기기에서 오늘 칸이 16px 처진 원인은 죽은 전역 `.today` CSS 가 붙은 것 — 달력 클래스는 전부 `cal-` 접두([CHANGELOG](../../miniapp/CHANGELOG.md#테스트-번들-20260922-39--달력-오늘-칸-처짐의-진짜-원인-2026-09-22))
+**→ 구현:** 백로그 059(사용자 지시로 해소·삭제 2026-09-22 · 테스트 번들 `20260922-42` `3fc2c7b`(⑥ 포함) — **사용자 실기기 확인 완료 2026-09-22** · **라이브 `20260917-35` 에는 미반영**, 출시는 docs/00-START-HERE §현재 상태) — `miniapp/src/home.tsx`(`useWeekDocs`·`monthWeekStarts`·`calendarCells`·`CALENDAR_HEAD` · 달력 · 절 순서) · `history.tsx`(달력 삭제 · 같은 훅으로 최근 8주) · `index.css`(`.week-strip` 삭제 · `.month-grid .cal-*` · `--red`) · 가드 `check.mjs`·`startup-check.mjs`·`shots.mjs`(메인 절 순서 · 달력 줄 수·오늘 칸 margin 0). 실기기에서 오늘 칸이 16px 처진 원인은 죽은 전역 `.today` CSS 가 붙은 것 — 달력 클래스는 전부 `cal-` 접두(CHANGELOG)
 
 ---
 
@@ -1643,87 +1643,87 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 <a id="d73"></a>
 ## D73. 저장한 날의 오늘 카드는 「오늘 운동 완료」 — 세트를 전부 체크하면 그 자리에서 저장한다 (2026-09-22)
 
-**결정(사용자, 2026-09-22 · [054~058 실행 그래프](../guides/miniapp-054-058-execution-graph.md) G4·G0).** 원문(백로그 054): 「오늘 운동을 했는데 15세트중 15세트를 완료했어. 그런데 메인에서 아직도 이어서 기록이라고 나오고 있어」. 답: 「A. 저장했으면 완료」 · 「세트를 전부 체크하면 자동 저장」 · Q1 「즉시 저장」 · Q2 「버튼 자체가 오늘 운동 완료」.
+**결정(사용자, 2026-09-22 · 054~058 실행 그래프 G4·G0).** 원문(백로그 054): 「오늘 운동을 했는데 15세트중 15세트를 완료했어. 그런데 메인에서 아직도 이어서 기록이라고 나오고 있어」. 답: 「A. 저장했으면 완료」 · 「세트를 전부 체크하면 자동 저장」 · Q1 「즉시 저장」 · Q2 「버튼 자체가 오늘 운동 완료」.
 
 - **① 저장한 날의 오늘 카드 버튼은 「오늘 운동 완료」다.** 「운동 완료」로 저장한 날(부분 저장 포함 — [D22-6](#d22) 「한 것은 한 것이다」)은 `todayCta` 가 `done` 이고 버튼 문구가 「오늘 운동 완료」, 카드에 「N세트 완료」(저장된 근력 워킹 세트 합) 한 줄이 붙는다. **「오늘 운동 완료」는 버튼이 아니라 표시다**(사용자 정정 2026-09-22 두 번 — 「버튼으로 했으면 주간플랜으로 넘어가야지 왜 마지막 운동으로 넘어가냐」 → 「버튼이 아니라 그냥 보여주는 버튼으로」). 버튼 모양의 배지(`.today-done`)만 있고 누르는 문은 없다. 기록을 고치려면 「플랜 >」로 주간플랜에 가서 종목 줄로 들어간다(D63). 「운동 시작」/「이어서 기록」의 실행 직행은 백로그 066(062 와 함께)이 정한다. 026 N1 이 「저장된 날을 다시 열 수 있다」는 뜻으로 붙인 「이어서 기록」은 **로컬 체크만 남은 날**(서버에 안 올린 진행 · 「N / M세트 진행 중」)에만 남는다. 스트립·주간플랜의 「완료」와 같은 잣대다.
 - **② 세트를 전부 체크하면 그 순간 저장한다.** 기록 화면에서 하루의 마지막 세트를 체크하면(하단 「운동 완료」 버튼이 「운동 완료」로 바뀌는 그 조건 — 지운 세트 제외 · 추가 세트 포함 · 교체 전 올린 세트 포함 · 체크가 1개 이상) 「운동 완료」를 누른 것과 같이 저장하고 요약 화면으로 간다. **체크만 문이다** — 건너뛰기로 분모가 채워진 날은 버튼으로 끝낸다. 저장 중(`busy`)에는 다시 부르지 않는다. **무게 없는 완료 세트(계획 무게도 없음)가 있으면 자동 저장하지 않는다** — 저장이 그 세트를 버리고 로컬 진행을 지우므로, 그때는 버튼이 남아 사용자가 「무게 미입력」 띠를 보고 적을 수 있다(교차검증 반영).
 - **③ [D62](#d62) ⑤ 를 좁힌다.** 「마지막 세트를 끝내도 휴식이 걸린다」는 **종목의** 마지막 세트에 그대로 유효하고, **하루의** 마지막 세트는 ②가 저장으로 닫으므로 휴식이 없다(요약 화면이 그 자리). 부분 완료로 끝내는 「운동 완료」 버튼은 그대로다.
 
-**→ 구현:** 백로그 054(**사용자 실기기 확인 후 해소·삭제 2026-09-22** · 테스트 번들 `20260922-45`·`-46`) — `miniapp/src/home.tsx`(`todayCta` `done` · `.today-done` 표시 · 「N세트 완료」 `doneSetsOf`) · `session.tsx`(`sessionComplete` 순수함수 · `toggleSet`·`completeCardio` 체크 직후 `onFinish`) · 가드 `check.mjs`·`session-records-check.mjs` — [054~058 실행 그래프](../guides/miniapp-054-058-execution-graph.md) N1·N1b·N1c·N1d.
+**→ 구현:** 백로그 054(**사용자 실기기 확인 후 해소·삭제 2026-09-22** · 테스트 번들 `20260922-45`·`-46`) — `miniapp/src/home.tsx`(`todayCta` `done` · `.today-done` 표시 · 「N세트 완료」 `doneSetsOf`) · `session.tsx`(`sessionComplete` 순수함수 · `toggleSet`·`completeCardio` 체크 직후 `onFinish`) · 가드 `check.mjs`·`session-records-check.mjs` — 054~058 실행 그래프 N1·N1b·N1c·N1d.
 **같이 확인된 것 — 백로그 057(결정 없는 표기 추가 · 사용자 확인 후 삭제 2026-09-22):** 주간플랜 스트립 7칸 아래 날짜 숫자와 선택한 날 제목 「M월 D일」(`plan.tsx` `PlanView` · 메인과 같은 `weekDates(weekStart)` 한 벌 · 빈 주도 이번 주 날짜) — 같은 그래프 N3.
 
 <a id="d74"></a>
 ## D74. 주간플랜이 메인이다 — 첫 화면·뒤로가기 루트는 주간플랜, 지금의 메인은 「대시보드」, 오늘 카드 버튼은 주간플랜으로 (2026-09-22)
 
-**결정(사용자, 2026-09-22 · [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) G0 Q2·Q3·Q7).** 원문(백로그 062): 「주간플랜이 메인메뉴가 되고 현재 메인은 대시보드로 변경하는게 좋을것같음. 그리고 앱 들어오면 메인 (주간플랜) 이 첫 화면이 되도록」 · (066): 「대시보드 (현 메인) 에서 이어서 실행 하면 메인 (현 주간플랜) 으로 이동하게 할것.」 답: Q2 「순서 그대로」 · Q3 「주간플랜 탭 → 「메인」·제목 「주간 운동 플랜」 / 지금 메인 탭 → 「대시보드」·제목 「대시보드」」 · Q7 「세 버튼 모두 주간플랜」.
+**결정(사용자, 2026-09-22 · 061~069 실행 그래프 G0 Q2·Q3·Q7).** 원문(백로그 062): 「주간플랜이 메인메뉴가 되고 현재 메인은 대시보드로 변경하는게 좋을것같음. 그리고 앱 들어오면 메인 (주간플랜) 이 첫 화면이 되도록」 · (066): 「대시보드 (현 메인) 에서 이어서 실행 하면 메인 (현 주간플랜) 으로 이동하게 할것.」 답: Q2 「순서 그대로」 · Q3 「주간플랜 탭 → 「메인」·제목 「주간 운동 플랜」 / 지금 메인 탭 → 「대시보드」·제목 「대시보드」」 · Q7 「세 버튼 모두 주간플랜」.
 
 - **① 첫 화면과 뒤로가기 루트는 주간플랜 탭이다.** 앱을 열면 주간플랜, 다른 탭에서 뒤로가기 → 주간플랜, 주간플랜에서 두 번 → 종료([D68](#d68) ② 의 「메인 탭」= 주간플랜). 운동 완료 요약 화면을 닫아도 주간플랜이다. 코드는 루트 탭 상수 하나(`ROOT_TAB`)가 셋을 묶는다.
 - **② 이름.** 탭 순서는 그대로다(주간플랜 가운데 — 2026-09-08 지시 유지). 주간플랜 탭 라벨은 **「메인」**, 화면 제목은 「주간 운동 플랜」 그대로. 지금의 메인 탭은 라벨·제목 모두 **「대시보드」**(화면 내용은 [D69](#d69) 그대로 — 달력·오늘 카드·기록·비중).
 - **③ 대시보드 오늘 카드 버튼은 실행 화면이 아니라 주간플랜으로 간다.** 「운동 시작」·「이어서 기록」 두 경우 모두 주간플랜 탭(오늘 요일이 선택된 상태)으로 — 한 버튼 한 목적지. 실행 화면은 주간플랜 종목 줄에서 연다([D63](#d63)). **저장한 날은 버튼이 아니라 표시다**([D73](#d73) ① 정정 2026-09-22 — 「오늘 운동 완료」 배지 · 기록을 고치려면 「플랜 >」로 간다), 그래서 이 항의 대상은 두 상태뿐이다. [D27](#d27) 「오늘 카드가 실행 진입점」을 이렇게 좁힌다. 휴식일 카드에 버튼이 없는 것([D65](#d65))은 그대로.
 
-**→ 구현:** 백로그 062·066(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `miniapp/src/App.tsx`(`ROOT_TAB` · `TABS` 라벨 · `TAB_TITLE`) · `home.tsx`(오늘 카드 버튼 → `onGoPlan`) · 가드 `check.mjs`·`startup-check.mjs` — [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) N4
+**→ 구현:** 백로그 062·066(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `miniapp/src/App.tsx`(`ROOT_TAB` · `TABS` 라벨 · `TAB_TITLE`) · `home.tsx`(오늘 카드 버튼 → `onGoPlan`) · 가드 `check.mjs`·`startup-check.mjs` — 061~069 실행 그래프 N4
 
 <a id="d75"></a>
 ## D75. 빈 주는 근력도 유산소도 없는 7일 휴식이다 — 유산소도 「+ 운동 추가」로 (2026-09-22)
 
-**결정(사용자, 2026-09-22 · [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) G0 Q6 승인).** 원문(백로그 069): 「수동플랜 생성시 사이클 3개가 생기고 있는데 빈 화면으로 생기면 되는데 생길 필요가 없음.」 재현: `blank`(빈 드래프트) 가 생성과 같은 확장기를 타서 프로필 `cardio_pref` 도스대로 유산소 3회를 휴식일에 놓았다(테스트가 그 동작을 의도로 못 박고 있었다).
+**결정(사용자, 2026-09-22 · 061~069 실행 그래프 G0 Q6 승인).** 원문(백로그 069): 「수동플랜 생성시 사이클 3개가 생기고 있는데 빈 화면으로 생기면 되는데 생길 필요가 없음.」 재현: `blank`(빈 드래프트) 가 생성과 같은 확장기를 타서 프로필 `cardio_pref` 도스대로 유산소 3회를 휴식일에 놓았다(테스트가 그 동작을 의도로 못 박고 있었다).
 
 - **빈 주(`blank`) 는 7일 전부 휴식일이고 유산소도 없다.** [D20-2](#d20) 「빈 주 = 빈 드래프트」를 「7일 전부 `cardio_override: "none"` 인 휴식일 드래프트」로 보강한다 — 확장기·도스 배치는 그대로 돌고 요일 결정이 덮는다([D57](#d57) 의 장치). 프로필의 유산소 선호는 「추천 플랜 생성」에만 쓰인다.
-- 빈 주에 유산소를 넣는 길은 요일 「+ 운동 추가」([계약 §2.2](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) `add` 규칙 — 휴식일도 된다) 그대로다.
+- 빈 주에 유산소를 넣는 길은 요일 「+ 운동 추가」(계약 §2.2 `add` 규칙 — 휴식일도 된다) 그대로다.
 
-**→ 구현:** 백로그 069(**사용자 지시로 백로그 삭제 2026-10-01**)(번들 `20260923-48` 에 실렸으나 **2026-09-23 확인 항목에서 빠졌다** — 🟡 유지) — `backend/src/generation/edit.ts`(`blankDraft`) · `backend/test/generation-api-contract.test.ts` §blank · 계약 §2.2 `blank` 문장 — [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) N1
+**→ 구현:** 백로그 069(**사용자 지시로 백로그 삭제 2026-10-01**)(번들 `20260923-48` 에 실렸으나 **2026-09-23 확인 항목에서 빠졌다** — 🟡 유지) — `backend/src/generation/edit.ts`(`blankDraft`) · `backend/test/generation-api-contract.test.ts` §blank · 계약 §2.2 `blank` 문장 — 061~069 실행 그래프 N1
 
 <a id="d76"></a>
 ## D76. 하루 비우기 — 계약 `clear_day` op 하나로 그 날 종목·유산소를 한 번에 뺀다 (2026-09-22)
 
-**결정(사용자, 2026-09-22 · [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) G0 Q1).** 원문(백로그 061): 「하루 운동을 전부 삭제하고 싶은데 하나씩 삭제해야되는 번거로움이 있음. 하루 삭제 버튼이 있었으면 좋겠음.」 첫 답 「서버가 왜 필요해. 그냥 삭제하면 되는데?」 → 플랜은 서버 정본([D19](#d19))이라 지금도 「이 운동 빼기」가 서버 `remove` 라고 설명 → 「서버 op 하나로」.
+**결정(사용자, 2026-09-22 · 061~069 실행 그래프 G0 Q1).** 원문(백로그 061): 「하루 운동을 전부 삭제하고 싶은데 하나씩 삭제해야되는 번거로움이 있음. 하루 삭제 버튼이 있었으면 좋겠음.」 첫 답 「서버가 왜 필요해. 그냥 삭제하면 되는데?」 → 플랜은 서버 정본([D19](#d19))이라 지금도 「이 운동 빼기」가 서버 `remove` 라고 설명 → 「서버 op 하나로」.
 
 - **계약 §2.2 에 `{ "op": "clear_day", "day_index": n }` 을 추가한다(추가만).** 그 날 드래프트 `items: []` + `cardio_override: "none"` → 재확장 한 번 → 휴식일. 저장된 문서가 없으면 다른 편집 op 와 같이 `404` · `day_index` 밖은 `400` · 이미 휴식일이면 그대로 `200`(멱등). 그 날 기록(`sessions`)이 있어도 막지 않는다 — 기록은 날짜의 사실이고 플랜만 비운다(계약 §2.2 「이동 잠금을 서버가 강제하지 않는다」와 같은 논리).
 - 화면은 주간플랜 요일 카드 하단 「이 날 비우기」(확인창 한 번). 종목이 없는 날에는 없다. 클라이언트가 `remove` 를 반복하지 않는다 — 요청 하나라 반쯤 지워진 날이 남지 않는다.
 
-**→ 구현:** 백로그 061(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `backend/src/generation/edit.ts` `applyEdit` · `backend/test` · 계약 §2.2 · `miniapp/src/api.ts` `PlanEdit` · `plan.tsx` — [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) N2
+**→ 구현:** 백로그 061(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `backend/src/generation/edit.ts` `applyEdit` · `backend/test` · 계약 §2.2 · `miniapp/src/api.ts` `PlanEdit` · `plan.tsx` — 061~069 실행 그래프 N2
 
 <a id="d77"></a>
 ## D77. 유산소 기록 총 시간은 분·초다 — 초 0–59 · 0분 허용(분+초 > 0) · 플랜 목표는 그대로 1분 하한 (2026-09-22)
 
-**결정(사용자, 2026-09-22 · [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) G0 Q5).** 원문(백로그 067): 「러닝을 초 단위 추가할것. 기본은 00초 최대 59초 그래서 분,초 기록할수 있도록」 · Q5 답 「0분도 허용(분+초 > 0)」.
+**결정(사용자, 2026-09-22 · 061~069 실행 그래프 G0 Q5).** 원문(백로그 067): 「러닝을 초 단위 추가할것. 기본은 00초 최대 59초 그래서 분,초 기록할수 있도록」 · Q5 답 「0분도 허용(분+초 > 0)」.
 
 - **기록(§2.4)의 `cardio` 에 `duration_sec`(선택 · 정수 0–59) 를 더한다.** 없으면 0 이다 — 옛 클라이언트 페이로드·옛 문서는 그대로 통과한다. 화면은 총 시간을 「분」「초」 두 칸으로, 초는 비우면 00.
 - **기록의 `duration_min` 하한은 1 → 0.** 대신 분+초 > 0 을 `cardioRangeProblems` 가 검사한다(0분 0초는 `400` · 화면은 저장 전에 띠). **플랜 목표(`CardioTarget.duration_min` · `cardio` op)는 그대로 1분 하한**이다 — 목표는 분 단위 계획이고 요청은 기록이다([D57](#d57) 의 기록 칸만 바뀐다).
 - 분 칸을 비우고 초만 적으면 분은 0 이다(초를 적었으면 「계획 분으로 채우기」(041 G0 Q6)를 하지 않는다 — 둘 다 비웠을 때만 계획 분). 주간 합산은 초까지 더해 분으로 반올림한다(표시 단위는 분 그대로).
 
-**→ 구현:** 백로그 067(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `backend/src/schemas/performed-session.schema.json` · [02-data-model](../architecture/02-data-model.md) · 계약 §2.4 · `backend/src/generation/cardio.ts` `CARDIO_LIMITS`·`cardioRangeProblems` · `miniapp/src/cardio-input.tsx` · `session-records.ts` — [061~069 실행 그래프](../guides/miniapp-061-069-execution-graph.md) N7
+**→ 구현:** 백로그 067(**사용자 실기기 확인 완료 2026-09-23**(테스트 번들 `20260923-48` · 백엔드 배포 뒤) — 백로그 삭제) — `backend/src/schemas/performed-session.schema.json` · [02-data-model](../architecture/02-data-model.md) · 계약 §2.4 · `backend/src/generation/cardio.ts` `CARDIO_LIMITS`·`cardioRangeProblems` · `miniapp/src/cardio-input.tsx` · `session-records.ts` — 061~069 실행 그래프 N7
 
 
 <a id="d78"></a>
 
 ## D78. 오늘 카드 — 저장한 날은 「오늘 운동 기록보기」, 다 체크했는데 저장이 안 된 날은 「아직 저장되지 않았어요」 + 그 자리에서 저장 (2026-09-24)
 
-**결정(사용자, 2026-09-24 · [073~076 실행 그래프](../guides/miniapp-073-076-execution-graph.md) G0).** 원문(백로그 073): 「20/20 세트 진행중이 아니라 오늘 운동완료로 나와야하고 이어서기록이 아니라 버튼이 없어야함. 혹은 오늘 운동 기록보기 이렇게 구성되어야하는데 지금 자꾸 운동 덜한것처럼 나오네.」 답: 저장한 날 = 「「오늘 운동 기록보기」 버튼」 · 20/20 미저장 = 「「저장 안 됨」 + 여기서 바로 저장」.
+**결정(사용자, 2026-09-24 · 073~076 실행 그래프 G0).** 원문(백로그 073): 「20/20 세트 진행중이 아니라 오늘 운동완료로 나와야하고 이어서기록이 아니라 버튼이 없어야함. 혹은 오늘 운동 기록보기 이렇게 구성되어야하는데 지금 자꾸 운동 덜한것처럼 나오네.」 답: 저장한 날 = 「「오늘 운동 기록보기」 버튼」 · 20/20 미저장 = 「「저장 안 됨」 + 여기서 바로 저장」.
 
 - **① 저장한 날**: 카드에 「오늘 운동 완료」·「N세트 완료」 줄이 남고, 버튼은 **「오늘 운동 기록보기」** — 저장된 오늘 기록의 요약 화면(운동 완료 뒤 뜨는 그 화면)을 연다. 닫으면 대시보드로 돌아온다. [D73](#d73) ① 「표시일 뿐 버튼 아님」과 [D74](#d74) ③ 「오늘 카드 버튼은 주간플랜으로」를 이 한 상태에서 좁힌다.
 - **② 다 체크했는데 서버 기록이 없는 날**(자동 저장이 무게 미입력·동기화·네트워크 실패로 빠진 날): 「진행 중」·「이어서 기록」이라 부르지 않는다. 「N세트 체크 · 아직 저장되지 않았어요」 한 줄과 **「기록 저장하기」** — 대시보드에서 곧바로 저장(기록 화면의 「운동 완료」와 같은 문)하고, 성공하면 요약 화면으로 간다. 실패하면 이유를 카드에 보이고 체크는 그대로 둔다. **무게 없는 완료 세트가 있으면** 저장이 그 세트를 버리므로 저장 대신 「무게 입력하기」로 주간플랜에 간다(D74 ③).
 - **③ 일부만 체크한 날**은 그대로 「N / M세트 진행 중」 + 「이어서 기록」(→ 주간플랜). 기준은 기록 화면의 「운동 완료」 버튼과 같은 식(`tally` — 지운 세트 제외 · 추가 세트 포함)이다.
 
-**→ 구현:** 백로그 073(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — `miniapp/src/home.tsx` `todayCard` · `App.tsx` — [073~076 실행 그래프](../guides/miniapp-073-076-execution-graph.md) N2
+**→ 구현:** 백로그 073(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — `miniapp/src/home.tsx` `todayCard` · `App.tsx` — 073~076 실행 그래프 N2
 
 <a id="d79"></a>
 
 ## D79. 요일 교환은 기록도 운동을 따라간다 — 이동 잠금 없음 (2026-09-24)
 
-**결정(사용자, 2026-09-24 · [073~076 실행 그래프](../guides/miniapp-073-076-execution-graph.md) G0).** 원문(백로그 074): 「오늘 수요일인데 월요일 운동을 안했단말이야. 근데 옮길수가 없는 상태야. 운동을 하지도 않았는데 못옮기는건 문제가 있는데.」 답: 기록 있는 날로 옮기면 「교체」 → 수요일 기록은 「기록도 운동을 따라간다」.
+**결정(사용자, 2026-09-24 · 073~076 실행 그래프 G0).** 원문(백로그 074): 「오늘 수요일인데 월요일 운동을 안했단말이야. 근데 옮길수가 없는 상태야. 운동을 하지도 않았는데 못옮기는건 문제가 있는데.」 답: 기록 있는 날로 옮기면 「교체」 → 수요일 기록은 「기록도 운동을 따라간다」.
 
 - **① 교환(`swap`)은 두 날의 운동과 함께 그 날의 저장 기록(`sessions.{day}`)·진행 초안(`progress_drafts.{day}`)·기기의 진행 입력(체크·무게·횟수·제외·통증·유산소 칸 · 종목 순서) 전부를 맞바꾼다. 대상이 비어 있어 옮기기만 하는 경우도 같다.** 옮겨 간 기록의 `day_index`·`date` 는 새 요일 것으로 다시 쓴다 — [D63](#d63) ② 「기록은 그 요일의 것」 그대로(저장 날짜 = 요일 날짜). 월(미실행)↔수(기록 있음)를 바꾸면 수요일에는 월요일 운동이 기록 없이 오고, 수요일에 한 기록은 그 운동과 함께 월요일 칸으로 간다.
 - **② 이동 잠금을 없앤다.** 기록이 운동을 떠나지 않으므로 [D22-4](#d22-4-요일-이동--주간-스트립-드래그앤드롭-놓으면-맞바꾼다) 「이미 진행한 날은 옮길 수 없다(양쪽 잠금)」가 막던 결과(기록이 엉뚱한 운동 옆에 남는 것)가 생기지 않는다. D22-4 의 그 문단을 대체한다. **실행 중인 날**을 옮기면 기록 화면은 닫힌다(기존 그대로). 옮기기 전 옛 화면이 늦게 보내는 쓰기는 편집이 새로 만든 `generated_at` 때문에 서버가 `409` 로 거절한다(계약 §2.4·§2.4.1 기존 규칙) — 옛 요일에 기록이 다시 써지지 않는다.
 - **③ 실제로 합쳐지는 `merge` 는 그대로다**(화면에 없음) — 기록은 제자리, 두 날 초안은 닫힌다. 대상이 비어 `swap` 과 같은 결과가 되는 `merge` 는 ①처럼 기록도 따라간다(계약 §2.2). 합친 날의 기록을 어느 요일에 둘지는 이 결정 밖이다.
 
-**→ 구현:** 백로그 074(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — 계약 [§2.2 `move`](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) · `backend/src/generation/progress-draft.ts` `swapDayRecords` · `index.ts` `editWeek` · `miniapp/dev-server.mjs` · `miniapp/src/App.tsx`·`plan.tsx` — [073~076 실행 그래프](../guides/miniapp-073-076-execution-graph.md) N3
+**→ 구현:** 백로그 074(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — 계약 §2.2 `move` · `backend/src/generation/progress-draft.ts` `swapDayRecords` · `index.ts` `editWeek` · `miniapp/dev-server.mjs` · `miniapp/src/App.tsx`·`plan.tsx` — 073~076 실행 그래프 N3
 
 <a id="d80"></a>
 
 ## D80. 이번 주 생성은 오늘부터 — 요일 후보는 가능요일 ∩ 오늘~일 · 남은 날만큼만 · 1회 허용 · 재생성도 (2026-09-25)
 
-**결정(사용자, 2026-09-25 · [078~080 실행 그래프](../guides/miniapp-078-080-execution-graph.md) G0).** 원문(백로그 080): 「오늘이 수요일이면 수요일 부터 운동 플랜이 생성되어야하는데 이전날짜에 운동이 생기고있음.」 G0 추가 답: 「목요일에 생성했으면 목,금,토,일 중에 2개 생성하면 되는데 왜 가능요일이 있는거야? 난 가능 요일을 넣은적이 없는데」(온보딩 요일 칩은 7개 전부 켜진 채 시작한다 — [D56](#d56) ②).
+**결정(사용자, 2026-09-25 · 078~080 실행 그래프 G0).** 원문(백로그 080): 「오늘이 수요일이면 수요일 부터 운동 플랜이 생성되어야하는데 이전날짜에 운동이 생기고있음.」 G0 추가 답: 「목요일에 생성했으면 목,금,토,일 중에 2개 생성하면 되는데 왜 가능요일이 있는거야? 난 가능 요일을 넣은적이 없는데」(온보딩 요일 칩은 7개 전부 켜진 채 시작한다 — [D56](#d56) ②).
 
 - **① 이번 주를 생성하면 근력 요일 후보는 가능요일 ∩ 오늘~일이다.** 「오늘」은 서버 KST 시각(`access.ts` `generationWeek` 와 같은 기준)이고, `week_start_date` 가 그 이번 주일 때만 적용한다. 후보 안의 배치 규칙은 [D56](#d56) ② 그대로(가장 벌어지게).
 - **② 후보가 비면 오늘~일 전부가 후보다** — 가능요일 칩 때문에 생성이 막히지 않는다.
@@ -1731,7 +1731,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **④ 재생성도 같다.** 완료한 날은 [D60](#d60) ① 대로 저장 직전에 되살아나고, 완료 안 한 지난 날의 운동은 새 플랜에서 사라진다. [D60](#d60) Q8 「오늘의 출처 불필요」는 재생성의 완료 보존에 대한 말이고, 이 결정이 생성 입력에 오늘을 더한다.
 - 유산소는 근력일 안에서만 놓이므로([D45](#d45) ① · 백로그 078) 따라서 오늘부터다.
 
-**→ 구현:** 백로그 080(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — `backend/src/generation/handler.ts`(이번 주 프로필) · `expand.ts` · `data/splits.ts`(1회 → 전신) · [계약 §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md) `available_days` 문단 — [078~080 실행 그래프](../guides/miniapp-078-080-execution-graph.md) N2
+**→ 구현:** 백로그 080(**사용자 실기기 확인 후 해소·삭제 2026-10-01** · 라이브 `20261001-59`) — `backend/src/generation/handler.ts`(이번 주 프로필) · `expand.ts` · `data/splits.ts`(1회 → 전신) · 계약 §1 `available_days` 문단 — 078~080 실행 그래프 N2
 
 ---
 
@@ -1739,7 +1739,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D81. 운동 찾기 2단은 동작(중분류)이다 — 부위 → 동작 → 종목, 장비(운동방식)는 목록 안 소제목 (2026-09-25)
 
-**결정(사용자, 2026-09-25 · 백로그 083 · [083 실행 그래프](../guides/miniapp-083-execution-graph.md) G0).** 원문: 「지금은 운동부위 선택 → 운동목록 이렇게 나오는데 가슴 → 벤치프레스 → 운동목록 이렇게 변경하고 싶어. 중분류라고 해야되나.」 제안 페이지(가슴 84종 목업)를 본 뒤: 「1~3은 제안한대로 진행하고 4번은 사이드 레터럴 레이즈, 프론트 레이즈 등등 나눌것. 레이즈는 너무 많음」.
+**결정(사용자, 2026-09-25 · 백로그 083 · 083 실행 그래프 G0).** 원문: 「지금은 운동부위 선택 → 운동목록 이렇게 나오는데 가슴 → 벤치프레스 → 운동목록 이렇게 변경하고 싶어. 중분류라고 해야되나.」 제안 페이지(가슴 84종 목업)를 본 뒤: 「1~3은 제안한대로 진행하고 4번은 사이드 레터럴 레이즈, 프론트 레이즈 등등 나눌것. 레이즈는 너무 많음」.
 
 **왜 D31 을 뒤집나.** [D31](#d31) 은 가운데 칸을 장비로 두었다. 그 결과 가슴의 벤치프레스 16종이 바벨 6 · 덤벨 6 · 스미스머신 2 · 머신 1 · 밴드 1 칸에 흩어져, 벤치프레스를 찾으려면 칸을 다섯 번 연다. D31 이 동작 축을 기각한 이유 셋은 이렇게 답한다: **커버리지** — 스트레칭·점프·민첩은 방식 이름 그대로 한 칸으로 흡수하고 나머지는 규칙을 고쳐 근력 종목 전부가 칸을 갖는다(어디에도 안 맞는 것은 「기타」) · **라벨링 비용** — 이름 정규식 규칙(`gen-catalog.mjs`)을 고치는 것으로 끝나고 종목별 수작업 표가 없다 · **초보자 인지** — 「힌지」 같은 추상 패턴이 아니라 헬스장에서 쓰는 종목 이름(벤치프레스·스쿼트·로우·컬)이다. **D31 의 「동작 축을 1차로 둔 서비스가 없다」는 그대로 남는 약점**이고, 이 결정은 사용자 판단으로 그것을 넘는다.
 
@@ -1748,17 +1748,17 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **③ 중분류가 2칸 이하인 부위는 2단을 건너뛴다**(지금 이두·목) — 누를 칸이 둘뿐이면 한 번 더 누르게 할 이유가 없다.
 - **④ 「레이즈」로 뭉뚱그리지 않는다.** 사이드 레터럴 레이즈 · 프론트 레이즈 · 리어 델트 · 로테이션·견갑으로 나눈다. 같은 이유로 남은 「프레스」는 주동근으로 체스트프레스 · 숄더프레스 · 트라이셉스 프레스, 인클라인 덤벨 프레스 같은 벤치 계열은 벤치프레스다.
 - **⑤ 칸 순서** — 종목 많은 순, 스트레칭 · 점프·민첩 · 기타는 끝(G0 Q4).
-- **⑥ 이름 초안은 [083 그래프](../guides/miniapp-083-execution-graph.md) §1.1 그대로 간다**(G0 Q2 · 사용자 「그래 진행해」) — 실기기에서 보고 고친다.
+- **⑥ 이름 초안은 083 그래프 §1.1 그대로 간다**(G0 Q2 · 사용자 「그래 진행해」) — 실기기에서 보고 고친다.
 
 **D31 에서 대체되는 것:** 2단의 방식 **칸**(과 「3종 미만도 기타로 접지 않는다」 정정 — 칸이 없어졌다) · 30종 넘는 칸의 계열 소제목 · 방식 칩이 켜지면 방식 단을 건너뛰는 규칙. **그대로인 것:** 검색은 트리를 건너뛰고 검색 결과는 온이름이다 · 유산소는 부위가 아니다(D31 정정 · [D71](#d71)) · 방식 분류(`WAYS` 12종 — 이제 3단 소제목의 이름. 방식 칩 4개 머신·덤벨·바벨·맨몸은 그중 일부) · 종목 줄 부제(`rowDetail` — 방식 · 부위, 유산소는 「유산소」 하나) · 트리 안 목록 줄은 장비 접두를 뗀 이름(방식 소제목이 이미 말한다).
 
 **고르기 화면은 이번 범위 밖이다**(사용자 결정 2). [D32](#d32) 의 방식 소제목 그대로 — 운동 찾기와 축이 달라지는 것을 감수하고, 실기기 확인 뒤 백로그 083 §3(**사용자 지시로 삭제 2026-10-02**) 에서 정한다.
 
-**→ 구현:** `miniapp/gen-catalog.mjs`(`MOVES`·`moveOf`) · `miniapp/src/catalog.g.ts` · `miniapp/src/catalog.tsx`(`movesOfList`·`inMoveOf`·`skipsMoves`·`waySections`·`Catalog`) · `miniapp/check.mjs` — [083 그래프](../guides/miniapp-083-execution-graph.md) N1·N2
+**→ 구현:** `miniapp/gen-catalog.mjs`(`MOVES`·`moveOf`) · `miniapp/src/catalog.g.ts` · `miniapp/src/catalog.tsx`(`movesOfList`·`inMoveOf`·`skipsMoves`·`waySections`·`Catalog`) · `miniapp/check.mjs` — 083 그래프 N1·N2
 
 ## D82. 토스 로그인 전에 인트로 화면 — 로그인 기록이 없을 때만 (2026-09-28)
 
-**결정(사용자, 2026-09-28 · 백로그 084 · [084 실행 그래프](../guides/miniapp-084-execution-graph.md)).** 토스 검수가 번들 `20260925-54` 를 반려했다(검수 요청 `211777`): 「서비스 설명 없이 즉시 토스 로그인을 유도하고 있어 인트로 페이지 추가가 필요해요. 서비스를 소개하는 인트로 페이지가 먼저 노출된 후 토스 로그인이 진행될 수 있도록 수정해 주세요.」 제안 A(매번 인트로)·B(로그인 기록이 없을 때만) 중 사용자가 **B** 를 골랐다.
+**결정(사용자, 2026-09-28 · 백로그 084 · 084 실행 그래프).** 토스 검수가 번들 `20260925-54` 를 반려했다(검수 요청 `211777`): 「서비스 설명 없이 즉시 토스 로그인을 유도하고 있어 인트로 페이지 추가가 필요해요. 서비스를 소개하는 인트로 페이지가 먼저 노출된 후 토스 로그인이 진행될 수 있도록 수정해 주세요.」 제안 A(매번 인트로)·B(로그인 기록이 없을 때만) 중 사용자가 **B** 를 골랐다.
 
 **근거(조사).** 비게임 출시 체크리스트 「토스 로그인」 — 「토스 로그인을 사용하는 경우, 어떤 서비스인지 알 수 있도록 인트로 페이지에서 서비스 설명을 제공해요」 · 「토스 앱에서 로그인 연결을 끊은 뒤 미니앱에 다시 접속하면, 다시 로그인을 요청하는 약관 화면이 노출돼요」. `appLogin()` 은 처음(또는 연결을 끊은 뒤) 호출에만 로그인·약관 화면을 띄우고, 이미 동의한 사용자에게는 화면 없이 코드를 준다(토스 로그인 가이드).
 
@@ -1769,7 +1769,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **감수한 틈.** 연결을 끊은 사실은 `appLogin()` 을 한 번 불러야 안다 — 끊은 직후 첫 진입은 기록이 남아 있어 인트로 없이 약관이 뜰 수 있다. 재방문 사용자가 매번 버튼을 누르지 않게 하는 대가로 사용자가 받아들였다. **같은 사유로 다시 반려되면 A(앱을 열 때마다 인트로)로 간다.**
 
-**→ 구현:** `miniapp/src/local-data.ts`(`hasServerAccount`) · `miniapp/src/account-shell.tsx`(`needsIntro`·인트로) · `miniapp/src/App.tsx`(소개 문단 삭제) — [084 그래프](../guides/miniapp-084-execution-graph.md) N1
+**→ 구현:** `miniapp/src/local-data.ts`(`hasServerAccount`) · `miniapp/src/account-shell.tsx`(`needsIntro`·인트로) · `miniapp/src/App.tsx`(소개 문단 삭제) — 084 그래프 N1
 
 ---
 
@@ -1781,7 +1781,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 - `ExerciseDetail`을 공유하는 운동 찾기와 운동 중 상세에서 같은 자료를 연다. 12종 외에는 기존 근육 도해·운동 설명을 유지한다.
 - 영상은 자동재생 없이 사용자가 시작한다. 무음·인라인·반복 재생이며 시작·마무리 자세를 따로 볼 수 있다. 화면을 숨기면 멈추고, 재생 실패 시 시작 자세로 대체한다.
-- `gen-exercise-media.mjs`가 [제작 manifest](../../miniapp/backlogs/운동별_정보_이미지/pilot-v2/manifest.json)의 해시를 확인하고 MP4·WebP만 앱 `public/exercise-media/human-v2/`로 복사한다. 콘텐츠 해시를 파일명에 넣고 `exercise-media.g.ts`에서 기존 운동 ID에 매핑한다. 48파일 약 3.1MB를 번들에 포함하며 백엔드 API·기록 스키마는 바꾸지 않는다.
+- `gen-exercise-media.mjs`가 제작 manifest의 해시를 확인하고 MP4·WebP만 앱 `public/exercise-media/human-v2/`로 복사한다. 콘텐츠 해시를 파일명에 넣고 `exercise-media.g.ts`에서 기존 운동 ID에 매핑한다. 48파일 약 3.1MB를 번들에 포함하며 백엔드 API·기록 스키마는 바꾸지 않는다.
 - 다음 제작은 [공통 인체 재사용 가이드](https://github.com/YoungkeunAhn/workout_plan_app/blob/9463c48b676abb587413f73d74a59267a7dbaf1f/miniapp/backlogs/%EC%9A%B4%EB%8F%99%EB%B3%84_%EC%A0%95%EB%B3%B4_%EC%9D%B4%EB%AF%B8%EC%A7%80/pilot-v2/01-reuse-guide.md)를 따른다. 기술·브라우저 검사는 동작·해부학 전문 승인과 구분한다. 전문 검수는 0/12로 남아 있으며 토스 검수 제출은 전문 승인을 뜻하지 않는다.
 
 **검증:** `pnpm --filter miniapp check:exercise-media` — 12종 × 360·390px 실제 재생, 정지 이미지, 오류 폴백, 자동재생 없음, 숨김 정지, 미지원 종목 표시. 토스 실기기 확인 여부는 배포 기록에 따로 남긴다.
@@ -1891,7 +1891,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 - 맨몸 111종과 같은 파이프라인(`bodyweight-v1/source`, `BATCH_ROOT`로 묶음 지정)과 `human-v2` 공통 인체를 쓴다. 순서는 종목별 자세 조사 → 포즈 초안 → 저자 검토 → 통합 검토 → 최종 렌더·검사·패키징 → 교차검수다.
 - 변형은 원문(free-exercise-db 텍스트)과 앱 한국어 설명이 정한다. 참고 사진은 원문에 없는 값만 채운다(사용자, 2026-10-01). `tricep_dumbbell_kickback`만 사용자가 사진 버전을 골랐다.
-- 교차검수는 cursor-agent `gpt-5.6-sol-high`(plan 모드)로 시작했다. Cursor 월 API 한도가 소진된 뒤에는 사용자 선택으로 `composer-2.5`(ask 모드, 읽기전용)로 이어 갔다. 지적은 작성자가 고친 뒤 다시 검수했다. 리뷰어 판정과 다르게 처리한 3종은 [integrator-resolutions](../../miniapp/backlogs/운동별_정보_이미지/dumbbell-v1/revisions/cross-20261001/integrator-resolutions.json)에 근거와 함께 남겼다.
+- 교차검수는 cursor-agent `gpt-5.6-sol-high`(plan 모드)로 시작했다. Cursor 월 API 한도가 소진된 뒤에는 사용자 선택으로 `composer-2.5`(ask 모드, 읽기전용)로 이어 갔다. 지적은 작성자가 고친 뒤 다시 검수했다. 리뷰어 판정과 다르게 처리한 3종은 integrator-resolutions에 근거와 함께 남겼다.
 - 앱에는 맨몸 111·대표 12·덤벨 120에서 중복 2종을 뺀 241종을 싣는다. 생성기는 세 manifest가 모두 최종 준비 상태이고 해시가 맞아야 통과한다. 재생·표시 규칙은 [D84](#d84)와 같다.
 - 전문(운동·해부학) 검수와 토스 실기기 확인은 별도이며 대기 상태다. 운동 처방 값·API·기록 스키마는 바꾸지 않는다.
 
@@ -1937,7 +1937,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D90. 대시보드에 「꾸준함과 성장」을 두고, 운동하는 날 아침에 푸시를 보낸다 (2026-10-06)
 
-**결정(사용자, 2026-10-06 「승인. 개발 진행해」).** 근거와 시안은 사용률 개선 제안 폴더 `miniapp/backlogs/사용률_푸시_대시보드/`(구현 뒤 삭제 2026-10-07 — `git log --all -- miniapp/backlogs/사용률_푸시_대시보드`). 남은 확인은 [사용량 분석 02 §5](../../miniapp/backlogs/사용량_분석_성장/02-improvement-proposals.md). 출시 3주 D1 3.8%, 재방문 장치가 없었다.
+**결정(사용자, 2026-10-06 「승인. 개발 진행해」).** 근거와 시안은 사용률 개선 제안 폴더 `miniapp/backlogs/사용률_푸시_대시보드/`(구현 뒤 삭제 2026-10-07 — `git log --all -- miniapp/backlogs/사용률_푸시_대시보드`). 남은 확인은 사용량 분석 02 §5. 출시 3주 D1 3.8%, 재방문 장치가 없었다.
 
 - **홈 순서([D69](#d69) 좁힘).** 오늘 카드 바로 다음에 「꾸준함과 성장」 묶음을 둔다 — 달력 → 이번 주 머리줄 → 오늘 카드 → **꾸준함과 성장** → 이번 주 운동 기록 → 지난주 리뷰 → 운동 비중. 파란 꽉 찬 버튼은 넣지 않는다(R7). 캡션(시작 날짜·비교 기준 문구)도 넣지 않는다(사용자 지시).
 - **연속 기록.** 타일 「연속 기록 **N**주째」 + 최근 12칸 막대. N 은 한 번이라도 기록한 주가 날짜상 이어진 수다 — **문서가 없는 주도 빈 주**로 친다. 아직 기록 없는 이번 주만 끊김으로 치지 않는다. 끊겨도 숫자 그대로 쓴다(대체 문구 없음). 기록 주가 2개 미만이면 타일을 그리지 않는다. 최근 26주까지 보고, 26주를 다 채우면 「26주+」로 쓴다.
@@ -1946,7 +1946,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **운동일 아침 푸시.** 기능성 템플릿 `burnweek-workout-day`(제목 「오늘의 운동」 · 내용 「오늘은 {{focus}} 운동 날이에요.」 · 동의문 `termsId 128076` 「운동일 아침 알림」, CONDITION_BASED) — 2026-10-06 AI 검수 통과. 서버 예약 함수가 매일 08:00(Asia/Seoul) 동의한 사용자 중 **오늘이 운동일인 사람에게만** 보낸다. 쉬는 날·빈 주·플랜 없음은 보내지 않는다.
 - **동의.** 첫 기록 저장 직후 한 번 묻는다. 설정에 켜고 끄는 줄을 둔다 — 끄면 서버 발송만 멈춘다(토스 쪽 동의 철회는 토스 설정). 동의 상태는 `push_subscriptions/{uid}` 에 두고 탈퇴·초기화가 지운다.
 
-실행: [실행 그래프](../guides/miniapp-usage-push-dashboard-execution-graph.md).
+실행: 실행 그래프.
 
 ---
 
@@ -1954,7 +1954,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **결정(사용자, 2026-10-07 「확정」).** 배치 시안(claude.ai 비공개 아티팩트 v2)을 확정했고, 같은 날 G0 에서 Q1–Q3 를 권고안대로 답했다. 광고 그룹 `ait.v2.live.b8864181d6ae4905`, SDK `TossAds.attachBanner`(`variant:"card"`). 정책 근거: [앱인토스 배너 가이드](https://developers-apps-in-toss.toss.im/documentation/api-and-sdk-en/common/monetization/iaa/rn-banner) — 조작 요소 인접(오클릭) · 같은 형식 한 화면 2개 이상 · 다른 UI 에 가려지는 광고를 금지한다.
 
-- **어디에.** 탭 5(대시보드 · 주간 운동 플랜 · 운동목록 · 체중 기록 · 설정)와 하위 화면 5(운동 기록 — 근력·유산소·휴식 중 · 오늘 운동 결과 · 운동 기록 내역 · 꾸준함과 성장 · 주간 리뷰)에 **화면당 1개, 스크롤 본문의 맨 끝**. 홈은 운동 비중(부위 도넛) 다음이 끝이다([R12](../guides/miniapp-design-rules.md)). 오늘 운동 결과만 예외로 결과 목록과 「메인으로」 버튼 **사이**에 둔다(시안대로 — 버튼이 화면의 마지막 줄이라 그 뒤는 본문이 아니다 · 버튼과 24px 이상).
+- **어디에.** 탭 5(대시보드 · 주간 운동 플랜 · 운동목록 · 체중 기록 · 설정)와 하위 화면 5(운동 기록 — 근력·유산소·휴식 중 · 오늘 운동 결과 · 운동 기록 내역 · 꾸준함과 성장 · 주간 리뷰)에 **화면당 1개, 스크롤 본문의 맨 끝**. 홈은 운동 비중(부위 도넛) 다음이 끝이다(R12). 오늘 운동 결과만 예외로 결과 목록과 「메인으로」 버튼 **사이**에 둔다(시안대로 — 버튼이 화면의 마지막 줄이라 그 뒤는 본문이 아니다 · 버튼과 24px 이상).
 - **고정 배너는 쓰지 않는다.** 운동 기록 화면 하단의 「N세트 완료」는 하루 수십 번 누르는 버튼이라 그 옆은 오클릭 금지에 걸린다. 탭 화면은 탭바와 24px 이상, 운동 기록 화면은 고정 바 높이만큼의 여백(`session-gap`) 앞에 둔다. 버튼·입력칸과 24px 이상 띄운다.
 - **설정은 면책 바로 위(Q1).** 의료 면책 전문이 설정 최하단이라는 [D40](#d40)·R11 을 그대로 둔다.
 - **덮는 화면이 열린 동안 숨긴다(Q2).** 운동 상세·교체 목록(`.picker`) · 시트(`.scrim`) · `<dialog>`(휴식 종료 등)가 열리면 아래 배너를 CSS 로 숨기고(`visibility:hidden` · 해제·광고 재요청 없음), 닫으면 다시 보인다. 덮는 화면 안에는 배너를 두지 않는다.
@@ -1962,7 +1962,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - **광고 ID(Q3).** `.ait`(vite production 빌드)는 실제 ID, 로컬 개발·브라우저는 테스트 ID `ait-ad-test-banner-id`. 테스트 푸시 번들과 심사 번들이 같은 파일이기 때문이다. 실기기 확인 때 배너를 누르지 않는다.
 - **광고가 없으면 접는다.** `onNoFill`·`onAdFailedToRender` 면 자리를 남기지 않는다. 토스 밖(브라우저)·미지원 버전은 아무것도 그리지 않는다. 브라우저 검증용 더미는 개발 빌드에서만 켤 수 있다.
 
-실행: [실행 그래프](../guides/miniapp-toss-banner-execution-graph.md).
+실행: 실행 그래프.
 
 ## D92. 미반영 제작 완료 운동 14종을 앱에 연결한다 (2026-10-07)
 
@@ -1973,7 +1973,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - 앱 미디어는 기존 308 + 새 14 = 322종이다. 재생 방식은 D84와 같고 운동 기록·계획 수치·API·카탈로그·기존 설명은 바꾸지 않는다. 전문 운동·해부학 승인은 0/14 pending이다.
 - 제작 원본과 미완료 자료는 main 작업 트리에 복원하고 백업도 보존한다. `.blend`·PNG 프레임은 기존 gitignore 규칙을 유지하며 배포 번들에는 MP4·WebP만 연결한다.
 
-제작 범위와 상태: [제작 진입점](../../miniapp/backlogs/운동별_정보_이미지/00-START-HERE.md). 후속 미완료 55종 제작과 전체 연결은 [D93](#d93)에서 범위를 확장한다.
+제작 범위와 상태: 제작 진입점. 후속 미완료 55종 제작과 전체 연결은 [D93](#d93)에서 범위를 확장한다.
 
 <a id="d93"></a>
 ## D93. 남은 장비 운동 55종을 완성하고 전체 69종을 앱에 연결한다 (2026-10-07)
@@ -1986,7 +1986,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - 완료 시 앱 미디어는 기존 308 + 장비 69 = **377종**이다. 종목별 재생 fps·길이는 레시피를 따르며 체스트 패스 후 달리기는 30fps·3.2초, 메디신볼 전신 회전은 8fps·12초다. 전문 운동·해부학 검수와 실기기 테스트는 실제 수행 여부를 별도로 기록한다.
 - 새 앱 번들을 빌드·업로드·테스트 푸시한 뒤 사용자 지시에 따라 검수를 요청한다. 기존 검수 취소가 필요하면 콘솔 도구가 요구하는 대상 버전·재사용 불가에 대한 명시적 동의를 먼저 받는다. 승인 후 라이브 출시는 별도 콘솔 절차다.
 
-제작 상태와 검증 근거: [제작 진입점](../../miniapp/backlogs/운동별_정보_이미지/00-START-HERE.md) · [순차 작업 기록](../../miniapp/backlogs/운동별_정보_이미지/continuation-20261007.json).
+제작 상태와 검증 근거: 제작 진입점 · 순차 작업 기록.
 
 ---
 
@@ -1998,7 +1998,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 - 대상은 맨몸 스쿼트·푸시업·플랭크·사이드 브릿지·엉덩이 리프트 브릿지·크런치·리버스 크런치·슈퍼맨·교대 힐 터치·벤치 딥스다. 모두 카탈로그 `body only`이며, 벤치 딥스는 지지할 의자/벤치가 필요하다. 운동 ID마다 고정 영상 하나만 연결한다.
 - 운동 찾기와 운동 중 상세의 같은 `ExerciseDetail`에서 「YouTube 영상 보기」를 눌러 공식 iframe 플레이어를 연다. API·iframe은 누르기 전에는 요청하지 않는다. 자동 재생 없이 YouTube 기본 조작 요소를 유지하고, 플레이어를 최소 200×200px로 표시한다. 닫기·종목 변경·상세 종료·화면 숨김 때 플레이어를 제거하며 자동으로 다시 재생하지 않는다.
 - API 로드 실패·대기 시간 초과·삭제/비공개·퍼가기 차단·referrer 오류는 참고 영상 실패로 처리한다. 다시 불러오기와 기존 운동 설명을 제공하며 운동 기록은 앱 안에서 계속 완료한다. 유튜브의 세트·횟수·의료 주장으로 앱 처방이나 설명을 바꾸지 않는다.
-- 조사에는 Aside 내장 `youtube` 스킬의 검색·공개 메타데이터·가능한 자막을 사용했다. 공개 watch 응답에서 10개 모두 `status=OK`·`playableInEmbed=true`를 확인했다. 이는 조사 시점의 퍼가기 설정이며 토스 WebView에서 실제 재생 성공을 뜻하지 않는다. [조사 목록·근거·확인 수준](../../miniapp/data/sources/youtube-reference-audit.json).
+- 조사에는 Aside 내장 `youtube` 스킬의 검색·공개 메타데이터·가능한 자막을 사용했다. 공개 watch 응답에서 10개 모두 `status=OK`·`playableInEmbed=true`를 확인했다. 이는 조사 시점의 퍼가기 설정이며 토스 WebView에서 실제 재생 성공을 뜻하지 않는다. 조사 목록·근거·확인 수준.
 - 정책 근거: [토스 운영팀 YouTube iframe 예외 답변](https://techchat-apps-in-toss.toss.im/t/iframe/4098/2), [YouTube 공식 iframe API](https://developers.google.com/youtube/iframe_api_reference), [플레이어 매개변수](https://developers.google.com/youtube/player_parameters). iframe은 허용된 고정 YouTube 도메인과 조사한 영상 ID로만 생성하며 `origin`과 `strict-origin-when-cross-origin` referrer를 제공한다.
 
 검증은 `miniapp/exercise-youtube-check.mjs`의 10종 × 360/390px 지연 로딩·자동 재생 금지·최소 크기·오류 복구·상세/숨김 종료 가드다. 이 가드는 공식 API 스텁을 사용한다. 토스 실기기 재생과 별도 전문 검수는 대기이며 이번 변경은 배포하지 않는다.
@@ -2008,7 +2008,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 <a id="d95"></a>
 ## D95. 운동 상세를 떠 있는 창에서 독립 페이지로 바꾼다 (2026-10-08)
 
-사용자 요청: 「운동 상세 화면이 페이지가 아니고 떠있는 화면인데 거의 풀화면이라서 거슬린다. 페이지로 변경해줘」. 운동 목록과 운동 중 화면의 상세를 같은 독립 페이지로 전환한다. 상세에는 하단 탭바를 표시하지 않고, 뒤로가면 보던 목록 위치와 운동 기록 입력을 보존한다. D91의 상세 오버레이 구조만 대체하며 광고 제외는 유지한다. 탐색·복원·검증의 정본은 [ADR-0021](./0021-exercise-detail-page.md), 제품 적용 범위는 [002 spec §7](../specs/features/002-workout-logging/spec.md)이다.
+사용자 요청: 「운동 상세 화면이 페이지가 아니고 떠있는 화면인데 거의 풀화면이라서 거슬린다. 페이지로 변경해줘」. 운동 목록과 운동 중 화면의 상세를 같은 독립 페이지로 전환한다. 상세에는 하단 탭바를 표시하지 않고, 뒤로가면 보던 목록 위치와 운동 기록 입력을 보존한다. D91의 상세 오버레이 구조만 대체하며 광고 제외는 유지한다. 탐색·복원·검증의 정본은 [ADR-0021](./0021-exercise-detail-page.md), 제품 적용 범위는 002 spec §7이다.
 
 ---
 
@@ -2050,7 +2050,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D100. 완성한 케이블 20종을 앱 운동 상세에 연결해 455종으로 확장한다 (2026-10-14)
 
-**결정(사용자, 2026-10-14 「운동에 반영해줘」).** 최종 제작·내부 검토와 로컬 가져오기를 마친 Codex 10종·dots 10종을 기존 운동 상세에 연결한다. 이전 테스트 2종과 보류 57종은 포함하지 않는다. 정확한 ID는 [앱 선택 목록](../../miniapp/backlogs/운동별_정보_이미지/cable-v1/app-selection.json), 실행 결과는 [앱 통합 검증 기록](https://github.com/YoungkeunAhn/workout_plan_app/blob/ae905633533a06719deba67ca95dd6e46d6bf0ba/miniapp/cable-media-integration-validation-20261014.json)을 따른다.
+**결정(사용자, 2026-10-14 「운동에 반영해줘」).** 최종 제작·내부 검토와 로컬 가져오기를 마친 Codex 10종·dots 10종을 기존 운동 상세에 연결한다. 이전 테스트 2종과 보류 57종은 포함하지 않는다. 정확한 ID는 앱 선택 목록, 실행 결과는 [앱 통합 검증 기록](https://github.com/YoungkeunAhn/workout_plan_app/blob/ae905633533a06719deba67ca95dd6e46d6bf0ba/miniapp/cable-media-integration-validation-20261014.json)을 따른다.
 
 - 기존 `ExerciseDetail`·`ExerciseMedia`·`ExerciseNote`를 재사용한다. 한글 이름은 카탈로그에서 읽고, 설명 네 항목은 최종 조사 자료의 그립·지지점·시작 국면에 맞춘다. 시간·세트·횟수 처방은 추가하지 않는다.
 - 원본 `metadata.status`와 제작 자산은 보존한다. 별도 `app-manifest.json`이 현재 사용자 요청, 정확한 20개 ID, 원본 metadata·자산과 Codex 저자/root 검토 또는 dots 가져오기 검증의 해시를 연결한다. 전문 운동·해부학 검수는 계속 `pending`이다.
@@ -2059,7 +2059,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 제작·연결 자료: [케이블 진입점](https://github.com/YoungkeunAhn/workout_plan_app/blob/9463c48b676abb587413f73d74a59267a7dbaf1f/miniapp/backlogs/%EC%9A%B4%EB%8F%99%EB%B3%84_%EC%A0%95%EB%B3%B4_%EC%9D%B4%EB%AF%B8%EC%A7%80/cable-v1/00-START-HERE.md).
 
-후속 실행(2026-10-14): 사용자 「배포하고 테스트 요청후 검수요청해」 지시로 `20261014-82`를 업로드·테스트 푸시하고 검수 요청 `252417`을 접수했다. [배포 기록](../../miniapp/reports/releases/deployment-cable-20261014.json) · [검수 기록](../../miniapp/reports/releases/review-cable-20261014.json). 현재 새 번들은 `REVIEWING`이며 라이브 전환과 실제 토스 기기 테스트는 수행하지 않았다.
+후속 실행(2026-10-14): 사용자 「배포하고 테스트 요청후 검수요청해」 지시로 `20261014-82`를 업로드·테스트 푸시하고 검수 요청 `252417`을 접수했다. 배포 기록 · 검수 기록. 현재 새 번들은 `REVIEWING`이며 라이브 전환과 실제 토스 기기 테스트는 수행하지 않았다.
 
 후속 범위 확장(2026-10-14, 사용자 「완료된거 겹치지 않는것 반영하고 다시 진행할 목록 전달해줘」): 별도 Profile 1 완료 29종에서 기존 9종을 제외하고 신규 20종을 로컬 앱에 연결했다. 기존 455종·1,528개 파일·지시문·재생 설정을 유지해 총 475종이며, 케이블 카탈로그 81종 중 42종 연결·39종 후속 제작이다. 원본·검토 해시를 별도 매니페스트로 확인하고 전문 검수 pending을 유지한다. [인수 진입점](https://github.com/YoungkeunAhn/workout_plan_app/blob/9463c48b676abb587413f73d74a59267a7dbaf1f/miniapp/backlogs/%EC%9A%B4%EB%8F%99%EB%B3%84_%EC%A0%95%EB%B3%B4_%EC%9D%B4%EB%AF%B8%EC%A7%80/cable-v1/profile1-20261014/00-START-HERE.md) · [추가 통합 검증](https://github.com/YoungkeunAhn/workout_plan_app/blob/ae905633533a06719deba67ca95dd6e46d6bf0ba/miniapp/cable-profile1-integration-validation-20261014.json). 새 20종은 기존 검수 요청 `20261014-82`에 포함되지 않으며 별도 업로드·출시는 수행하지 않았다.
 
@@ -2072,24 +2072,24 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 **결정(사용자, 2026-10-14).** 「유산소 종목을 선택하지는 않을거야. 추천해주면 돼. 어떤 운동이 나은지를.」 맨몸이면 버피·암워킹 같은 전신 운동도 유산소가 될 수 있고, 러닝도 된다.
 
 - **① 묻지 않는다.** 온보딩에 유산소 종목 문항을 만들지 않는다. 프로필의 `cardio_modalities` 는 지금처럼 비어 있고, 쓰이지 않는 경로로 둔다.
-- **② 코드가 추천한다([INV-1](../architecture/constitution.md)).** 목표·환경·경험으로 종목을 고른다. 규칙 초안은 [백로그 06 §5](../../miniapp/backlogs/운동목록_및_운동플랜_개선/06-cardio-and-bodyweight-circuits.md)다. 근거는 WHO 2020(중강도 주 150~300분)과 동시 훈련 간섭(달리기 > 자전거)이다. LLM 은 유산소를 고르지 않는다.
+- **② 코드가 추천한다([INV-1](../architecture/constitution.md)).** 목표·환경·경험으로 종목을 고른다. 규칙 초안은 백로그 06 §5다. 근거는 WHO 2020(중강도 주 150~300분)과 동시 훈련 간섭(달리기 > 자전거)이다. LLM 은 유산소를 고르지 않는다.
 - **③ [D45](#d45) ② 「유산소는 LLM 이 제안한다」를 대체한다.** 그 제안 경로는 [ADR-0016](./0016-generation-timeout-and-compact-draft.md) compact 초안이 이미 끊었다(`cardio_kind` 삭제 · `planCardio` 에 제안을 넘기지 않음).
 - **④ 맨몸 감량 사용자의 유산소 자리는 서킷으로 채운다**(G0 Q2 답). 서킷 시간은 주간 유산소 분에 넣는다.
 - **⑤ 층간소음은 추천에 고려하지 않는다**(G0 Q3 답). 싫으면 사용자가 플랜에서 지운다. 플랜 편집의 `cardio_override`(D45 ④·D57)는 그대로 추천을 덮는다.
-- 실행: [운동플랜 개선 실행 그래프](../guides/miniapp-exercise-plan-improvement-execution-graph.md) N6.
+- 실행: 운동플랜 개선 실행 그래프 N6.
 
 <a id="d102"></a>
 
 ## D102. 맨몸 서킷 A·B·C · 배정 · 중립 이름 + 출처 링크 · 맨몸 보유 도구 기본값 「없음」 (2026-10-14)
 
-**결정(사용자, 2026-10-14).** 다이어트 목적 맨몸 사용자에게 유명 유튜브 영상의 루틴을 따라 하게 한다. 인스타그램·유튜브의 조회수·인기로 조사해 개선해 나간다([백로그 06](../../miniapp/backlogs/운동목록_및_운동플랜_개선/06-cardio-and-bodyweight-circuits.md)).
+**결정(사용자, 2026-10-14).** 다이어트 목적 맨몸 사용자에게 유명 유튜브 영상의 루틴을 따라 하게 한다. 인스타그램·유튜브의 조회수·인기로 조사해 개선해 나간다(백로그 06).
 
 - **① 형식 셋을 모두 쓴다.** A = 시간 기반 연속 서킷(동작당 30~45초, 라운드 반복) · B = 횟수 라운드(예: 버피 10 → 점프스쿼트 20 → 번갈아 런지 10) · C = 운동별 세트(버피 10×5 → …). C 는 지금 세트 구조로 담기므로 생성만 한다. A·B 는 서킷 묶음, A 는 시간 세트가 새로 필요하다(스키마 **추가** — 기존 필드의 뜻은 그대로).
 - **② 배정.** 입문 → A. 중급 이상 → B 도 추천한다. 소음은 보지 않는다(D101 ⑤).
 - **③ 이름은 중립 이름 + 출처 링크.** 유튜버·채널 이름을 플랜 이름에 쓰지 않는다(부정경쟁방지법 제2조 제1호 (타)목 위험 — 백로그 06 §6). 참고한 영상은 링크로 밝힌다. 서킷은 영상 없이 앱 안에서 끝까지 할 수 있어야 한다(토스 출시 가이드의 외부 링크 의존 제한).
-- **④ 첫 템플릿은 5개다**(G0 Q4, 조사 뒤 답): A1 7분 전신 서킷 · A2 서서 하는 저충격 전신 서킷 · B1 피라미드 버피·스쿼트·싯업 · C1 슬로우 버피 100 · C2 하체 스쿼트 100. 구성·출처는 [백로그 11](../../miniapp/backlogs/운동목록_및_운동플랜_개선/11-circuit-templates.md). **모든 템플릿에 입문 버전을 둔다** — 입문 대체 동작(버피 → 슬로우 버피 등)과 코드의 축소 규칙을 쓴다. 수치(초·렙·라운드)는 코드 상수다(INV-1).
+- **④ 첫 템플릿은 5개다**(G0 Q4, 조사 뒤 답): A1 7분 전신 서킷 · A2 서서 하는 저충격 전신 서킷 · B1 피라미드 버피·스쿼트·싯업 · C1 슬로우 버피 100 · C2 하체 스쿼트 100. 구성·출처는 백로그 11. **모든 템플릿에 입문 버전을 둔다** — 입문 대체 동작(버피 → 슬로우 버피 등)과 코드의 축소 규칙을 쓴다. 수치(초·렙·라운드)는 코드 상수다(INV-1).
 - **⑤ 맨몸 보유 도구 기본값은 「없음」이다**(G0 Q1 답). 온보딩 「가진 도구」 칩이 정해지기 전까지 철봉·딥바·벤치 등이 필요한 운동(`requires`)은 맨몸 생성 후보에서 뺀다. 사용자는 플랜 편집으로 넣을 수 있다.
-- **⑥ 새로 넣는 운동의 한글 이름은 [백로그 04 §3](../../miniapp/backlogs/운동목록_및_운동플랜_개선/04-exercise-names-and-gaps.md) 제안명을 쓴다**(G0 Q7 답).
+- **⑥ 새로 넣는 운동의 한글 이름은 백로그 04 §3 제안명을 쓴다**(G0 Q7 답).
 - **⑦ 서킷은 서킷 단위로만 뺀다**(사용자 2026-10-15) — 주간 플랜의 서킷 동작 줄은 하나씩 편집·삭제하지 않고 머리줄의 「서킷 빼기」(계약 `remove_circuit`)로 묶음째 뺀다. 서킷은 순서·시간이 한 묶음이라 동작 하나를 빼면 템플릿이 깨진다. [D98](#d98)의 「종목 줄 = … + 편집·삭제」에 대한 서킷 예외다.
 - 실행: 그래프 N1(도구·운동 추가)·N7a·N7b(서킷).
 
@@ -2097,7 +2097,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D103. 생성 파이프라인 P1 과 LLM 실측 순서 (2026-10-14)
 
-**결정(사용자, 2026-10-14).** 「LLM 비교 실측 진행할 예정인데 빠른 것도 중요하지만 잘 판단하는 게 중요함.」 제안대로 진행한다. 구조의 정본은 [ADR-0025](./0025-generation-pipeline-p1.md), 근거는 [백로그 09](../../miniapp/backlogs/운동목록_및_운동플랜_개선/09-generation-pipeline.md)·[07](../../miniapp/backlogs/운동목록_및_운동플랜_개선/07-llm-candidates.md).
+**결정(사용자, 2026-10-14).** 「LLM 비교 실측 진행할 예정인데 빠른 것도 중요하지만 잘 판단하는 게 중요함.」 제안대로 진행한다. 구조의 정본은 [ADR-0025](./0025-generation-pipeline-p1.md), 근거는 백로그 09·07.
 
 - **① 파이프라인은 P1** — 코드가 분할·요일·세션 슬롯(움직임 패턴)·종목 수·렙·후보 순위를 정하고, LLM 은 슬롯마다 후보 표에서 1개를 고르고 한 줄 이유와 대체 운동을 낸다.
 - **② 실측 순서** — 1차(지금 프롬프트 P0 와 후보 메타데이터 표를 더한 P0+표로 모델 비교) → P1 구현 → 2차(최종 모델 선택). 실측은 과금이라 각 회차 직전에 승인을 받는다.
@@ -2108,33 +2108,33 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 ## D104. 루틴 골격 — 일수로 기본 분할 · 역할별 렙 · 세션 시간은 웨이트만 · 슬롯까지 코드 (2026-10-14)
 
-**결정(사용자, 2026-10-14).** 1차 실측 플랜에 대한 사용자 평가는 「그나마 낫다는 거지 완전 맘에 드는 건 아니다 — 초급·중급 플랜, 분할을 제대로 조사하라」였다. 재조사([백로그 12](../../miniapp/backlogs/운동목록_및_운동플랜_개선/12-program-design-research.md)) 결과 §5 의 권고 4개를 채택했다.
+**결정(사용자, 2026-10-14).** 1차 실측 플랜에 대한 사용자 평가는 「그나마 낫다는 거지 완전 맘에 드는 건 아니다 — 초급·중급 플랜, 분할을 제대로 조사하라」였다. 재조사(백로그 12) 결과 §5 의 권고 4개를 채택했다.
 
 - **① 기본 분할은 주당 일수로 코드가 정한다.** 사용자가 분할을 고르지 않았거나 「모르겠다」면 2~3일은 전신 A/B, 4일은 상·하체 ×2, 5~6일은 PPL 계열이다. [D24](#d24) 의 「모르겠다 → 3분할」을 대체한다. 사용자가 고른 분할(D24·[D47](#d47))은 그대로 따른다. 근거: ACSM 2009 초급 전신 주 2~3일 · ACSM 2026 주요 근육 주 2일 이상 · 조사한 프로그램 대다수(백로그 12 §1).
 - **② 렙은 종목의 역할로 정한다.** 초급은 메인 복합 8–12회, 고립 10–15회, 중급은 메인 복합 5–10회, 고립 8–15회다. [D55](#d55) ① 「입문자 근비대 10–15」를 대체한다. 입문자에게는 3~5회 strength 렙을 주지 않는다(ACSM 2009 초·중급 8–12). 감량·여성 고렙(12–20)은 역할 렙 안에서 목표로 조정한다. 정확한 수치표는 N8a 에서 백로그 12 §4 를 정본으로 옮긴다. 미니앱이 렙 범위로 의도를 거꾸로 읽는 곳(`plan.tsx` `REP_INTENTS`·`session.tsx` `intentFor`)도 함께 바꾼다.
 - **③ 세션 시간(`session_len_min`)은 웨이트만 센다.** 45분이면 웨이트 5~6종목이다(지금 4종목). 유산소는 지금처럼 그 뒤에 따로 붙는다(D101).
 - **④ 골격은 슬롯까지 코드가 정한다.** 요일별 움직임 패턴 슬롯(스쿼트계·힌지·수평/수직 밀기·수평/수직 당기기·고립·코어), 순서, 종목 수, 렙을 코드가 정하고, LLM 은 슬롯마다 후보에서 종목만 고른다([D103](#d103) ① P1 을 구체화). 주간 6패턴 균형과 같은 슬롯의 요일별 변형을 구조로 보장한다. 슬롯 초안은 백로그 12 §3 이다.
 - **⑤ 여성 둔근 중점은 별도 프리셋을 두지 않는다**(사용자 2026-10-15) — 하체 중점이면 하체가 있는 날에 둔근 슬롯(힙 스러스트·브릿지) 1개를 더하는 지금 방식(`slots.ts`)을 유지하고, 실측·사용자 반응을 보고 다시 정한다(백로그 12 §5 4번).
-- 실행: [운동플랜 개선 실행 그래프](../guides/miniapp-exercise-plan-improvement-execution-graph.md) N8a(골격·렙)·N8b(생성 전환).
+- 실행: 운동플랜 개선 실행 그래프 N8a(골격·렙)·N8b(생성 전환).
 
 <a id="d105"></a>
 
 ## D105. 새 생성 방식(P1)은 헬스장만 · 운영 모델은 Hive(DeepSeek·GLM) 후보로 · 구현 전 문서화 (2026-10-15)
 
-**결정(사용자, 2026-10-15).** 2차 실측([백로그 07 §4.2](../../miniapp/backlogs/운동목록_및_운동플랜_개선/07-llm-candidates.md))을 보고 정했다.
+**결정(사용자, 2026-10-15).** 2차 실측(백로그 07 §4.2)을 보고 정했다.
 
 - **① P1 은 헬스장(`environment: full_gym`)에만 적용한다.** 헬스장 3 프로필은 P1 6승 0패였고, 맨몸 · 덤벨 홈짐 · 부상 프로필은 P0 3승 6무로 P1 이 낫다는 근거가 없다. 그 밖의 환경은 지금 방식(P0)을 유지한다. [D103](#d103) ② 「기준을 넘으면 기본값을 바꾼다」를 헬스장에 한해 적용한 것이다.
-- **② 운영 모델은 Hive 가 제공하는 DeepSeek 또는 GLM 으로 바꾼다**(사용자: 「다른 LLM 사용해야 될 것 같아. Hive 에서 딥시크랑 GLM 제공하는데 그걸로」). 실측한 claude haiku · codex · gemini 는 운영 후보에서 뺀다. Hive 의 사실과 남은 확인은 [07 §4.3](../../miniapp/backlogs/운동목록_및_운동플랜_개선/07-llm-candidates.md).
+- **② 운영 모델은 Hive 가 제공하는 DeepSeek 또는 GLM 으로 바꾼다**(사용자: 「다른 LLM 사용해야 될 것 같아. Hive 에서 딥시크랑 GLM 제공하는데 그걸로」). 실측한 claude haiku · codex · gemini 는 운영 후보에서 뺀다. Hive 의 사실과 남은 확인은 07 §4.3.
 - **③ 지금은 문서화까지만 한다**(사용자: 「아직 구현하지 말고 문서화까지만 해」). 헬스장 P1 전환 · 온보딩 「분할 모르겠어요」 수정(D104 ①) · Hive 어댑터 · 3차 실측 · 배포는 실행 그래프 N10a–N10d 로 두고 시작하지 않는다.
 
 <a id="d106"></a>
 
 ## D106. 운영 모델 GLM-5.3-Flash(Hive) · 서킷은 서킷 화면이 있는 새 번들에만 (2026-10-16)
 
-**결정(사용자, 2026-10-16).** 3차 실측([백로그 07 §4.4](../../miniapp/backlogs/운동목록_및_운동플랜_개선/07-llm-candidates.md))을 보고 배포(실행 그래프 N10d) 직전에 정했다.
+**결정(사용자, 2026-10-16).** 3차 실측(백로그 07 §4.4)을 보고 배포(실행 그래프 N10d) 직전에 정했다.
 
 - **① 운영 모델은 Hive 의 `zai-org/glm-5.3-flash`** 다([D105](#d105) ② 의 두 후보 중). claude haiku 기준선에 2승 0패 4무, DeepSeek-4.1-Flash 와의 맞대결 4승 0패 2무였다. 대가는 지연(p90 42초 대 25초)과 호출당 토큰(약 1.5배)이다. 제공자 이름은 `hive`, 기본 주소 `https://api.thehive.ai/api/v3`.
-- **② 서킷은 요청에 `supports_circuits: true` 를 실은 클라이언트만 받는다.** 백엔드는 라이브 옛 번들과 같이 쓰는데, 옛 번들은 서킷을 진행하지 못한다(실행 그래프 N7a↔N7b 짝). 서킷 화면이 있는 번들이 이 표시를 보내고, 표시가 없으면 맨몸 감량이어도 종전 유산소를 받는다. `CIRCUIT_GENERATION=off` 는 그대로 전체 끄개다. 계약: [generation-api §1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md).
+- **② 서킷은 요청에 `supports_circuits: true` 를 실은 클라이언트만 받는다.** 백엔드는 라이브 옛 번들과 같이 쓰는데, 옛 번들은 서킷을 진행하지 못한다(실행 그래프 N7a↔N7b 짝). 서킷 화면이 있는 번들이 이 표시를 보내고, 표시가 없으면 맨몸 감량이어도 종전 유산소를 받는다. `CIRCUIT_GENERATION=off` 는 그대로 전체 끄개다. 계약: generation-api §1.
 
 <a id="d107"></a>
 
@@ -2142,13 +2142,13 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 사용자가 비용 비교 뒤 Cloudflare R2를 선택하고 `damkolab.com`을 등록했다. [ADR-0026](./0026-exercise-media-on-r2.md)가 정본이다. 운동 미디어 435종은 `burnweek-media.damkolab.com`의 콘텐츠 해시 주소에서 받고, 앱 번들에는 생성 인덱스만 넣는다. D83의 `public/exercise-media` 복사·번들 동봉과 D97의 번들 크기 부분을 대체한다.
 
-제작 manifest·SHA-256 검사, 재생 규칙, 설명, 전문 검수 상태는 유지한다. 원격 ETag와 캐시 정책은 별도 검사하고 업로드는 누락·불일치 객체만 처리한다. 네트워크가 없으면 미디어를 받을 수 없으며 기존 오류 안내·근육 도해·설명은 유지한다. 실행 범위는 [R2 이전 실행 그래프](../guides/miniapp-media-r2-execution-graph.md)를 따르며 토스 번들 업로드·검수 요청·출시는 포함하지 않는다.
+제작 manifest·SHA-256 검사, 재생 규칙, 설명, 전문 검수 상태는 유지한다. 원격 ETag와 캐시 정책은 별도 검사하고 업로드는 누락·불일치 객체만 처리한다. 네트워크가 없으면 미디어를 받을 수 없으며 기존 오류 안내·근육 도해·설명은 유지한다. 실행 범위는 R2 이전 실행 그래프를 따르며 토스 번들 업로드·검수 요청·출시는 포함하지 않는다.
 
 병합 정합(2026-10-19): 기존 유산소 결정 D101과 생성 파이프라인 ADR-0025를 보존하기 위해 R2 결정 식별자를 D107·ADR-0026으로 정리했다. 현재 생성 인덱스는 완료 미디어 757종을 포함하며 원격 435종 검증 기록과 구분한다.
 
 ## D108. 운동목록·고르기·교체 종목 줄 맨 앞에 운동 사진을 넣는다 — 칸 고정, 사진이 없으면 아이콘 (2026-10-20)
 
-**사용자 요청(2026-10-20).** 「운동 목록에서 부위는 이미지가 있는데 운동 리스트에 어떤 운동인지 이미지가 나오지 않아서 판단하기 어렵다. 리스트 맨 앞에 이미지를 넣고 레이아웃이 망가지지 않도록.」 시안과 G0 답은 [운동목록 썸네일 실행 그래프](../guides/miniapp-catalog-thumbnail-execution-graph.md) §3에 있다.
+**사용자 요청(2026-10-20).** 「운동 목록에서 부위는 이미지가 있는데 운동 리스트에 어떤 운동인지 이미지가 나오지 않아서 판단하기 어렵다. 리스트 맨 앞에 이미지를 넣고 레이아웃이 망가지지 않도록.」 시안과 G0 답은 운동목록 썸네일 실행 그래프 §3에 있다.
 
 **결정.**
 1. 운동목록 탭의 모든 종목 줄(부위·검색·즐겨찾기·최근·유산소)과 플랜 편집의 고르기·교체 후보 줄 맨 앞에 **56×56 칸을 항상** 둔다. 칸 크기는 기존 종목 줄 도해 칸과 같아 짧은 목록의 줄 높이와 글자 위치가 바뀌지 않는다. 지금 칸이 없던 긴 목록·유산소 줄은 같은 위치로 맞춰진다.
@@ -2158,11 +2158,11 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 
 **[D28](#d28)과의 관계.** D28의 「목록 썸네일은 되살리지 않는다」는 D30이 되돌린 결정의 일부였다. 그 이유(후보 40장에 약 1.3MB)는 지금 자산 기준 화면당 약 200KB(포스터 평균 24KB · lazy)로 바뀌었다.
 
-**범위 밖.** 성장 목록(`growth.tsx` `Thumb`)은 이미 포스터 썸네일이 있어 대상이 아니다. 포스터가 없는 143종(그중 108종 바벨)의 사진 제작은 [운동별 정보·이미지](../../miniapp/backlogs/운동별_정보_이미지/00-START-HERE.md) 소관이다. 시안은 [01-mockup.html](../guides/assets/miniapp-catalog-thumbnail/01-mockup.html).
+**범위 밖.** 성장 목록(`growth.tsx` `Thumb`)은 이미 포스터 썸네일이 있어 대상이 아니다. 포스터가 없는 143종(그중 108종 바벨)의 사진 제작은 운동별 정보·이미지 소관이다. 시안은 01-mockup.html.
 
 ## D109. 배너 광고를 고정한다 — 탭·기록 화면은 하단 바 아래, 하위 화면은 위 (2026-10-21)
 
-사용자 지시: 「광고 위치를 변경하고 싶어 … 이렇게 고정되게 하고 싶어. 그렇지만 내가 보내준 앱 그대로 하면 안 되고」(2026-10-20) → 「권고안대로 진행해줘」(2026-10-21). 제안 문서(백로그 `광고_위치_고정` · 삭제 2026-10-22 · 마지막 `e4386418`) §5 의 Q1–Q4 를 권고안대로 답했다: 탭·하위 화면은 **상단 고정**, 운동 기록은 **본문 맨 위·비고정**, 전면형은 **보류**, 이 결정이 D91 의 위치 규칙 전부(본문 맨 끝 · 오늘 운동 결과의 목록–버튼 사이 · 고정 배너 없음 · 기록 화면 `session-gap` 앞 · Q1 설정 면책 바로 위), D96(ADR-0022)의 「설명 뒤 본문 끝」, ADR-0023 의 대시보드 마지막 「광고」·「광고 배치 유지」를 대체한다(면책 전문 최하단 R11 은 유지). 근거는 콘솔 실측 노출률 55%(10/07–19)와 앱인토스 고정형 허용(96px · 화면 폭). 정본은 [ADR-0028](./0028-banner-fixed-placement.md), 실행은 [실행 그래프](../guides/miniapp-ad-banner-fixed-execution-graph.md).
+사용자 지시: 「광고 위치를 변경하고 싶어 … 이렇게 고정되게 하고 싶어. 그렇지만 내가 보내준 앱 그대로 하면 안 되고」(2026-10-20) → 「권고안대로 진행해줘」(2026-10-21). 제안 문서(백로그 `광고_위치_고정` · 삭제 2026-10-22 · 마지막 `e4386418`) §5 의 Q1–Q4 를 권고안대로 답했다: 탭·하위 화면은 **상단 고정**, 운동 기록은 **본문 맨 위·비고정**, 전면형은 **보류**, 이 결정이 D91 의 위치 규칙 전부(본문 맨 끝 · 오늘 운동 결과의 목록–버튼 사이 · 고정 배너 없음 · 기록 화면 `session-gap` 앞 · Q1 설정 면책 바로 위), D96(ADR-0022)의 「설명 뒤 본문 끝」, ADR-0023 의 대시보드 마지막 「광고」·「광고 배치 유지」를 대체한다(면책 전문 최하단 R11 은 유지). 근거는 콘솔 실측 노출률 55%(10/07–19)와 앱인토스 고정형 허용(96px · 화면 폭). 정본은 [ADR-0028](./0028-banner-fixed-placement.md), 실행은 실행 그래프.
 
 **실기기 뒤 수정(2026-10-21~22).** 테스트 번들 `20261021-86`(위 고정 · 띠 24px)을 본 사용자가 「별로야. 하단바 아래에 옮겨봐. 그리고 광고영역의 padding 이 너무 넓어」→「padding 0으로」→「운동 기록 페이지도 동일하게 해줘. 하단으로」→「광고 영역 높이를 줄일 수 있어?」에 1번(`expanded`)을 골랐다. 그래서 **탭 5개와 운동 기록 화면은 하단 바 아래 화면 맨 밑에 고정**하고, 하위 화면·상세의 위 고정은 남기되 **위아래 여백을 0**으로, 형식을 **`expanded`** 로, 높이를 **그려진 광고 높이**로 바꿨다. 탭바·「세트 완료」 바와 붙는 배치는 앱인토스 「버튼 인접」 금지에 걸릴 수 있다고 알린 뒤 사용자가 골랐다. 이 배치로 만든 `20261022-91` 이 검수 승인됐다. 화면당 1개·제외 화면·덮는 화면 숨김·광고 ID·광고 없음 접힘은 D91 그대로다.
 
@@ -2175,7 +2175,7 @@ AI 회고는 022 §3(현 [수요·수익화 §5](../../miniapp/backlogs/사용�
 **사용자 지시(2026-10-27).** 「처음 들어온 유저가 내 앱이 뭔지 바로 알 수 있게 화면을 다듬어줘. 앱 화면만 나열하면 안되고 설명글과 이미지 생성을 통해서 앱을 왜 사용하는지, 누가 사용해야되는지를 마케팅 요소를 넣어서 후킹 문구로 이미지를 만들어줘. 이미지는 codex, agy 를 통해서 만들면되.」
 
 - **① 자리는 D82 인트로 그대로.** 조건(토스 안 · 로그인 기록 없음)·「시작하기」 전 `appLogin()` 금지·초기화 시 복귀는 바꾸지 않는다. 바뀌는 것은 인트로의 내용뿐이다.
-- **② 가로로 넘기는 슬라이드 4장.** 장마다 후킹 문구가 든 그림 + 한두 줄 설명(왜 쓰는지 · 누가 쓰면 좋은지): ⓐ 헬스장 가서 뭐 하지?(입문자 — 주간 플랜 대신 짜 줌. 수치는 코드 몫이라 「AI가 무게를 정한다」고 쓰지 않는다 · INV-1) ⓑ 헬스장이든 집이든 맨몸으로도 돼요(장비별 · 유산소 포함) ⓒ 체크한 세트가 다음 주 플랜에 반영(「운동 완료」로 저장한 기록 → 다음 주 무게. 횟수 범위는 기록과 무관한 `repRangeFor` 라 약속하지 않는다) ⓓ 이번 주 운동은 고민 없이 시작해요(혼자 운동 · 바쁜 사람 · 종목 바꾸기). 약속은 [스토어 상세 설명](../guides/miniapp-store-listing.md)이 이미 말한 기능만 쓴다. 점수·등급·몸매 강조·전후 비교는 그림에도 넣지 않는다(같은 문서의 어휘 제약).
+- **② 가로로 넘기는 슬라이드 4장.** 장마다 후킹 문구가 든 그림 + 한두 줄 설명(왜 쓰는지 · 누가 쓰면 좋은지): ⓐ 헬스장 가서 뭐 하지?(입문자 — 주간 플랜 대신 짜 줌. 수치는 코드 몫이라 「AI가 무게를 정한다」고 쓰지 않는다 · INV-1) ⓑ 헬스장이든 집이든 맨몸으로도 돼요(장비별 · 유산소 포함) ⓒ 체크한 세트가 다음 주 플랜에 반영(「운동 완료」로 저장한 기록 → 다음 주 무게. 횟수 범위는 기록과 무관한 `repRangeFor` 라 약속하지 않는다) ⓓ 이번 주 운동은 고민 없이 시작해요(혼자 운동 · 바쁜 사람 · 종목 바꾸기). 약속은 스토어 상세 설명이 이미 말한 기능만 쓴다. 점수·등급·몸매 강조·전후 비교는 그림에도 넣지 않는다(같은 문서의 어휘 제약).
 - **③ 네이티브 가로 스크롤 스냅** — 다음 장 가장자리가 보여 넘길 수 있음을 알린다(점 표시·JS 없음). 그림 속 문구는 `alt` 로 같은 말을 준다. **「시작하기」는 늘 보인다**(하단 sticky) — 다 넘기지 않아도 시작한다.
 - **④ 그림 제작.** 같은 제작 브리프로 Codex(이미지 생성)·agy 가 4장씩 만들었고, 인물이 4장 내내 같고 「성장」 은유가 뚜렷한 Codex 세트를 썼다. 640px WebP 4장 약 136KB, 번들(`src/assets/intro/`)에 넣는다 — 첫 화면이라 R2 왕복을 두지 않는다.
 

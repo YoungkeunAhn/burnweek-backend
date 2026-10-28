@@ -17,6 +17,6 @@
 
 ## 결과
 
-- 새 API와 필드는 [생성 API 계약 §2.4.1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md#241-진행-중-초안--getput-v1planscurrentweekprogressday_index), [데이터 모델 SavedWeeklyPlan](../architecture/02-data-model.md#savedweeklyplan-미니앱-플랜-정본--백엔드-영속-d19)에 둔다.
+- 새 API와 필드는 생성 API 계약 §2.4.1, [데이터 모델 SavedWeeklyPlan](../architecture/02-data-model.md#savedweeklyplan-미니앱-플랜-정본--백엔드-영속-d19)에 둔다.
 - 데이터베이스 추가 쓰기·읽기와 백업 비용이 발생한다. 기존 사용자 문서를 일괄 변환하거나 삭제하지 않는다.
 - 로컬 브라우저·가짜 API 왕복과 격리된 실제 Firestore 임시 문서 쓰기/읽기는 구현 검증이다. 토스 실기기, 실제 계정의 기존 기록 이관, 배포 후 동작은 이 검증으로 대신하지 않는다.

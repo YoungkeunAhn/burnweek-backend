@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-16
-- **근거:** [D3·D5](./mvp-decision-log.md), [research/02](../research/02-google-drive-as-database.md). 관련 INV-2, FR-SYNC-2.
+- **근거:** [D3·D5](./mvp-decision-log.md), research/02. 관련 INV-2, FR-SYNC-2.
 
 ## Context
 데이터를 사용자 Drive에 저장하고 **다른 AI가 읽는 것**이 제품 핵심 가치. 저장 위치(가시 Drive vs 숨김 appDataFolder)와 OAuth 스코프를 정해야 함.

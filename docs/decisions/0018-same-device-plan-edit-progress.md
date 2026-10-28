@@ -16,5 +16,5 @@
 
 ## 결과
 
-- 서버는 옛 초안을 `progress_draft_archives`에 보관한 뒤에만 새 초안을 쓴다. API 계약의 그 조건은 그대로다. 클라이언트 이어 쓰기 조건은 [생성 API 계약 §2.4.1](../specs/features/001-weekly-plan-generation/contracts/generation-api.md#241-진행-중-초안--getput-v1planscurrentweekprogressday_index)에 있다.
+- 서버는 옛 초안을 `progress_draft_archives`에 보관한 뒤에만 새 초안을 쓴다. API 계약의 그 조건은 그대로다. 클라이언트 이어 쓰기 조건은 생성 API 계약 §2.4.1에 있다.
 - 표시가 없는 다른 기기의 플랜 변경, 그리고 내용이 다른 진행은 확인 화면이 남는다.

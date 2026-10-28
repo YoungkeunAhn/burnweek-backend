@@ -2,7 +2,7 @@
 
 - **Status:** Accepted (2026-08-16, 사용자 승인 — **patrol_mcp 파일럿으로 진행**)
 - **Date:** 2026-08-16
-- **근거:** [research/06-verification-tooling.md](../research/06-verification-tooling.md) (codex + sonnet 병렬 웹조사, 교차검증). 관련 ADR-0003(Drift)·0008(Firebase)·0006(LLM 어댑터), INV-1(코드 불변식).
+- **근거:** research/06-verification-tooling.md (codex + sonnet 병렬 웹조사, 교차검증). 관련 ADR-0003(Drift)·0008(Firebase)·0006(LLM 어댑터), INV-1(코드 불변식).
 
 ## Context
 개발·CI 검증 도구가 필요하다 — 웹의 Playwright에 해당하는 **모바일 UI 검증 + 백엔드/계약 검증**. 대상: Flutter 앱 + Firebase Functions(TS). AI 에이전트가 구동·검증하는 워크플로. (배포용 아님, 개발/CI용.)

@@ -20,4 +20,4 @@
 
 검색어가 있어도 켜진 부위 칩과 결과 범위가 일치한다. 구버전 클라이언트는 기본 40개와 기존 필드를 계속 사용한다. 새 클라이언트보다 백엔드를 먼저 배포해야 하며, 늦은 검색·더 보기 응답은 현재 조건을 덮어쓰면 안 된다.
 
-근거: [es-hangul 공식 문서](https://es-hangul.slash.page/) · [검색 조합 안내](https://github.com/toss/es-hangul/blob/main/docs/src/pages/docs/migration/v2.en.mdx) · [API 계약 §2.3](../specs/features/001-weekly-plan-generation/contracts/generation-api.md).
+근거: [es-hangul 공식 문서](https://es-hangul.slash.page/) · [검색 조합 안내](https://github.com/toss/es-hangul/blob/main/docs/src/pages/docs/migration/v2.en.mdx) · API 계약 §2.3.

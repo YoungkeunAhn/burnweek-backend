@@ -2,7 +2,7 @@
 
 - **Status:** Draft (Phase 1)
 - **Date:** 2026-08-16
-- **근거:** [PRD](../product/01-prd.md), [결정 로그](../decisions/mvp-decision-log.md), [research/05](../research/05-scaffolding-research.md)(arc42-lite+C4). [ADR-0001](../decisions/0001-docs-scaffolding-and-repo-structure.md)(리포 구조).
+- **근거:** PRD, [결정 로그](../decisions/mvp-decision-log.md), research/05(arc42-lite+C4). [ADR-0001](../decisions/0001-docs-scaffolding-and-repo-structure.md)(리포 구조).
 
 > ⏸ **이 문서는 Flutter 제품 소관이며 2026-08-20 [D16](../decisions/mvp-decision-log.md)으로 동결됐다.** 현재 진행선은 토스 미니앱이고, 저장 정본은 Firestore다([D19](../decisions/mvp-decision-log.md)). 아래의 Flutter·Drift·Drive·FCM 서술은 **재개 시 유효한 기록**으로 읽어라.
 

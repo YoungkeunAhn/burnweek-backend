@@ -22,4 +22,4 @@ Accepted — 2026-10-26 사용자 승인. [D22-6](./mvp-decision-log.md#d22)의 
 - 격주 운동은 최근 수행 중량에서 이어지고, 공백 이후 자동 상승은 막힌다. 4주 범위 밖의 기록만 있으면 기존 첫 기록 없음 처방을 따른다.
 - 정체 감지·주기적 디로드·램프업 자동 판별·난이도 피드백은 이 결정에 포함하지 않는다.
 - 기존 오름차순 문서 조회를 재사용하므로 새 Firestore 색인은 필요 없다. 계정의 주차 문서를 읽은 뒤 범위를 고른다. 문서가 많아지면 조회 범위를 서버 질의로 제한하는 최적화가 필요하다.
-- 계약은 [generation-api](../specs/features/001-weekly-plan-generation/contracts/generation-api.md), 스키마는 [02-data-model B2](../architecture/02-data-model.md), 구현·검증 이력은 [변경 기록](../../miniapp/CHANGELOG.md)을 따른다.
+- 계약은 generation-api, 스키마는 [02-data-model B2](../architecture/02-data-model.md), 구현·검증 이력은 변경 기록을 따른다.

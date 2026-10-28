@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-16
-- **근거:** [D3](./mvp-decision-log.md), [research/02 §6](../research/02-google-drive-as-database.md). 관련 INV-3, NFR-SEC-1·PRIV-1. 런타임은 [ADR-0008](./0008-backend-runtime-firebase.md)(Firebase; ADR-0002 supersede).
+- **근거:** [D3](./mvp-decision-log.md), research/02 §6. 관련 INV-3, NFR-SEC-1·PRIV-1. 런타임은 [ADR-0008](./0008-backend-runtime-firebase.md)(Firebase; ADR-0002 supersede).
 
 ## Context
 LLM 호출에는 API 키가 필요하나 앱에 번들하면 추출된다. Drive 쓰기는 사용자 토큰이 필요하다. 백엔드 책임 경계를 정해야 함.

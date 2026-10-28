@@ -25,5 +25,5 @@ POC(2026-08-16)에서 테스트 provider MiniMax-M2/M3가 **추론(reasoning) �
 - **긍정:** 생성 지연이 UX를 막지 않음(사용자는 앱을 닫아도 됨). 추론 모델의 지연 편차·60초 초과가 더 이상 실패가 아님. 주 1회 생성이라 잡 볼륨·비용 미미(NFR-COST-1).
 - **부정/비용:** 인프라 증가 — **Cloud Tasks + Firestore(ephemeral, TTL) + FCM**. 앱에 **`firebase_core` + `firebase_messaging`** 추가 필요(기존 "앱은 Firebase SDK 미사용"은 불변식이 아닌 *결과*였고, 본 ADR에서 그 범위를 좁힘 — 푸시 한정). 잡 상태 폴링 폴백(푸시 미수신 대비) 필요.
 - **불변식:** INV-1~6 불위반(수치·안전은 코드 소유, Drive 원본, 로컬 우선 유지). NFR-PRIV-1은 *ephemeral+TTL*로 유지.
-- **갱신 대상:** **NFR-PERF-1**(60s→300s), **FR-GEN-1**(동기 p95→비동기 접수+푸시), **G1**(1분→5분·알림), [generation-api 계약](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)(동기→비동기), [01-overview](../architecture/01-overview.md)(컨테이너/흐름). GenerationJob 스키마는 [02-data-model](../architecture/02-data-model.md)에 추가.
+- **갱신 대상:** **NFR-PERF-1**(60s→300s), **FR-GEN-1**(동기 p95→비동기 접수+푸시), **G1**(1분→5분·알림), generation-api 계약(동기→비동기), [01-overview](../architecture/01-overview.md)(컨테이너/흐름). GenerationJob 스키마는 [02-data-model](../architecture/02-data-model.md)에 추가.
 - **후속:** ADR-0008 배포에 Cloud Tasks/Firestore(TTL 규칙)/FCM 설정 추가. 스트리밍은 여전히 불필요(비동기라 무의미).

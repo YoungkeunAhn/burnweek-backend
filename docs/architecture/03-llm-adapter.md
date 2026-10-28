@@ -2,7 +2,7 @@
 
 - **Status:** Draft (Phase 1)
 - **Date:** 2026-08-16
-- **근거:** 결정 D10(provider-비종속)·D11(LLM+코드 분리). [research/03 §4](../research/03-ai-plan-generation.md)(LLM 설계), [research/05](../research/05-scaffolding-research.md)(어댑터·MiniMax=OpenAI 호환). PRD NFR-LLM-1·INV-4.
+- **근거:** 결정 D10(provider-비종속)·D11(LLM+코드 분리). research/03 §4(LLM 설계), research/05(어댑터·MiniMax=OpenAI 호환). PRD NFR-LLM-1·INV-4.
 
 ## 목적
 LLM을 **하나의 좁은 인터페이스 뒤에 격리**해 provider(MiniMax/Gemini/GPT/오픈모델)를 **설정으로 교체**한다. 특정 벤더 구조화출력 보장에 의존하지 않고, **JSON 스키마 프롬프트 + 코드 검증 + 재시도**로 신뢰성을 확보(D10/D11).

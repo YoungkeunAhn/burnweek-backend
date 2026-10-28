@@ -42,13 +42,13 @@
 | [0026-exercise-media-on-r2.md](./0026-exercise-media-on-r2.md) | 운동 미디어를 Cloudflare R2 커스텀 도메인에서 제공(D107, D83·D97 번들 동봉 부분 대체) | Accepted (2026-10-18) · 빌드 원본 의존 부분은 0027로 대체 |
 | [0027-external-exercise-media-sources.md](./0027-external-exercise-media-sources.md) | 제작 원본 Drive 보관·한글 라이브러리·원본 없는 일반 빌드(0026 빌드 원본 의존 부분 대체) | Accepted (2026-10-19) |
 | [0028-banner-fixed-placement.md](./0028-banner-fixed-placement.md) | 배너 광고 고정 — 탭·기록 화면 하단 바 아래 · 하위 화면 위 sticky · 상세 머리 묶음(D109, D91·0022·0023 광고 배치 대체) | Accepted (2026-10-21) |
-| [0029-plan-exercise-picker-page.md](./0029-plan-exercise-picker-page.md) | 주간 플랜 운동 추가·변경을 독립 페이지로 전환 · 문서 전체 스크롤·출발 상태 복원 | Accepted (2026-10-23) · 실기기 확인 완료·검수 중([기록](../../miniapp/reports/releases/review-picker-page-20261023.json)) |
+| [0029-plan-exercise-picker-page.md](./0029-plan-exercise-picker-page.md) | 주간 플랜 운동 추가·변경을 독립 페이지로 전환 · 문서 전체 스크롤·출발 상태 복원 | Accepted (2026-10-23) · 실기기 확인 완료·검수 중(기록) |
 | [0030-four-week-prescription-history.md](./0030-four-week-prescription-history.md) | 최근 4주 운동별 최근 수행·지난주 미수행 시 자동 상승 보류(D22-6·D57 A10 일부 대체) | Accepted (2026-10-26) |
-| [0031-reviewed-external-exercise-notes.md](./0031-reviewed-external-exercise-notes.md) | 푸시 프레스·사이드 브리지의 외부 출처·사진 대조와 설명 해시 검사(D29 두 ID 일부 대체) | Accepted (2026-10-27) |
+| 0031-reviewed-external-exercise-notes.md | 푸시 프레스·사이드 브리지의 외부 출처·사진 대조와 설명 해시 검사(D29 두 ID 일부 대체) | Accepted (2026-10-27) |
 
 ## 읽기 순서
 1. [mvp-decision-log.md](./mvp-decision-log.md) — 제품의 큰 결정 한눈에.
 2. `0001-` 이후 ADR — 개별 아키텍처 결정 상세.
 
 ## 링크
-- 상위: [../00-START-HERE.md](../00-START-HERE.md) · 근거: [../research/05-scaffolding-research.md](../research/05-scaffolding-research.md)
+- 상위: ../00-START-HERE.md · 근거: ../research/05-scaffolding-research.md

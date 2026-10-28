@@ -23,6 +23,6 @@ Phase 1 백엔드 런타임 = **Firebase Cloud Functions (Gen2, TypeScript)**. �
 ## 정정 (2026-08-18) — "$0"의 전제
 본 ADR의 "인프라 $0(무료 쿼터 내)"는 **사용량 기준으로는 사실이지만, 전제가 빠져 있었다**: Gen2 함수·Cloud Tasks·Secret Manager는 모두 **Blaze(결제 수단 등록) 전용**이라 카드 없이는 배포 자체가 불가능하다. 배포 시도에서 드러났다(`functions:secrets:set` → "must be on the Blaze plan").
 
-- **금액 재확인(실측·[research/07](../research/07-backend-cost-and-free-tier.md)):** 주 1회 생성 × 100명(월 400건)이면 함수 60,000 vCPU-초(무료 180,000) 등 모든 항목이 무료 한도 안 → **월 $0**. 단 **Artifact Registry 이미지 누적**만 유휴 비용으로 증가하므로 정리 정책이 필수다.
+- **금액 재확인(실측·research/07):** 주 1회 생성 × 100명(월 400건)이면 함수 60,000 vCPU-초(무료 180,000) 등 모든 항목이 무료 한도 안 → **월 $0**. 단 **Artifact Registry 이미지 누적**만 유휴 비용으로 증가하므로 정리 정책이 필수다.
 - **결정 유지(사용자, 2026-08-18):** 실제 청구액이 0원이고 전환 비용(런타임 이식)이 있으므로 **Firebase 유지 + Blaze 전환**. 카드 없는 대안(Cloudflare Workers 무료 + Queues + KV)은 research/07에 근거째로 보존한다 — 청구가 실제로 발생하면 `src/index.ts` 한 파일 문제다.
 - **비용 통제(본 결정에 부수):** `maxInstances`(접수 10·워커 5·조회 10, 코드), spend cap budget(실차단), 예산 알림 월 5,000원, Artifact Registry 정리 정책. 남용으로 인한 **LLM 실비**를 막는 엔드포인트 인증은 미구현 → 001 T5.5.

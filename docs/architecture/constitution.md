@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-16
-- 이 문서는 구현 내내 **위반 불가**한 원칙이다. AI 에이전트에 항상 주입한다. 근거: [PRD §12 보호 불변식](../product/01-prd.md), 결정 D3·D5·D10·D11.
+- 이 문서는 구현 내내 **위반 불가**한 원칙이다. AI 에이전트에 항상 주입한다. 근거: PRD §12 보호 불변식, 결정 D3·D5·D10·D11.
 - **적용 범위 (2026-08-20 [D16](../decisions/mvp-decision-log.md) 이후 제품이 둘이다).** 아래 표가 어느 불변식이 어느 제품에 적용되는지를 정한다. **미니앱이 현재 진행선이고 Flutter 앱은 동결**이다 — 동결된 코드는 손대지 않으므로 Flutter 열은 그대로 유효하다.
 
 | | 미니앱(진행) | Flutter 앱(동결) | 근거 |
@@ -24,5 +24,5 @@
 - **스펙 주도:** 기능 구현 전 `docs/specs/features/NNN-*/`의 spec→design→contracts를 따른다. 계약(스키마·enum)을 임의 변경하지 않는다 — 변경 시 계약 문서·[02-data-model](./02-data-model.md) 먼저 갱신.
 - **결정 불변:** 확정 ADR은 불변. 변경은 새 ADR로 supersede(양방향 링크).
 - **교차검증:** 스펙/스키마 변경은 Codex 교차검증 + `jsonschema` 인스턴스 검증으로 확인.
-- **소유권:** 각 FR/INV는 한 기능이 소유([PRD §12 매트릭스](../product/01-prd.md)), 나머지는 준수(참조).
-- **프라이버시:** 의료·통증 원문 로깅 금지. 나머지는 제품별로 갈린다 — **Flutter**: 데이터 원본=사용자 Drive, 백엔드에 영구 사용자 이력 DB 없음. **미니앱**: 원본이 백엔드(Firestore)이므로 이 문장이 성립하지 않는다 — 대체 조항은 **[NFR-PRIV-2](../product/01-prd.md)**(보관 범위·보존 기간·삭제 의무)이며 [D19](../decisions/mvp-decision-log.md)·[D22-6](../decisions/mvp-decision-log.md) 이 근거다.
+- **소유권:** 각 FR/INV는 한 기능이 소유(PRD §12 매트릭스), 나머지는 준수(참조).
+- **프라이버시:** 의료·통증 원문 로깅 금지. 나머지는 제품별로 갈린다 — **Flutter**: 데이터 원본=사용자 Drive, 백엔드에 영구 사용자 이력 DB 없음. **미니앱**: 원본이 백엔드(Firestore)이므로 이 문장이 성립하지 않는다 — 대체 조항은 **NFR-PRIV-2**(보관 범위·보존 기간·삭제 의무)이며 [D19](../decisions/mvp-decision-log.md)·[D22-6](../decisions/mvp-decision-log.md) 이 근거다.

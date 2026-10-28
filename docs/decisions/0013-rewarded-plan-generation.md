@@ -20,7 +20,7 @@
 
 ## 저장 및 검증 범위
 
-`generation_access/{uid}`에 무료 사용 주, 보상 잔여 횟수, 진행 중인 예약, 최근 시청 요청만 저장한다. Firestore가 정본이며 클라이언트 저장값으로 권한을 판단하지 않는다. [생성 API 계약](../specs/features/001-weekly-plan-generation/contracts/generation-api.md)을 따른다.
+`generation_access/{uid}`에 무료 사용 주, 보상 잔여 횟수, 진행 중인 예약, 최근 시청 요청만 저장한다. Firestore가 정본이며 클라이언트 저장값으로 권한을 판단하지 않는다. 생성 API 계약을 따른다.
 
 SDK 3.0.4 공개 API의 `showFullScreenAd` 옵션은 `adGroupId`이며, 보상 콜백에 서버 검증용 서명이나 SSV 설정은 제공되지 않는다. 일회용 요청은 계정 혼동·재전송을 막지만 변조한 클라이언트의 허위 시청을 증명할 수는 없다. 서버 검증을 지원하는 공식 인터페이스가 제공되면 그 경로로 대체한다. LLM 키·수치 생성·워커 동시 실행 수 제한은 기존 규약을 따른다.
 

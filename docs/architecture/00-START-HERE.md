@@ -32,4 +32,4 @@ repo/
 상세: [../decisions/mvp-decision-log.md](../decisions/mvp-decision-log.md) §확정된 v1 데이터 흐름.
 
 ## 링크
-- 상위: [../00-START-HERE.md](../00-START-HERE.md) · 근거: [../research/02-google-drive-as-database.md](../research/02-google-drive-as-database.md), [../research/05-scaffolding-research.md](../research/05-scaffolding-research.md)
+- 상위: ../00-START-HERE.md · 근거: ../research/02-google-drive-as-database.md, ../research/05-scaffolding-research.md

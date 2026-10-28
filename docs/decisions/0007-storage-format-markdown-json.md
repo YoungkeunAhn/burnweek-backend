@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-16
-- **근거:** [D6](./mvp-decision-log.md), [research/02 §3·§5](../research/02-google-drive-as-database.md), [02-data-model §C](../architecture/02-data-model.md). 관련 FR-SYNC-1·4.
+- **근거:** [D6](./mvp-decision-log.md), research/02 §3·§5, [02-data-model §C](../architecture/02-data-model.md). 관련 FR-SYNC-1·4.
 
 ## Context
 저장 데이터를 **외부 AI가 잘 읽으면서** 앱도 정확히 재파싱해야 한다. 커넥터 실측: Markdown이 가장 넓게 안정적으로 읽히고(Claude/GPT/Gemini/MCP), JSON은 ChatGPT 커넥터의 문서화된 인덱싱 타입이 아님. JSONL은 '단일 무한 파일' append 효율용.

@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-08-16
-- **근거:** [D10·D11](./mvp-decision-log.md), [research/03 §4](../research/03-ai-plan-generation.md), [03-llm-adapter](../architecture/03-llm-adapter.md). 관련 INV-1·4.
+- **근거:** [D10·D11](./mvp-decision-log.md), research/03 §4, [03-llm-adapter](../architecture/03-llm-adapter.md). 관련 INV-1·4.
 
 ## Context
 LLM provider가 열려 있고(테스트 MiniMax, 후보 Gemini/GPT, 향후 오픈모델) 교체 가능해야 한다. 또한 provider의 구조화출력은 값 범위(min/max)를 보장하지 못한다.
