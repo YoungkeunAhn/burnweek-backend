@@ -695,8 +695,6 @@ const tokens = {
   iron: "아이언",
   crucifix: "크루시픽스",
   leverage: "레버리지",
-  landmine: "랜드마인",
-  physioball: "피지오볼",
   bosu: "보수",
   exercise: "운동",
   butt: "엉덩이",
