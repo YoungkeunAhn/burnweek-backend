@@ -1,0 +1,3709 @@
+{
+  "provider": "minimax",
+  "model": "MiniMax-M3",
+  "cases": {
+    "beginner-2day-fullgym": {
+      "why": "minimum training frequency (2 days → full_body)",
+      "attempts": 1,
+      "elapsed_ms": 141619,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body A — squat + horizontal push/pull emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Brace core, descend until thighs are near parallel, drive through midfoot, keep neutral spine."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press (Medium Grip)",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Retract scapula, lower bar with control to mid-chest, press bar over shoulders, maintain foot drive."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Hinge at hips ~45°, neutral spine, pull bar to lower ribs, squeeze shoulder blades without jerking."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_walking_lunge",
+                  "step_up_with_knee_raise"
+                ],
+                "coaching_cue": "Long stride, front knee tracks over ankle, torso upright, control descent and drive through heel."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "leverage_shoulder_press"
+                ],
+                "coaching_cue": "Press without excessive elbow flaring, keep ribcage down, finish with biceps near ears."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternate_hammer_curl",
+                  "cable_hammer_curls_rope_attachment"
+                ],
+                "coaching_cue": "Elbows pinned to ribs, controlled eccentric, no torso swing to cheat the rep."
+              },
+              {
+                "kind": "cardio",
+                "name": "Incline Walk",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                }
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "rest",
+            "focus": "Recovery — light mobility and hydration",
+            "items": []
+          },
+          {
+            "day_index": 2,
+            "session_type": "rest",
+            "focus": "Recovery — light mobility and hydration",
+            "items": []
+          },
+          {
+            "day_index": 3,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body B — vertical pull + hip hinge emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Barbell Incline Bench Press (Medium Grip)",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Bench at ~30°, lower bar to upper chest, drive bar up and slightly back over shoulders."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Front Lat Pulldown",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "chin_up",
+                  "cable_internal_rotation"
+                ],
+                "coaching_cue": "Slight torso lean, drive elbows down and back, pull bar to upper chest, fully contract lats."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "stiff_legged_dumbbell_deadlift",
+                "name": "Stiff-Legged Dumbbell Deadlift",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "smith_machine_stiff_legged_deadlift",
+                  "cable_deadlifts"
+                ],
+                "coaching_cue": "Soft knees, hinge from hips, dumbbells slide close to thighs, neutral spine throughout, stop when hamstring tension peaks."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "leverage_shoulder_press"
+                ],
+                "coaching_cue": "Press from shoulder height, finish overhead without locking elbows aggressively, keep core braced."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "pull_through"
+                ],
+                "coaching_cue": "Upper back on bench, chin tucked, drive hips up by squeezing glutes, ribs stay down, pause briefly at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_hammer_curls_rope_attachment",
+                  "alternate_hammer_curl"
+                ],
+                "coaching_cue": "Elbows tucked, smooth concentric and eccentric, no torso swing."
+              },
+              {
+                "kind": "cardio",
+                "name": "Cycling",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                }
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "rest",
+            "focus": "Recovery — light mobility and hydration",
+            "items": []
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Recovery — light mobility and hydration",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Recovery — light mobility and hydration",
+            "items": []
+          }
+        ]
+      }
+    },
+    "beginner-3day-cardio-none": {
+      "why": "no cardio at all — S-GEN-6 must place nothing",
+      "attempts": 1,
+      "elapsed_ms": 80467,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "Full Body A — squat-emphasis day",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Brace core, knees track over toes, drive through midfoot, sit between the hips"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Retract & depress scapulae, lower bar to mid-chest with control, drive feet into floor"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "cable_rope_rear_delt_rows"
+                ],
+                "coaching_cue": "Hinge to ~45°, neutral spine, pull bar to lower ribs, lead with elbows not hands"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "leverage_shoulder_press",
+                "name": "Lever Shoulder Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_shoulder_press",
+                  "dumbbell_raise"
+                ],
+                "coaching_cue": "Ribs down, press in slight arc, avoid flaring elbows past 90°"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_preacher_curl",
+                "name": "Cable Preacher Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_curl",
+                  "high_cable_curls"
+                ],
+                "coaching_cue": "Elbows pinned, full extension to peak contraction, slow eccentric"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "ab_crunch_machine",
+                "name": "Ab Crunch Machine",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "3_4_sit_up",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Curl pelvis toward ribs, exhale at top, don't yank with arms"
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "rest",
+            "focus": "Rest",
+            "items": []
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "Full Body B — hip-hinge emphasis day",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "smith_machine_stiff_legged_deadlift",
+                "name": "Smith Machine Stiff-Legged Deadlift",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "good_morning",
+                  "stiff_legged_dumbbell_deadlift"
+                ],
+                "coaching_cue": "Soft knees, hinge from hips, bar stays close to thighs, feel hamstrings stretch"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "decline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Elbows ~45° from torso, full ROM to deep stretch, press dumbbells together at top"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Front Lat Pulldown",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "chin_up",
+                  "kneeling_single_arm_high_pulley_row"
+                ],
+                "coaching_cue": "Drive elbows down toward hips, slight chest-up posture, no shrugging"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_shoulder_raise",
+                "name": "Barbell Incline Shoulder Raise",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_rope_rear_delt_rows",
+                  "barbell_rear_delt_row"
+                ],
+                "coaching_cue": "Slow controlled raise, pause & squeeze rear delts, no momentum"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_barbell_calf_raise",
+                "name": "Standing Barbell Calf Raise",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "rocking_standing_calf_raise",
+                  "calf_press"
+                ],
+                "coaching_cue": "Full stretch at bottom, rise onto big toes, brief pause at top"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "3_4_sit_up",
+                "name": "3/4 Sit-Up",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "ab_crunch_machine",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Engage abs to lift first, then reach — protect the neck"
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "rest",
+            "focus": "Rest",
+            "items": []
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift",
+            "focus": "Full Body C — lunge / single-leg emphasis day",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_walking_lunge",
+                "name": "Barbell Walking Lunge",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_lunges",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Long controlled stride, drop back knee under control, torso stays upright"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Incline Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "decline_dumbbell_bench_press",
+                  "close_grip_barbell_bench_press"
+                ],
+                "coaching_cue": "Bench ~30°, bar to upper chest, drive feet down for stability"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Two-Dumbbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "kneeling_high_pulley_row",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Hinge ~45°, dumbbells pull to hips, lead with elbows, keep neck neutral"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "anti_gravity_press"
+                ],
+                "coaching_cue": "Maintain cable tension throughout, press in arc, ribs braced down"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dip_machine",
+                "name": "Dip Machine",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_dumbbell_press",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Full ROM, don't shrug shoulders up, control descent"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "flutter_kicks",
+                "name": "Flutter Kicks",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "leg_lift",
+                  "barbell_ab_rollout"
+                ],
+                "coaching_cue": "Low back pressed into floor, small controlled alternating kicks"
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Rest",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Rest",
+            "items": []
+          }
+        ]
+      }
+    },
+    "beginner-4day-upperlower": {
+      "why": "4 days → upper_lower split",
+      "attempts": 1,
+      "elapsed_ms": 113973,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body A — squat / bench / row + LISS cycle",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Brace core, sit hips back and down between knees, drive through midfoot; knees track over toes."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "cable_chest_press"
+                ],
+                "coaching_cue": "Retract shoulder blades, lower bar to mid-chest with elbows ~45°, press to lockout without hyperextending."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_incline_row",
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Hinge to ~45°, neutral spine, pull bar to lower ribs; no torso swinging; lats lead the pull."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_walking_lunge",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Step into a controlled split, knee tracks over front ankle, rear knee grazes floor, torso upright."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_hammer_curls_rope_attachment",
+                "name": "Cable Rope Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternate_hammer_curl",
+                  "high_cable_curls"
+                ],
+                "coaching_cue": "Elbows pinned at sides, neutral grip on rope, full ROM; avoid shoulder shrug."
+              },
+              {
+                "kind": "cardio",
+                "name": "LISS Cycling",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                },
+                "coaching_cue": "3 min easy warm-up, then settle into conversational Zone 2 pace; steady cadence."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body B — DB squat / bench / pulldown + HIIT row",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Hold DBs at sides or at shoulders; squat to comfortable depth with chest tall; knees out."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_bench_press_medium_grip",
+                  "dumbbell_bench_press_with_neutral_grip"
+                ],
+                "coaching_cue": "Press DBs from chest-level, neutral wrists, full elbow extension without locking aggressively."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Lat Pulldown",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "kneeling_high_pulley_row"
+                ],
+                "coaching_cue": "Sit tall, pull elbows down and back toward ribs; lats engaged; no trunk swing."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_glute_bridge",
+                "name": "Barbell Glute Bridge",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_hip_thrust",
+                  "butt_lift_bridge"
+                ],
+                "coaching_cue": "Drive heels into floor, ribs down, full hip extension; pause and squeeze glutes 1s at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "leverage_shoulder_press",
+                  "alternating_cable_shoulder_press"
+                ],
+                "coaching_cue": "Press straight up, ribs stacked over pelvis; no excessive lower-back arch."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "ab_crunch_machine",
+                "name": "Ab Crunch Machine",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "3_4_sit_up",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Curl ribs toward hips; slow eccentric; avoid yanking with arms."
+              },
+              {
+                "kind": "cardio",
+                "name": "HIIT Rowing",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "rowing",
+                  "style": "HIIT"
+                },
+                "coaching_cue": "Alternate ~20–30s hard / 60s easy; maintain clean stroke mechanics under fatigue."
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "rest",
+            "focus": "Rest & recovery",
+            "items": []
+          },
+          {
+            "day_index": 3,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body C — hip thrust / incline / row + incline walk",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "pull_through"
+                ],
+                "coaching_cue": "Shoulders on bench, ribs down, drive hips until thighs parallel; squeeze glutes hard at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Incline Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press"
+                ],
+                "coaching_cue": "Bench ~30°, bar to upper chest, press up and slightly back over shoulders; shoulder blades retracted."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Brace chest on incline bench, row DBs to hips, elbows ~45° from torso; no torso rotation."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_walking_lunge",
+                "name": "Barbell Walking Lunge",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_lunges",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Long stride for glutes, short for quads; torso upright; control the descent, drive through front heel."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_preacher_curl",
+                "name": "Cable Preacher Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_curl",
+                  "close_grip_ez_bar_curl"
+                ],
+                "coaching_cue": "Elbows fixed on pad, full stretch at bottom; avoid shoulder flexion forward."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "flutter_kicks",
+                "name": "Flutter Kicks",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "leg_lift",
+                  "3_4_sit_up"
+                ],
+                "coaching_cue": "Lower back pressed into floor; small, controlled alternating kicks; breathe steadily."
+              },
+              {
+                "kind": "cardio",
+                "name": "LISS Incline Walk",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "coaching_cue": "10–15% incline at brisk walking pace; sustained Zone 2; no leaning on rails."
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body D — split squat / chest press / pulley row + HIIT cycle",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_side_split_squat",
+                "name": "Barbell Side Split Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_lunges",
+                  "barbell_walking_lunge"
+                ],
+                "coaching_cue": "Wide stance, descend straight down; front knee tracks over toes; torso upright."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_chest_press",
+                "name": "Cable Chest Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press"
+                ],
+                "coaching_cue": "Press handles forward, palms down; core braced; steady tempo with control at end-range."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "kneeling_high_pulley_row",
+                "name": "Kneeling High Pulley Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_front_lat_pulldown",
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Kneel to eliminate leg drive; pull elbows back, squeeze scapulae at end of ROM."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "smith_machine_stiff_legged_deadlift",
+                "name": "Smith Stiff-Legged Deadlift",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "stiff_legged_dumbbell_deadlift",
+                  "cable_deadlifts"
+                ],
+                "coaching_cue": "Soft knees, hinge at hips; bar travels close to thighs; neutral spine throughout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_shoulder_raise",
+                "name": "Barbell Incline Shoulder (Rear Delt) Raise",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_raise",
+                  "barbell_rear_delt_row"
+                ],
+                "coaching_cue": "Face-down on incline bench, raise bar with elbows slightly bent; lead with the elbows, control the descent."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "3_4_sit_up",
+                "name": "3/4 Sit-Up",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "ab_crunch_machine",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Roll up vertebra by vertebra, arms forward; avoid yanking the neck; slow return."
+              },
+              {
+                "kind": "cardio",
+                "name": "HIIT Cycling",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "HIIT"
+                },
+                "coaching_cue": "20–30s hard effort / 60s easy; maintain form, breathe through nose on easy intervals."
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Rest & recovery",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Rest & recovery",
+            "items": []
+          }
+        ]
+      }
+    },
+    "novice-5day-ppl-conditioning": {
+      "why": "5 days → PPL, and conditioning adds a HIIT session",
+      "attempts": 1,
+      "elapsed_ms": 116823,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "push_pull_legs",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Push 1 — chest, shoulders, triceps with rowing finisher",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press — Medium Grip",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Pin shoulder blades down, lower bar to mid-chest, drive heels into floor"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Barbell Incline Bench Press — Medium Grip",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "alternating_cable_shoulder_press"
+                ],
+                "coaching_cue": "Bench 30–45°, press in line with upper chest, brace abs throughout"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "leverage_shoulder_press"
+                ],
+                "coaching_cue": "Cable stack at shoulder height, press straight up, full lockout without shrug"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_chest_press",
+                "name": "Cable Chest Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "bench_dips"
+                ],
+                "coaching_cue": "Step forward for preload, press palms inward, squeeze pecs at lockout"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_dumbbell_press",
+                "name": "Close-Grip Dumbbell Press",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dips_triceps_version",
+                  "jm_press"
+                ],
+                "coaching_cue": "Keep dumbbells touching, elbows tucked close to ribs, lockout at top"
+              },
+              {
+                "kind": "cardio",
+                "name": "Rowing — LISS Finisher",
+                "order": 6,
+                "rep_intent": "endurance",
+                "cardio_kind": {
+                  "modality": "rowing",
+                  "style": "LISS"
+                },
+                "coaching_cue": "Drive legs → back → arms, low stroke rate, nasal breathing, steady pace"
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "lift",
+            "focus": "Pull 1 — back thickness, lats, biceps",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_rear_delt_row",
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Hinge to ~45°, neutral spine, pull bar to lower ribs, no torso swing"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "chin_up",
+                "name": "Chin-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_front_lat_pulldown"
+                ],
+                "coaching_cue": "Full hang at bottom, pull until chin clears bar, control 2-sec descent"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "kneeling_high_pulley_row",
+                "name": "Kneeling Single-Arm High Pulley Row",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "kneeling_single_arm_high_pulley_row",
+                  "bent_over_one_arm_long_bar_row"
+                ],
+                "coaching_cue": "Brace off bench, drive elbow back and up, squeeze shoulder blade at top"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_standing_barbell_curl",
+                  "drag_curl"
+                ],
+                "coaching_cue": "Elbows pinned to ribs, no body sway, full ROM top and bottom"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_rope_rear_delt_rows",
+                "name": "Cable Rope Rear-Delt Row",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_rear_delt_row"
+                ],
+                "coaching_cue": "Pull elbows high and wide, externally rotate at end range, squeeze rear delts"
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "Legs — quads, glutes, hamstrings, calves",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_side_split_squat",
+                  "kneeling_squat"
+                ],
+                "coaching_cue": "Brace core, descend to parallel or below, knees track over toes"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "pull_through"
+                ],
+                "coaching_cue": "Upper back on bench, ribs down, drive heels, full lockout glute squeeze"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "stiff_legged_dumbbell_deadlift",
+                "name": "Stiff-Legged Dumbbell Deadlift",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_deadlifts",
+                  "smith_machine_stiff_legged_deadlift"
+                ],
+                "coaching_cue": "Soft knees, hinge at hips, dumbbells glide close to legs, feel hamstring stretch"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_walking_lunge",
+                  "step_up_with_knee_raise"
+                ],
+                "coaching_cue": "Step into front heel, vertical torso, descend until back knee near floor"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_calf_raises",
+                "name": "Standing Calf Raises",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "standing_barbell_calf_raise",
+                  "calf_press_on_the_leg_press_machine"
+                ],
+                "coaching_cue": "Full stretch at bottom, rise onto big toes, 2-sec pause at top, slow eccentric"
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "lift",
+            "focus": "Push 2 — shoulder emphasis, chest variety, triceps",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "decline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Slight arch, dumbbells at chest level, press in arc over chest, full lockout"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternating_cable_shoulder_press",
+                "name": "Alternating Cable Shoulder Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "leverage_shoulder_press",
+                  "cable_shoulder_press"
+                ],
+                "coaching_cue": "Cable tension throughout, alternate arms, brace core, no leaning"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_barbell_bench_press",
+                "name": "Close-Grip Barbell Bench Press",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "smith_machine_close_grip_bench_press",
+                  "close_grip_dumbbell_press"
+                ],
+                "coaching_cue": "Hands shoulder-width, elbows tucked, bar to lower sternum, drive triceps"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "decline_dumbbell_flyes",
+                "name": "Decline Dumbbell Flyes",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "decline_smith_press"
+                ],
+                "coaching_cue": "Soft elbow bend, hug-the-tree arc, feel deep stretch at bottom, squeeze up top"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dips_triceps_version",
+                "name": "Triceps Dips",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dip_machine",
+                  "bench_dips"
+                ],
+                "coaching_cue": "Slight forward lean, descend until upper arms parallel, full lockout, control tempo"
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Pull 2 — vertical pulling, rear delts, biceps with cycling finisher",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Front Lat Pulldown",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "chin_up"
+                ],
+                "coaching_cue": "Slight backward lean, pull elbows down and back, squeeze lats at bottom"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Two-Dumbbell Row",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row_with_palms_in",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Chest up, neutral spine, drive dumbbells to hip pockets, full squeeze"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Bench Row",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_one_arm_long_bar_row"
+                ],
+                "coaching_cue": "Chest supported on incline, let arms hang, pull elbows toward ceiling"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_rear_delt_row",
+                "name": "Barbell Rear-Delt Row",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_rope_rear_delt_rows"
+                ],
+                "coaching_cue": "Pronated wider grip, pull to upper abdomen, lead with elbows high"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternating Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_hammer_curls_rope_attachment",
+                  "high_cable_curls"
+                ],
+                "coaching_cue": "Neutral grip throughout, no swing, alternate arms with controlled tempo"
+              },
+              {
+                "kind": "cardio",
+                "name": "Cycling — LISS Finisher",
+                "order": 6,
+                "rep_intent": "endurance",
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                },
+                "coaching_cue": "Steady cadence, light to moderate resistance, stay conversational, zone 2"
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Active recovery — light walk, mobility, hydration",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Full rest — sleep, nutrition, recovery",
+            "items": []
+          }
+        ]
+      }
+    },
+    "beginner-6day-ppl": {
+      "why": "maximum training frequency, cardio has to fit around it",
+      "attempts": 1,
+      "elapsed_ms": 153013,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "push_pull_legs",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Push A: chest, shoulders, triceps",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_bench_press_medium_grip",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Pinch shoulder blades back and down; feet flat on floor; lower dumbbells under control to mid-chest with elbows ~45 degrees from torso."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "incline_dumbbell_bench_press",
+                "name": "Incline Dumbbell Bench Press",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_incline_bench_press_medium_grip"
+                ],
+                "coaching_cue": "Set bench 30-40 degrees; press dumbbells up and slightly inward toward upper chest; avoid bouncing off the chest."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "leverage_shoulder_press"
+                ],
+                "coaching_cue": "Brace core; press straight up; keep elbows from flaring past ~75 degrees; full but controlled lockout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_raise",
+                "name": "Dumbbell Lateral Raise",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [],
+                "coaching_cue": "Lead with the elbows; raise to shoulder height only; pause briefly; slow 2-3 second eccentric."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dips_triceps_version",
+                "name": "Triceps Dips",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dip_machine",
+                  "close_grip_dumbbell_press",
+                  "bench_dips"
+                ],
+                "coaching_cue": "Stay upright to bias triceps; lower only to ~90 degrees; stop short of any shoulder pinching."
+              },
+              {
+                "kind": "cardio",
+                "name": "Incline Walk",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "coaching_cue": "After lifting; conversational pace; low RPE; smooth steady breathing."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "lift",
+            "focus": "Pull A: back, rear delts, biceps",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Front Lat Pulldown",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [],
+                "coaching_cue": "Pull elbows down and back toward the hips; squeeze lats at the bottom; avoid yanking with the arms."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Two Dumbbell Row",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_one_arm_long_bar_row",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Hinge from hips with a flat back; let arms hang; pull dumbbells toward the lower ribs; no torso swing."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_rope_rear_delt_rows",
+                "name": "Cable Rope Rear Delt Row",
+                "role": "accessory",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_rear_delt_row"
+                ],
+                "coaching_cue": "Pull elbows high and wide; squeeze shoulder blades together; control the return without rounding forward."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_hammer_curls_rope_attachment",
+                "name": "Cable Rope Hammer Curl",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_curl",
+                  "close_grip_standing_barbell_curl"
+                ],
+                "coaching_cue": "Elbows pinned to sides; full ROM; avoid body sway; squeeze at the top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternating Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_preacher_curl",
+                  "barbell_curl"
+                ],
+                "coaching_cue": "Alternate arms smoothly; slight supination at top; keep core braced to prevent hip movement."
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift_plus_cardio",
+            "focus": "Legs A: quads, glutes, hamstrings, calves",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Brace core, take a breath; descend with knees tracking over toes; hit a depth you can control with neutral spine."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_side_split_squat",
+                  "step_up_with_knee_raise"
+                ],
+                "coaching_cue": "Step out into the lunge rather than dropping the back knee; upright torso; control the return to start."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "stiff_legged_dumbbell_deadlift",
+                "name": "Stiff-Legged Dumbbell Deadlift",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "smith_machine_stiff_legged_deadlift",
+                  "good_morning"
+                ],
+                "coaching_cue": "Soft knees; hinge from hips; keep dumbbells close to thighs; flat back throughout; stop when hamstrings feel stretched."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "glute_kickback"
+                ],
+                "coaching_cue": "Drive heels into the floor; squeeze glutes at lockout; avoid hyperextending the lower back; chin tucked."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_calf_raises",
+                "name": "Standing Calf Raises",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "seated_calf_raise",
+                  "smith_machine_calf_raise"
+                ],
+                "coaching_cue": "Full stretch at the bottom; hard 1-2 second contraction at the top; controlled tempo; no bouncing."
+              },
+              {
+                "kind": "cardio",
+                "name": "Incline Walk",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "coaching_cue": "After lifting; conversational pace; low RPE; keep legs moving easy post-leg session."
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "lift",
+            "focus": "Push B: chest, shoulders, triceps (variation)",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Set tight upper back; lower bar to mid-chest with elbows ~45-60 degrees from torso; drive feet into floor."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Barbell Incline Bench Press",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "incline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Bench around 30 degrees; press bar over upper chest; avoid excessive arch or foot-driven leg drive."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternating_cable_shoulder_press",
+                "name": "Alternating Cable Shoulder Press",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_shoulder_press",
+                  "leverage_shoulder_press"
+                ],
+                "coaching_cue": "Alternate arms smoothly; brace core; press straight up without leaning away from the cable."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_raise",
+                "name": "Dumbbell Lateral Raise",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [],
+                "coaching_cue": "Lead with the elbows; raise to shoulder height; slow 2-3 second eccentric; avoid shrugging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dip_machine",
+                "name": "Dip Machine",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dips_triceps_version",
+                  "close_grip_dumbbell_press"
+                ],
+                "coaching_cue": "Stay upright to bias triceps; full range without aggressive lockout; stop short of shoulder discomfort."
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Pull B: back, rear delts, biceps (variation)",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "kneeling_single_arm_high_pulley_row",
+                "name": "Kneeling Single-Arm High Pulley Row",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "kneeling_high_pulley_row",
+                  "bent_over_one_arm_long_bar_row"
+                ],
+                "coaching_cue": "Half-kneel for stability; pull elbow back and down toward the hip; squeeze scapula at the top; no torso twist."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Row",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "bent_over_one_arm_long_bar_row"
+                ],
+                "coaching_cue": "Bench at ~45 degrees; chest supported; pull dumbbells toward hips with elbows tracking close to body."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_rear_delt_row",
+                "name": "Barbell Rear Delt Row",
+                "role": "accessory",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_rope_rear_delt_rows"
+                ],
+                "coaching_cue": "Hinge with flat back; pull bar to lower chest/upper abdomen; lead with elbows; squeeze rear delts."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_hammer_curls_rope_attachment",
+                  "alternate_hammer_curl"
+                ],
+                "coaching_cue": "Elbows pinned to ribs; full ROM without hip swing; squeeze biceps at top; slow eccentric."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_preacher_curl",
+                "name": "Cable Preacher Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_curl",
+                  "close_grip_standing_barbell_curl"
+                ],
+                "coaching_cue": "Armpits on the pad; extend fully under control; no body English; avoid slamming the stack."
+              },
+              {
+                "kind": "cardio",
+                "name": "Incline Walk",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "coaching_cue": "After lifting; conversational pace; low RPE; smooth steady breathing."
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "lift",
+            "focus": "Legs B: quads, glutes, hamstrings, calves (variation)",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Goblet Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Hold dumbbell at chest; sit between hips; elbows track inside knees; upright torso throughout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_side_split_squat",
+                "name": "Barbell Side Split Squat",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_lunges",
+                  "step_up_with_knee_raise"
+                ],
+                "coaching_cue": "Wide stance; descend straight down; torso upright; both legs contribute; control the return."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "smith_machine_stiff_legged_deadlift",
+                "name": "Smith Machine Stiff-Legged Deadlift",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "stiff_legged_dumbbell_deadlift",
+                  "good_morning"
+                ],
+                "coaching_cue": "Smith track guides bar path; hinge at hips with slight knee bend; flat back; slow eccentric to feel hamstrings stretch."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "glute_ham_raise",
+                "name": "Glute Ham Raise",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [],
+                "coaching_cue": "Use a regression (e.g., limited range) if needed; drive hips up by squeezing glutes and hamstrings; control the eccentric."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "seated_calf_raise",
+                "name": "Seated Calf Raise",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "standing_calf_raises",
+                  "smith_machine_calf_raise"
+                ],
+                "coaching_cue": "Pad on lower quads; full stretch at bottom; hard 1-2 second contraction at top; no bouncing."
+              }
+            ]
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Rest and recovery",
+            "items": []
+          }
+        ]
+      }
+    },
+    "beginner-bodyweight-only": {
+      "why": "no equipment — candidate ids must stay body-only",
+      "attempts": 1,
+      "elapsed_ms": 90164,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "Full Body A — squat + horizontal push/pull foundation",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "bodyweight_squat",
+                "name": "Bodyweight Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "step_up_with_knee_raise",
+                  "split_jump"
+                ],
+                "coaching_cue": "Brace core, knees track over toes, descend until thighs parallel, drive through midfoot."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "pushups",
+                "name": "Push-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "incline_push_up",
+                  "push_up_wide"
+                ],
+                "coaching_cue": "Maintain rigid plank, lower chest to floor with elbows ~45°, full lockout at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "table_inverted_row",
+                "name": "Chin-Up",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "pullups",
+                  "v_bar_pullup",
+                  "wide_grip_rear_pull_up"
+                ],
+                "coaching_cue": "Initiate from lats, drive elbows down and back, clear chin over bar."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "push_ups_close_triceps_position",
+                "name": "Bench Dips",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "body_tricep_press",
+                  "push_ups_close_triceps_position"
+                ],
+                "coaching_cue": "Shoulders packed down, elbows tracking back, lower until upper arm parallel to floor."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "glute_kickback",
+                "name": "Glute Kickback",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "single_leg_glute_bridge",
+                  "butt_lift_bridge"
+                ],
+                "coaching_cue": "Squeeze glute at top, avoid lumbar arching, controlled tempo throughout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_heel_touchers",
+                "name": "Alternate Heel Touchers",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "3_4_sit_up",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Crunch up to reach side, controlled pace, no yanking on the neck."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "rest",
+            "focus": "Rest / active recovery",
+            "items": []
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "Full Body B — unilateral leg + incline push/pull variation",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "bodyweight_lunge",
+                "name": "Step-Up With Knee Raise",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bodyweight_squat",
+                  "split_jump"
+                ],
+                "coaching_cue": "Drive through heel of lead foot, stand tall, raise knee to hip height."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "knee_push_up",
+                "name": "Incline Push-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "incline_push_up_wide",
+                  "incline_push_up_medium"
+                ],
+                "coaching_cue": "Hands on stable elevated surface, body rigid plank, full range of motion."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "towel_door_row",
+                "name": "V-Bar Pull-Up",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "pullups",
+                  "wide_grip_rear_pull_up",
+                  "chin_up"
+                ],
+                "coaching_cue": "Hang from neutral grip, pull chest to bar, control eccentric descent."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "push_ups_close_triceps_position",
+                "name": "Close-Grip Push-Up",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "push_ups_with_feet_elevated",
+                  "standing_towel_triceps_extension"
+                ],
+                "coaching_cue": "Hands under chest, elbows tight to torso, full lockout to engage triceps."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "single_leg_glute_bridge",
+                "name": "Single-Leg Glute Bridge",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "butt_lift_bridge",
+                  "glute_kickback"
+                ],
+                "coaching_cue": "Hips level at top, drive through heel, non-working leg neutral."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "3_4_sit_up",
+                "name": "3/4 Sit-Up",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "alternate_heel_touchers",
+                  "bent_knee_hip_raise"
+                ],
+                "coaching_cue": "Curl spine segment by segment, no jerking, breathe through movement."
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "rest",
+            "focus": "Rest / active recovery",
+            "items": []
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body C — density session with LISS cardio finisher",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "bodyweight_squat",
+                "name": "Bodyweight Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "step_up_with_knee_raise",
+                  "split_jump"
+                ],
+                "coaching_cue": "Maintain neutral spine, knees track over toes, controlled tempo on descent."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "push_up_wide",
+                "name": "Push-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "push_up_wide",
+                  "push_ups_with_feet_elevated"
+                ],
+                "coaching_cue": "Tight plank from head to heels, lower under control, full lockout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "table_inverted_row",
+                "name": "Pull-Up",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "chin_up",
+                  "v_bar_pullup",
+                  "wide_grip_rear_pull_up"
+                ],
+                "coaching_cue": "Dead hang start, drive elbows toward hips, chin clearly over bar."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "push_ups_close_triceps_position",
+                "name": "Body Tricep Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bench_dips",
+                  "push_ups_close_triceps_position"
+                ],
+                "coaching_cue": "Elbows stacked over wrists, lower under control, press through palms."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "butt_lift_bridge",
+                "name": "Butt-Lift Bridge",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "single_leg_glute_bridge",
+                  "glute_kickback"
+                ],
+                "coaching_cue": "Drive hips to full extension, squeeze glutes hard at top, no lumbar hyperextension."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "single_leg_glute_bridge",
+                "name": "Flutter Kicks",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "leg_lift",
+                  "bent_knee_hip_raise"
+                ],
+                "coaching_cue": "Lower back pressed into floor, alternating legs with controlled swing."
+              },
+              {
+                "kind": "cardio",
+                "exercise_id": "fast_skipping",
+                "name": "Fast Skipping",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "endurance",
+                "cardio_kind": {
+                  "modality": "running",
+                  "style": "LISS"
+                },
+                "substitution_options": [
+                  "double_leg_butt_kick",
+                  "single_leg_butt_kick"
+                ],
+                "coaching_cue": "Light bounce, breathe rhythmically, land soft, easy conversational pace."
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Rest / active recovery",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Rest / active recovery",
+            "items": []
+          }
+        ]
+      },
+      "edited": "N1(2026-10-14): requires 종목 10개를 맨몸 후보 안 종목으로 치환 — 재녹화 아님. 원 녹화가 「맨몸에 철봉·의자 운동」 증상 그 자체였다"
+    },
+    "beginner-home-gym-dumbbells": {
+      "why": "limited equipment (dumbbells + bands only)",
+      "attempts": 1,
+      "elapsed_ms": 34548,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "full_body_a_horizontal_push_pull_quad_focus",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat_to_a_bench",
+                  "plie_dumbbell_squat",
+                  "squats_with_bands"
+                ],
+                "coaching_cue": "Knees track over toes, chest tall, sit between heels."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_grip_incline_db_bench_press",
+                  "incline_dumbbell_bench_with_palms_facing_in",
+                  "decline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Pin shoulder blades to floor, lower with control, full lockout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "one_arm_dumbbell_row",
+                "name": "One Arm Dumbbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "dumbbell_incline_row",
+                  "seated_bent_over_one_arm_dumbbell_triceps_extension"
+                ],
+                "coaching_cue": "Hinge at hip, pull elbow back, squeeze scapula at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_dumbbell_press",
+                "name": "Standing Dumbbell Press",
+                "role": "primary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "arnold_dumbbell_press",
+                  "seated_dumbbell_press",
+                  "standing_alternating_dumbbell_press"
+                ],
+                "coaching_cue": "Brace core, press straight up, do not flare ribs."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_rear_lunge",
+                  "split_squat_with_dumbbells",
+                  "dumbbell_step_ups"
+                ],
+                "coaching_cue": "Long step, back knee approaches floor, front knee over ankle."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternate Hammer Curl",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_curls",
+                  "cross_body_hammer_curl",
+                  "incline_hammer_curls"
+                ],
+                "coaching_cue": "Elbows pinned at sides, neutral grip, no swinging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "one_arm_pronated_dumbbell_triceps_extension",
+                "name": "One Arm Pronated Triceps Extension",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_dumbbell_press",
+                  "one_arm_supinated_dumbbell_triceps_extension",
+                  "speed_band_overhead_triceps"
+                ],
+                "coaching_cue": "Upper arm fixed, extend elbow fully, control the negative."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "lift",
+            "focus": "full_body_b_incline_push_horizontal_pull_hinge_focus",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "stiff_legged_dumbbell_deadlift",
+                "name": "Stiff Legged Dumbbell Deadlift",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "band_good_morning",
+                  "band_good_morning_pull_through",
+                  "dumbbell_clean"
+                ],
+                "coaching_cue": "Soft knees, hinge from hips, dumbbells glide along thighs."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "incline_dumbbell_bench_with_palms_facing_in",
+                "name": "Incline Dumbbell Bench Neutral Grip",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_grip_incline_db_bench_press",
+                  "incline_dumbbell_flyes",
+                  "dumbbell_bench_press_with_neutral_grip"
+                ],
+                "coaching_cue": "Bench angle moderate, neutral grip reduces shoulder stress."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent Over Two Dumbbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "one_arm_dumbbell_row",
+                  "dumbbell_incline_row",
+                  "seated_bent_over_one_arm_dumbbell_triceps_extension"
+                ],
+                "coaching_cue": "Torso near parallel, pull elbows up and back, do not jerk."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "arnold_dumbbell_press",
+                "name": "Arnold Dumbbell Press",
+                "role": "primary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "standing_dumbbell_press",
+                  "seated_dumbbell_press",
+                  "shoulder_press_with_bands"
+                ],
+                "coaching_cue": "Rotate palms as you press, finish with palms forward overhead."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_rear_lunge",
+                "name": "Dumbbell Rear Lunge",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_lunges",
+                  "split_squat_with_dumbbells",
+                  "dumbbell_step_ups"
+                ],
+                "coaching_cue": "Step back, drop rear knee, keep front shin vertical."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_alternate_bicep_curl",
+                "name": "Dumbbell Alternate Bicep Curl",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bicep_curl",
+                  "incline_dumbbell_curl",
+                  "flexor_incline_dumbbell_curls"
+                ],
+                "coaching_cue": "Supinate palm as you curl, squeeze biceps at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_dumbbell_press",
+                "name": "Close Grip Dumbbell Press",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "one_arm_pronated_dumbbell_triceps_extension",
+                  "speed_band_overhead_triceps",
+                  "cubanese_press"
+                ],
+                "coaching_cue": "Elbows tucked, lower to lower chest, press to lockout."
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "full_body_c_compound_variation_balance_focus",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat_to_a_bench",
+                "name": "Dumbbell Squat to a Bench",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "plie_dumbbell_squat",
+                  "split_squat_with_dumbbells"
+                ],
+                "coaching_cue": "Tap bench gently with hips, drive up through heels."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "hammer_grip_incline_db_bench_press",
+                "name": "Hammer Grip Incline DB Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "incline_dumbbell_bench_with_palms_facing_in",
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "dumbbell_floor_press"
+                ],
+                "coaching_cue": "Neutral grip, elbows track in line with torso, controlled tempo."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "one_arm_dumbbell_row",
+                  "middle_back_shrug"
+                ],
+                "coaching_cue": "Chest on incline, pull elbows up toward ribs."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "shoulder_press_with_bands",
+                "name": "Shoulder Press with Bands",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "standing_dumbbell_press",
+                  "arnold_dumbbell_press",
+                  "standing_palm_in_one_arm_dumbbell_press"
+                ],
+                "coaching_cue": "Anchor band low, press straight overhead, ribs down."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "plie_dumbbell_squat",
+                "name": "Plie Dumbbell Squat",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "dumbbell_squat_to_a_bench",
+                  "split_squat_with_dumbbells"
+                ],
+                "coaching_cue": "Wide stance, toes out, dumbbell held vertically between legs."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "hammer_curls",
+                "name": "Hammer Curls",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternate_hammer_curl",
+                  "cross_body_hammer_curl",
+                  "incline_hammer_curls"
+                ],
+                "coaching_cue": "Neutral grip, elbows fixed, full ROM without swinging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "speed_band_overhead_triceps",
+                "name": "Speed Band Overhead Triceps",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "one_arm_pronated_dumbbell_triceps_extension",
+                  "band_skull_crusher",
+                  "close_grip_dumbbell_press"
+                ],
+                "coaching_cue": "Press band overhead, lower behind head, lock elbows tight."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "beginner-minimal-shoulder-injury": {
+      "why": "injury exclusion + substitution (S-GEN-4)",
+      "attempts": 2,
+      "elapsed_ms": 109363,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body A — squat, neutral push, horizontal pull, hinge",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bodyweight_squat",
+                  "dumbbell_lunges"
+                ],
+                "coaching_cue": "Knees track over toes, chest tall, controlled descent to comfortable depth."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_floor_press",
+                "name": "Dumbbell Floor Press",
+                "role": "secondary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "push_ups"
+                ],
+                "coaching_cue": "Floor limits ROM — keeps shoulders in a safer range; elbows ~45° from torso."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Two-Dumbbell Row",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "one_arm_dumbbell_row",
+                  "incline_dumbbell_row"
+                ],
+                "coaching_cue": "Hinge at hips, neutral spine, drive elbows back, squeeze shoulder blades."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "stiff_legged_dumbbell_deadlift",
+                "name": "Stiff-Legged Dumbbell Deadlift",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "single_leg_glute_bridge",
+                  "butt_lift_bridge"
+                ],
+                "coaching_cue": "Soft knees, hinge from hips, weights track close to thighs, neutral spine."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "incline_push_up",
+                "name": "Push-Up",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "incline_push_up",
+                  "close_grip_push_up_off_of_a_dumbbell"
+                ],
+                "coaching_cue": "Elbows ~45° from torso, body rigid, no sagging hips or flaring shoulders."
+              },
+              {
+                "kind": "cardio",
+                "name": "Cycling LISS",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                },
+                "coaching_cue": "Conversational pace, light breath only, steady cadence."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "rest",
+            "focus": "Recovery",
+            "items": []
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body B — lunge, neutral-grip incline press, single-arm row",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "step_up_with_knee_raise",
+                  "dumbbell_squat"
+                ],
+                "coaching_cue": "Long stride, back knee just shy of floor, front knee tracks over ankle."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "hammer_grip_incline_db_bench_press",
+                "name": "Hammer-Grip Incline DB Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_grip_incline_db_bench_press",
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "dumbbell_floor_press"
+                ],
+                "coaching_cue": "Neutral (palms-facing) grip reduces shoulder stress; bench at moderate incline only."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "one_arm_dumbbell_row",
+                "name": "One-Arm Dumbbell Row",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "incline_dumbbell_row"
+                ],
+                "coaching_cue": "Brace against knee or bench, drive elbow back, no shrugging at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_dumbbell_calf_raise",
+                "name": "Standing Dumbbell Calf Raise",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_seated_one_leg_calf_raise",
+                  "calf_raise_on_a_dumbbell"
+                ],
+                "coaching_cue": "Full stretch at bottom, drive up onto big toes, slow eccentric."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternate Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_curls",
+                  "cross_body_hammer_curl"
+                ],
+                "coaching_cue": "Neutral grip, elbows pinned to ribs, no swinging — shoulder-friendly arm work."
+              },
+              {
+                "kind": "cardio",
+                "name": "Rowing LISS",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "rowing",
+                  "style": "LISS"
+                },
+                "coaching_cue": "Legs-drive-back-arms rhythm; moderate, steady pace."
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "rest",
+            "focus": "Recovery",
+            "items": []
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body C — neutral bench press, single-leg hinge, arms",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press_with_neutral_grip",
+                "name": "Dumbbell Bench Press (Neutral Grip)",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "hammer_grip_incline_db_bench_press",
+                  "dumbbell_floor_press"
+                ],
+                "coaching_cue": "Palms face each other to spare the shoulders; press in a controlled arc, no flaring."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "single_leg_glute_bridge",
+                "name": "Single-Leg Glute Bridge",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "butt_lift_bridge",
+                  "stiff_legged_dumbbell_deadlift"
+                ],
+                "coaching_cue": "Hips level at the top; ribs down, glutes squeezed, do not hyperextend low back."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "incline_dumbbell_row",
+                "name": "Incline Dumbbell Row",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "one_arm_dumbbell_row",
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Chest braced on incline bench; pull elbows back, no momentum, no shrugging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "concentration_curls",
+                "name": "Concentration Curl",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bicep_curl",
+                  "alternate_hammer_curl"
+                ],
+                "coaching_cue": "Elbow braced against inner thigh; slow eccentric, no swinging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_push_up_off_of_a_dumbbell",
+                "name": "Close-Grip Push-Up on Dumbbells",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "push_ups",
+                  "incline_push_up_close_grip"
+                ],
+                "coaching_cue": "Dumbbells let wrists stay neutral; elbows ~30° from torso for triceps bias, no shoulder pain."
+              },
+              {
+                "kind": "cardio",
+                "name": "Incline-Walk HIIT",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "HIIT"
+                },
+                "coaching_cue": "Steep incline; alternate hard efforts with easy recovery walks."
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "Recovery",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "Recovery",
+            "items": []
+          }
+        ]
+      }
+    },
+    "beginner-lowrisk-flag": {
+      "why": "low-risk flag → warning path, generation still succeeds (FR-SAFE-4)",
+      "attempts": 1,
+      "elapsed_ms": 89547,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "Full Body - Squat & Horizontal Push/Pull",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "chair_squat"
+                ],
+                "coaching_cue": "Brace core, push knees out over toes, descend until thighs are parallel."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "cable_chest_press"
+                ],
+                "coaching_cue": "Retract shoulder blades, lower bar to mid-chest with control, drive feet into floor."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Hinge to ~45° torso angle, pull bar to lower chest, squeeze shoulder blades together."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "step_up_with_knee_raise",
+                  "barbell_walking_lunge"
+                ],
+                "coaching_cue": "Step forward into lunge, back knee approaches floor, front knee tracks over mid-foot."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_hammer_curls_rope_attachment",
+                "name": "Cable Rope Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternate_hammer_curl",
+                  "high_cable_curls"
+                ],
+                "coaching_cue": "Keep elbows tucked at sides, full extension and contraction through full range."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_internal_rotation",
+                "name": "Cable Internal Rotation",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [],
+                "coaching_cue": "Light weight, elbow fixed at 90°, rotate forearm inward through pain-free range."
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body - Hinge & Vertical Pull",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "cable_deadlifts",
+                "name": "Cable Deadlift",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "stiff_legged_dumbbell_deadlift",
+                  "good_morning_off_pins"
+                ],
+                "coaching_cue": "Slight knee bend, hinge at hips, push butt back, neutral spine throughout."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_chest_press",
+                "name": "Cable Chest Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_bench_press_medium_grip",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Press handles out at chest level, full lockout, ribs stay stacked over pelvis."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Lat Pulldown",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "chin_up",
+                  "kneeling_single_arm_high_pulley_row"
+                ],
+                "coaching_cue": "Initiate by depressing shoulder blades, pull bar to upper chest, control the return."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Row",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "kneeling_single_arm_high_pulley_row"
+                ],
+                "coaching_cue": "Brace hand and knee on bench, pull dumbbell to hip, drive elbow back."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_rope_rear_delt_rows",
+                "name": "Cable Rope Rear Delt Row",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_rear_delt_row",
+                  "dumbbell_raise"
+                ],
+                "coaching_cue": "Pull rope to face with elbows high, externally rotate at end range for rear delt squeeze."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "ab_crunch_machine",
+                "name": "Ab Crunch Machine",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "3_4_sit_up",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Exhale and contract abs, controlled crunch, avoid pulling with the arms."
+              },
+              {
+                "kind": "cardio",
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "order": 7,
+                "coaching_cue": "Steady brisk pace on incline, light effort, easy nasal breathing throughout."
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body - Vertical Push & Conditioning",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_bench_press_medium_grip",
+                  "incline_push_up_close_grip"
+                ],
+                "coaching_cue": "Lower dumbbells to chest level, press up and slightly inward for full pec contraction."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "leverage_shoulder_press",
+                  "bradford_rocky_presses"
+                ],
+                "coaching_cue": "Press handles overhead, full lockout, keep ribs down and core braced."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Two-Dumbbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_barbell_row",
+                  "dumbbell_incline_row"
+                ],
+                "coaching_cue": "Torso near parallel to floor, pull dumbbells toward hips, squeeze lats at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Squat",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bodyweight_squat",
+                  "chair_squat"
+                ],
+                "coaching_cue": "Hold dumbbells at sides, squat to a comfortable depth, keep chest tall."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_calf_raises",
+                "name": "Standing Calf Raises",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "seated_calf_raise",
+                  "dumbbell_seated_one_leg_calf_raise"
+                ],
+                "coaching_cue": "Pause at full stretch on the bottom, controlled rise onto toes."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "3_4_sit_up",
+                "name": "3/4 Sit-Up",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "ab_crunch_machine",
+                  "flutter_kicks"
+                ],
+                "coaching_cue": "Lift shoulders off mat through the upper three-quarters, controlled tempo, exhale on the way up."
+              },
+              {
+                "kind": "cardio",
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                },
+                "order": 7,
+                "coaching_cue": "Steady brisk pace on incline, light effort, easy nasal breathing throughout."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "week2-progression-increase": {
+      "why": "feedback loop: top reps hit → increase (S-GEN-10)",
+      "attempts": 1,
+      "elapsed_ms": 52782,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body A - Squat emphasis with horizontal push/pull",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Barbell Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Brace core, break at hips and knees together, drive through midfoot, keep chest tall, track knees over toes."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "cable_chest_press"
+                ],
+                "coaching_cue": "Retract and depress scapulae, slight arch, lower bar to lower chest with control, drive feet into floor."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_incline_row",
+                  "bent_over_two_dumbbell_row"
+                ],
+                "coaching_cue": "Hinge to about 45 degrees, pull bar to lower ribs, squeeze shoulder blades, keep neutral spine, no jerking."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_side_split_squat",
+                  "step_up_with_knee_raise"
+                ],
+                "coaching_cue": "Step forward into a controlled lunge, descend until back knee nears floor, keep torso upright, alternate legs."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternating Hammer Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_hammer_curls_rope_attachment",
+                  "barbell_curl"
+                ],
+                "coaching_cue": "Keep elbows pinned to ribs, neutral grip, controlled eccentric, no body swing, alternate arms smoothly."
+              },
+              {
+                "kind": "cardio",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                }
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "Full Body B - Hinge emphasis with incline press and vertical pull",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "cable_deadlifts"
+                ],
+                "coaching_cue": "Upper back on bench, chin tucked, drive through heels, full hip extension, squeeze glutes hard at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Incline Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Bench set 30 to 45 degrees, lower bar to upper chest, press in slight arc back over shoulders, feet planted."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Lat Pulldown",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "kneeling_high_pulley_row",
+                  "cable_rope_rear_delt_rows"
+                ],
+                "coaching_cue": "Slight forward lean, pull elbows down and back toward hips, squeeze lats at bottom, control the return."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_raise",
+                "name": "Dumbbell Lateral Raise",
+                "role": "accessory",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_incline_shoulder_raise",
+                  "cable_internal_rotation"
+                ],
+                "coaching_cue": "Slight elbow bend, lead with elbows not hands, raise to shoulder height, pause, lower under control, no shrugging."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_preacher_curl",
+                  "close_grip_ez_bar_curl"
+                ],
+                "coaching_cue": "Elbows pinned and slightly forward, full ROM, squeeze biceps at top, controlled 2 to 3 second eccentric."
+              }
+            ]
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full Body C - Goblet squat variation with chest, row, and calf emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Goblet Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_squat",
+                  "bodyweight_squat"
+                ],
+                "coaching_cue": "Hold dumbbell vertically at chest, sit between heels, knees track over toes, chest up, full depth if mobility allows."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "decline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Press dumbbells from chest level in a slight arc, lock out over shoulders, full stretch at bottom, controlled tempo."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_incline_row",
+                "name": "Dumbbell Incline Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "bent_over_two_dumbbell_row",
+                  "bent_over_one_arm_long_bar_row"
+                ],
+                "coaching_cue": "Chest supported on incline bench, pull dumbbells to hips, squeeze shoulder blades together, no torso rotation."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_chest_press",
+                "name": "Cable Chest Press",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "smith_machine_close_grip_bench_press"
+                ],
+                "coaching_cue": "Step forward into split stance, press handles out and slightly together, controlled return, constant cable tension."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_calf_raises",
+                "name": "Standing Calf Raises",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "standing_barbell_calf_raise",
+                  "smith_machine_calf_raise"
+                ],
+                "coaching_cue": "Full stretch at bottom on a slight edge if available, drive up onto big toes, peak contraction, 2 to 3 second eccentric."
+              },
+              {
+                "kind": "cardio",
+                "order": 6,
+                "cardio_kind": {
+                  "modality": "incline_walk",
+                  "style": "LISS"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "week2-progression-pain": {
+      "why": "feedback loop: pain logged → decrease or substitute (S-GEN-11)",
+      "attempts": 1,
+      "elapsed_ms": 32024,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "Full body A - lower-body emphasis (barbell back squat substituted due to prior-week pain)",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_squat",
+                "name": "Dumbbell Goblet Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "strength",
+                "substitution_options": [
+                  "barbell_side_split_squat",
+                  "bodyweight_squat",
+                  "chair_squat"
+                ],
+                "coaching_cue": "Hold dumbbell vertical at chest; sit hips back; keep torso tall. Anterior load avoids bar-on-spine stress."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_barbell_row",
+                "name": "Bent-Over Barbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_shoulder_press",
+                "name": "Cable Shoulder Press",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternating Hammer Curl",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "ab_crunch_machine",
+                "name": "Ab Crunch Machine",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "endurance"
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "lift_plus_cardio",
+            "focus": "Full body B - upper-body emphasis with LISS cardio",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Incline Barbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Lat Pulldown",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_side_split_squat",
+                "name": "Barbell Side Split Squat",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "coaching_cue": "Step wide; keep torso upright; track knee over toes."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_rope_rear_delt_rows",
+                "name": "Cable Rope Rear Delt Row",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_dumbbell_press",
+                "name": "Close-Grip Dumbbell Press",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "cardio",
+                "order": 7,
+                "cardio_kind": {
+                  "modality": "cycling",
+                  "style": "LISS"
+                },
+                "coaching_cue": "Steady conversational pace; cool-down after lifting block."
+              }
+            ]
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "Full body C - balanced with posterior-chain emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "cable_chest_press",
+                "name": "Cable Chest Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "chin_up",
+                "name": "Chin-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "strength",
+                "coaching_cue": "Use assisted machine or band if needed; controlled descent, chin clearly above bar."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 3,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_glute_bridge",
+                "name": "Barbell Glute Bridge",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "leverage_shoulder_press",
+                "name": "Leverage Shoulder Press",
+                "role": "secondary",
+                "order": 5,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_hammer_curls_rope_attachment",
+                "name": "Cable Hammer Curl (Rope)",
+                "role": "accessory",
+                "order": 6,
+                "rep_intent": "hypertrophy"
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "3_4_sit_up",
+                "name": "3/4 Sit-Up",
+                "role": "accessory",
+                "order": 7,
+                "rep_intent": "endurance"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "week2-progression-missed": {
+      "why": "feedback loop: missed reps → decrease (S-GEN-11)",
+      "attempts": 1,
+      "elapsed_ms": 50358,
+      "model": "MiniMax-M3",
+      "draft": {
+        "schema_version": "1.0",
+        "split_type": "full_body",
+        "week": [
+          {
+            "day_index": 0,
+            "session_type": "lift",
+            "focus": "lower body emphasis full body",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_squat",
+                "name": "Back Squat",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_squat",
+                  "barbell_side_split_squat",
+                  "chair_squat"
+                ],
+                "coaching_cue": "Brace core, sit between hips, track knees over toes, drive midfoot into floor."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_bench_press",
+                "name": "Dumbbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_chest_press",
+                  "smith_machine_close_grip_bench_press",
+                  "decline_dumbbell_bench_press"
+                ],
+                "coaching_cue": "Set shoulders back and down; lower under control until upper arms parallel floor, press dumbbells together at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "bent_over_two_dumbbell_row",
+                "name": "Bent-Over Dumbbell Row",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_incline_row",
+                  "barbell_rear_delt_row",
+                  "kneeling_single_arm_high_pulley_row"
+                ],
+                "coaching_cue": "Hinge at hips with neutral spine; pull elbows back and squeeze scapulae at the top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "alternate_hammer_curl",
+                "name": "Alternating Hammer Curl",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "cable_hammer_curls_rope_attachment",
+                  "high_cable_curls",
+                  "close_grip_standing_barbell_curl"
+                ],
+                "coaching_cue": "Keep elbows pinned to sides; rotate from elbow, not wrist; full ROM."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "standing_calf_raises",
+                "name": "Standing Calf Raises",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "calf_press_on_the_leg_press_machine",
+                  "rocking_standing_calf_raise",
+                  "barbell_seated_calf_raise"
+                ],
+                "coaching_cue": "Full stretch at bottom, rise onto balls of feet, brief pause at top; control descent."
+              }
+            ]
+          },
+          {
+            "day_index": 1,
+            "session_type": "rest",
+            "focus": "rest",
+            "items": []
+          },
+          {
+            "day_index": 2,
+            "session_type": "lift",
+            "focus": "upper body horizontal and vertical emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_bench_press_medium_grip",
+                "name": "Barbell Bench Press",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "dumbbell_bench_press",
+                  "smith_machine_close_grip_bench_press",
+                  "bench_press_powerlifting"
+                ],
+                "coaching_cue": "Retract and depress scapulae; bar to lower chest; drive feet into floor and press in a slight arc."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "chin_up",
+                "name": "Chin-Up",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_front_lat_pulldown",
+                  "kneeling_high_pulley_row"
+                ],
+                "coaching_cue": "Start from dead hang; pull chest to bar leading with elbows; avoid kipping. Use assist band or machine if needed."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "leverage_shoulder_press",
+                "name": "Leverage Shoulder Press",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "alternating_cable_shoulder_press",
+                  "dumbbell_bench_press_with_neutral_grip",
+                  "anti_gravity_press"
+                ],
+                "coaching_cue": "Glutes seated on bench; press in arc finishing handles over mid-shoulder; don't shrug."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "cable_rope_rear_delt_rows",
+                "name": "Cable Rope Rear Delt Rows",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_rear_delt_row",
+                  "bent_over_one_arm_long_bar_row",
+                  "cable_rope_rear_delt_rows"
+                ],
+                "coaching_cue": "Pull rope to forehead level with elbows high; pause and squeeze rear delts; control return."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_curl",
+                "name": "Barbell Curl",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "close_grip_ez_bar_curl",
+                  "cable_hammer_curls_rope_attachment",
+                  "barbell_curls_lying_against_an_incline"
+                ],
+                "coaching_cue": "Elbows pinned in front of body; curl through full ROM without torso swing; squeeze at top."
+              }
+            ]
+          },
+          {
+            "day_index": 3,
+            "session_type": "rest",
+            "focus": "rest",
+            "items": []
+          },
+          {
+            "day_index": 4,
+            "session_type": "lift",
+            "focus": "full body balanced with posterior chain emphasis",
+            "items": [
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_hip_thrust",
+                "name": "Barbell Hip Thrust",
+                "role": "primary",
+                "order": 1,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_glute_bridge",
+                  "glute_ham_raise",
+                  "pull_through"
+                ],
+                "coaching_cue": "Upper back on bench edge; tuck ribs down; drive heels and squeeze glutes to full hip extension at top."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "barbell_incline_bench_press_medium_grip",
+                "name": "Incline Barbell Bench Press",
+                "role": "primary",
+                "order": 2,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "decline_dumbbell_bench_press",
+                  "dumbbell_bench_press",
+                  "decline_smith_press"
+                ],
+                "coaching_cue": "Bench around 30 degrees; bar to upper chest; press up and slightly back over shoulders."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "close_grip_front_lat_pulldown",
+                "name": "Close-Grip Front Lat Pulldown",
+                "role": "primary",
+                "order": 3,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "chin_up",
+                  "kneeling_high_pulley_row",
+                  "cable_chest_press"
+                ],
+                "coaching_cue": "Slight backward lean; pull bar to upper chest; lead with elbows and squeeze lats at bottom."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "dumbbell_lunges",
+                "name": "Dumbbell Lunges",
+                "role": "secondary",
+                "order": 4,
+                "rep_intent": "hypertrophy",
+                "substitution_options": [
+                  "barbell_walking_lunge",
+                  "step_up_with_knee_raise",
+                  "barbell_side_split_squat"
+                ],
+                "coaching_cue": "Take a long step; keep front knee tracking over midfoot; torso upright; alternate or stay on one side if grip is limiting."
+              },
+              {
+                "kind": "strength",
+                "exercise_id": "ab_crunch_machine",
+                "name": "Ab Crunch Machine",
+                "role": "accessory",
+                "order": 5,
+                "rep_intent": "endurance",
+                "substitution_options": [
+                  "3_4_sit_up",
+                  "barbell_ab_rollout",
+                  "butt_lift_bridge"
+                ],
+                "coaching_cue": "Curl ribs toward hips; avoid pulling with arms; slow controlled tempo, breath out on contraction."
+              }
+            ]
+          },
+          {
+            "day_index": 5,
+            "session_type": "rest",
+            "focus": "rest",
+            "items": []
+          },
+          {
+            "day_index": 6,
+            "session_type": "rest",
+            "focus": "rest",
+            "items": []
+          }
+        ]
+      }
+    }
+  }
+}

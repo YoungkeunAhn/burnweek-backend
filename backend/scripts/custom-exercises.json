@@ -1,0 +1,670 @@
+[
+  {
+    "id": "mymountain",
+    "name": "MyMountain",
+    "name_ko": "마이마운틴",
+    "modality": "cardio",
+    "default_metric": "duration",
+    "equipment": "machine",
+    "category": "cardio",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "glutes"
+    ],
+    "secondary_muscles": [
+      "hamstrings",
+      "calves",
+      "quadriceps",
+      "lower back"
+    ],
+    "source": {
+      "decision": "D57 A15",
+      "product": "https://www.draxfit.com/ko/treadmills/incline-trainer",
+      "muscles": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11728598/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12510700/"
+      ]
+    }
+  },
+  {
+    "id": "towel_door_row",
+    "name": "Towel Door Row",
+    "name_ko": "타월 도어 로우",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "pull",
+    "level": "beginner",
+    "primary_muscles": [
+      "middle back"
+    ],
+    "secondary_muscles": [
+      "lats",
+      "biceps",
+      "forearms"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine/"
+    }
+  },
+  {
+    "id": "table_inverted_row",
+    "name": "Table Inverted Row",
+    "name_ko": "테이블 인버티드 로우",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "pull",
+    "level": "beginner",
+    "primary_muscles": [
+      "middle back"
+    ],
+    "secondary_muscles": [
+      "lats",
+      "biceps",
+      "shoulders"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine/"
+    }
+  },
+  {
+    "id": "knee_push_up",
+    "name": "Knee Push-Up",
+    "name_ko": "무릎 푸시업",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "chest"
+    ],
+    "secondary_muscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine/"
+    }
+  },
+  {
+    "id": "wall_push_up",
+    "name": "Wall Push-Up",
+    "name_ko": "벽 푸시업",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "chest"
+    ],
+    "secondary_muscles": [
+      "triceps",
+      "shoulders"
+    ],
+    "requires": [
+      "wall"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine/"
+    }
+  },
+  {
+    "id": "burpee",
+    "name": "Burpee",
+    "name_ko": "버피",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "plyometrics",
+    "mechanic": "compound",
+    "force": null,
+    "level": "intermediate",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "chest",
+      "shoulders",
+      "triceps",
+      "glutes",
+      "abdominals"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=B_mOva3qtSE"
+    }
+  },
+  {
+    "id": "slow_burpee",
+    "name": "Slow Burpee",
+    "name_ko": "슬로우 버피",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "chest",
+      "shoulders",
+      "triceps",
+      "glutes",
+      "abdominals"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Uly8jUuscOw"
+    }
+  },
+  {
+    "id": "jumping_jacks",
+    "name": "Jumping Jacks",
+    "name_ko": "점핑잭",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "plyometrics",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "calves"
+    ],
+    "secondary_muscles": [
+      "shoulders",
+      "quadriceps",
+      "glutes"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "step_jack",
+    "name": "Step Jack",
+    "name_ko": "스텝 잭",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "calves"
+    ],
+    "secondary_muscles": [
+      "shoulders",
+      "quadriceps"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "high_knees",
+    "name": "High Knees",
+    "name_ko": "하이니",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "plyometrics",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "calves",
+      "abdominals",
+      "glutes"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "marching_in_place",
+    "name": "High Knee March",
+    "name_ko": "제자리 높이 걷기",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "calves",
+      "abdominals"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "wall_sit",
+    "name": "Wall Sit",
+    "name_ko": "월 싯",
+    "modality": "bodyweight",
+    "default_metric": "duration",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "isolation",
+    "force": "static",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "calves"
+    ],
+    "requires": [
+      "wall"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "bodyweight_lunge",
+    "name": "Bodyweight Lunge",
+    "name_ko": "맨몸 런지",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "hamstrings",
+      "calves"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "chair_step_up",
+    "name": "Chair Step-Up",
+    "name_ko": "의자 스텝업",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "hamstrings",
+      "calves"
+    ],
+    "requires": [
+      "sturdy_chair"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=Jru5B044HOs"
+    }
+  },
+  {
+    "id": "wide_squat",
+    "name": "Wide Squat",
+    "name_ko": "와이드 스쿼트",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "adductors",
+      "hamstrings"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=FsqhUFcjL8k"
+    }
+  },
+  {
+    "id": "narrow_squat",
+    "name": "Narrow Squat",
+    "name_ko": "내로우 스쿼트",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=FsqhUFcjL8k"
+    }
+  },
+  {
+    "id": "pulse_squat",
+    "name": "Pulse Squat",
+    "name_ko": "펄스 스쿼트",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=FsqhUFcjL8k"
+    }
+  },
+  {
+    "id": "squat_twist",
+    "name": "Squat Twist",
+    "name_ko": "스쿼트 트위스트",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "abdominals"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "tap_step_arm_raise",
+    "name": "Tap Step Arm Raise",
+    "name_ko": "탭 스텝 암레이즈",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "shoulders"
+    ],
+    "secondary_muscles": [
+      "calves"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "standing_cross_toe_touch",
+    "name": "Standing Cross Toe Touch",
+    "name_ko": "스탠딩 크로스 토터치",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "abdominals"
+    ],
+    "secondary_muscles": [
+      "hamstrings"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "bodyweight_good_morning",
+    "name": "Bodyweight Good Morning",
+    "name_ko": "맨몸 굿모닝",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "pull",
+    "level": "beginner",
+    "primary_muscles": [
+      "hamstrings"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "lower back"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "standing_knee_up",
+    "name": "Standing Knee-Up",
+    "name_ko": "스탠딩 니업",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "abdominals"
+    ],
+    "secondary_muscles": [
+      "quadriceps"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "standing_side_crunch",
+    "name": "Standing Side Crunch",
+    "name_ko": "스탠딩 사이드 크런치",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "isolation",
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "abdominals"
+    ],
+    "secondary_muscles": [],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "reverse_lunge_knee_up",
+    "name": "Reverse Lunge Knee-Up",
+    "name_ko": "리버스 런지 니업",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": "compound",
+    "force": "push",
+    "level": "beginner",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "hamstrings",
+      "abdominals"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "skater",
+    "name": "Skater",
+    "name_ko": "스케이터",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "plyometrics",
+    "mechanic": "compound",
+    "force": null,
+    "level": "intermediate",
+    "primary_muscles": [
+      "quadriceps"
+    ],
+    "secondary_muscles": [
+      "glutes",
+      "abductors",
+      "calves"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "side_step",
+    "name": "Side Step",
+    "name_ko": "사이드 스텝",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "strength",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "abductors"
+    ],
+    "secondary_muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  },
+  {
+    "id": "small_jump_arm_fold",
+    "name": "Small Jump Arm Fold",
+    "name_ko": "소점프 암폴드",
+    "modality": "bodyweight",
+    "default_metric": "reps",
+    "equipment": "body only",
+    "category": "plyometrics",
+    "mechanic": null,
+    "force": null,
+    "level": "beginner",
+    "primary_muscles": [
+      "calves"
+    ],
+    "secondary_muscles": [
+      "shoulders"
+    ],
+    "bodyweight_pool": true,
+    "source": {
+      "decision": "D102 · 백로그 04 §3 / 11 §3",
+      "movement": "https://www.youtube.com/watch?v=lKwZ2DU4P-A"
+    }
+  }
+]

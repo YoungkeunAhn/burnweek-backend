@@ -1,0 +1,38 @@
+{
+  "name": "workout-plan-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Thin, provider-agnostic LLM proxy for weekly workout-plan generation (Firebase Cloud Functions Gen2). ADR-0005/0006/0008.",
+  "main": "lib/index.js",
+  "engines": {
+    "node": "22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "verify:live": "node scripts/run-local.cjs",
+    "probe:toss": "node scripts/probe-toss-mtls.cjs"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "es-hangul": "2.4.0",
+    "firebase-admin": "^13.0.0",
+    "firebase-functions": "^6.4.0",
+    "openai": "^4.77.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.10.0",
+    "firebase-functions-test": "^3.4.0",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.8"
+  }
+}
