@@ -2,7 +2,6 @@
 
 > LLM이 짜 준 주간 운동 플랜을, 검증을 통과한 것만 사용자에게 보내는 토스 미니앱 백엔드
 
-[![CI](https://github.com/YoungkeunAhn/burnweek-backend/actions/workflows/ci.yml/badge.svg)](https://github.com/YoungkeunAhn/burnweek-backend/actions/workflows/ci.yml)
 ![Node.js 22](https://img.shields.io/badge/Node.js-22-5FA04E?logo=nodedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 ![Firebase Functions Gen2](https://img.shields.io/badge/Firebase-Functions%20Gen2-DD2C00?logo=firebase&logoColor=white)
@@ -86,26 +85,11 @@ flowchart LR
 
 원인 분석과 재현 과정은 [`docs/troubleshooting.md`](docs/troubleshooting.md)에 있습니다.
 
-## 실행과 테스트
+## 이 저장소에 대해
 
-```bash
-cd backend
-npm ci
-npm test            # Vitest 885개 통과, 4개 건너뜀
-npm run typecheck
-```
+운영 저장소는 비공개입니다. 여기에는 설계를 설명하는 문서와, 그 설명이 가리키는 핵심 코드·테스트만 옮겼습니다. 빌드·실행에 필요한 나머지 코드는 넣지 않아 이 저장소만으로는 실행되지 않습니다.
 
-- Firestore·토스 API·LLM을 테스트 더블과 로컬 가짜 서버로 대체해, 키나 에뮬레이터 없이 돕니다.
-- 토스 mTLS 테스트가 인증서를 만들려고 `openssl` CLI를 호출합니다. `openssl version`이 실행되는 환경이어야 합니다(Git for Windows·macOS·Ubuntu에는 기본 포함).
-- 건너뛰는 4개는 실제 LLM을 부르는 실측 테스트로, `GOLDEN_REFRESH=1`·`REASONING_AB=1`·`EVAL_LIVE=1`·`HIVE_LIVE=1`을 켜고 키를 넣었을 때만 돕니다.
-
-실제 LLM으로 생성 파이프라인만 돌려 보려면:
-
-```bash
-cp .env.example .env.local   # LLM_PROVIDER · LLM_API_KEY · LLM_BASE_URL · LLM_MODEL 채우기
-npm run build
-npm run verify:live   # 지금은 생성이 실패해도 종료 코드 0 — #3
-```
+테스트는 운영 저장소에서 Vitest 885개가 통과합니다(2026-10-26 기록). Firestore·토스 API·LLM을 테스트 더블과 로컬 가짜 서버로 대체해 키나 에뮬레이터 없이 돕니다.
 
 ## 개발 방식
 
@@ -121,7 +105,7 @@ npm run verify:live   # 지금은 생성이 실패해도 종료 코드 0 — #3
 - [#1](https://github.com/YoungkeunAhn/burnweek-backend/issues/1) 워커 시작 트랜잭션의 모든 실패를 "사용자 삭제"로 처리 — 일시적인 DB 오류도 정상 종료돼, 잡이 `queued`로 남고 환불이 20분 늦어집니다.
 - 플랫폼이 워커를 강제로 끝내면(메모리 초과 등) 잡이 `running`으로 남고, 20분 예약 만료 뒤에야 정리됩니다.
 - [#2](https://github.com/YoungkeunAhn/burnweek-backend/issues/2) 워커 완료 로그를 결과 저장 전에 남김 — 저장이 실패해도 로그에는 성공으로 남아, 로그로 보는 실패율이 실제보다 낮게 나옵니다.
-- [#3](https://github.com/YoungkeunAhn/burnweek-backend/issues/3) `verify:live`가 생성 실패에도 종료 코드 0
+- [#3](https://github.com/YoungkeunAhn/burnweek-backend/issues/3) 실제 LLM 검증 스크립트(`verify:live`)가 생성 실패에도 종료 코드 0
 - [#4](https://github.com/YoungkeunAhn/burnweek-backend/issues/4) 완료 기록이 있는 주를 재생성하면 잡 조회와 현재 플랜 조회가 다른 플랜을 반환할 수 있음 — 잡에는 병합 전 플랜이 저장됨
 - [#5](https://github.com/YoungkeunAhn/burnweek-backend/issues/5) 마감 후에도 진행 중인 생성 작업과 LLM 호출이 취소되지 않음
 - 저장 후 푸시 실패를 직접 주입하는 테스트가 없습니다.
@@ -130,12 +114,15 @@ npm run verify:live   # 지금은 생성이 실패해도 종료 코드 0 — #3
 
 ```
 backend/
-  src/index.ts            함수 6개 (접수·워커·조회·로그인·탈퇴·예약 푸시)
-  src/generation/         파이프라인, 한도 예약·정산, 규칙 검증
-  src/llm/                OpenAI 호환 어댑터 (공급자 교체)
-  src/schemas/            ajv JSON Schema 2020
-  src/auth/               토스 mTLS 로그인, HMAC 세션, 계정 버전
-  test/                   계약·골든셋·공급자 교체 회귀·mTLS 로컬 서버·LLM 심판 하네스
-  test/results/           모델·추론 A/B 원자료
-docs/                     읽는 순서(README), 트러블슈팅, ADR 30건·결정 로그, 데이터 모델
+  src/index.ts                  함수 6개 (접수·워커·조회·로그인·탈퇴·예약 푸시)
+  src/config.ts                 파이프라인 분기(P0·P1)
+  src/generation/access.ts      생성 한도 예약·정산·환불 트랜잭션
+  src/generation/handler.ts     LLM 호출·스키마 검증·재요청
+  src/generation/prepare.ts     접수와 워커가 함께 쓰는 후보 준비
+  src/auth/                     토스 mTLS 로그인, 계정 버전
+  src/schemas/                  ajv JSON Schema 2020
+  firestore.rules               클라이언트 직접 접근 차단
+  test/                         계약 테스트, mTLS 로컬 서버, LLM 심판 하네스
+  test/results/                 모델·추론 A/B 결과
+docs/                           읽는 순서, 트러블슈팅, ADR 30건·결정 로그, 데이터 모델
 ```
