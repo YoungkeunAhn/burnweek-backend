@@ -9,8 +9,8 @@
 ![Cloud Tasks](https://img.shields.io/badge/Google-Cloud%20Tasks-4285F4?logo=googlecloud&logoColor=white)
 
 <p>
-  <img src=".github/readme/home.png" width="200" alt="메인: 이번 주 운동 일정과 오늘의 운동">
-  <img src=".github/readme/plan.png" width="200" alt="주간 플랜: 요일별 운동과 세트·횟수">
+  <img src=".github/readme/home.png" width="200" alt="대시보드: 오늘의 운동과 월간 운동 달력">
+  <img src=".github/readme/plan.png" width="200" alt="주간 플랜: 요일별 운동과 세트·볼륨">
   <img src=".github/readme/session.png" width="200" alt="운동 기록: 종목별 세트 진행">
 </p>
 
